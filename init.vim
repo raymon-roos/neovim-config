@@ -27,6 +27,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'rafamadriz/friendly-snippets'
+
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'folke/trouble.nvim'
 call plug#end()
 
 filetype plugin indent on
@@ -79,6 +82,14 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 4/5)<CR>
 
 nnoremap <silent> <leader>mm :exe "Mason" <CR>
 nnoremap <silent> <leader>pp :exe "LspInfo" <CR>
+
+
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 " Change directory to directory of current file
 nnoremap <leader>cd :cd %:h<CR>:pwd<CR>

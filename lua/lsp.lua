@@ -17,6 +17,8 @@ require("null-ls").setup({
   },
 })
 
+require("trouble").setup {
+}
 
 local M = {}
 
