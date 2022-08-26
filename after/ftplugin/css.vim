@@ -1,3 +1,1 @@
-set softtabstop=2
-set shiftwidth=2
-
+setlocal tabstop=2 shiftwidth=2 expandtab

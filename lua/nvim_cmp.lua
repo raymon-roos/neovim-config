@@ -4,6 +4,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 local cmp = require("cmp")
 
+
 local luasnip = require("luasnip")
 
 local check_backspace = function()
@@ -107,32 +108,25 @@ cmp.setup({
 })
 
   -- Set configuration for specific filetype.
-  cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  cmp.setup.filetype('php', {
-    sources = cmp.config.sources({
-      { name = 'phpactor' }, -- You can specify the `cmp_git` source if you were installed it.
-      { name = 'path' },
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  cmp.setup.filetype('html', {
-    sources = cmp.config.sources({
-      { name = 'html' }, -- You can specify the `cmp_git` source if you were installed it.
-      { name = 'path' },
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
+-- 
+--   cmp.setup.filetype('php', {
+--     sources = cmp.config.sources({
+--       { name = 'phpactor' }, -- You can specify the `cmp_git` source if you were installed it.
+--       { name = 'path' },
+--     }, {
+--       { name = 'buffer' },
+--     })
+--   })
+-- 
+--   cmp.setup.filetype('html', {
+--     sources = cmp.config.sources({
+--       { name = 'html' }, -- You can specify the `cmp_git` source if you were installed it.
+--       { name = 'path' },
+--     }, {
+--       { name = 'buffer' },
+--     })
+--   })
+-- 
   cmp.setup.filetype('help', {
     sources = cmp.config.sources({
 	{ name = '' },
@@ -157,38 +151,3 @@ cmp.setup({
     })
   })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')['sumneko_lua'].setup {
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-        },
-      },
-    },
-  },
-}
-
-require('lspconfig')['ltex'].setup {
-  capabilities = capabilities,
-}
-
-require('lspconfig')['vimls'].setup {
-  capabilities = capabilities,
-}
-
-require('lspconfig')['phpactor'].setup {
-  capabilities = capabilities,
-}
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-require('lspconfig')['html'].setup {
-  capabilities = capabilities,
-  mirrorCursorOnMatchingTag = true
-}

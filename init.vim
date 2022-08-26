@@ -23,6 +23,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp' 
+    " Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
@@ -50,8 +51,8 @@ set ignorecase smartcase
 set updatetime=300
 set timeoutlen=1000
 set undofile
-
 :packadd matchit
+
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 
@@ -63,6 +64,7 @@ let g:gruvbox_italic = '1'
 colorscheme gruvbox
 
 : let mapleader=" "
+nnoremap <Space> <Nop>
 
 nnoremap j gj
 nnoremap k gk
@@ -83,13 +85,16 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 4/5)<CR>
 nnoremap <silent> <leader>mm :exe "Mason" <CR>
 nnoremap <silent> <leader>pp :exe "LspInfo" <CR>
 
-
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+" commands to turn tabs into x number of spaces (or vice versa)
+:command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
+:command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 
 " Change directory to directory of current file
 nnoremap <leader>cd :cd %:h<CR>:pwd<CR>
@@ -98,6 +103,9 @@ nnoremap <leader>cd :cd %:h<CR>:pwd<CR>
 let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 let g:vimtex_complete_close_braces = 1
 let g:vimtex_view_method = 'mupdf'
+let g:airline#extensions#vimtex#enabled = 1
+let g:airline#extensions#vimtex#continuous = "C"
+let g:airline#extensions#vimtex#wordcount = 1 " might slow down vim
 " let g:vimtex_view_mupdf_send_keys = '<shift>z'
 
 " Spellchecking config 
