@@ -144,6 +144,11 @@ require('lspconfig')['sumneko_lua'].setup {
   },
 }
 
+require('lspconfig')['bashls'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 require('lspconfig')['ltex'].setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -165,7 +170,5 @@ require('lspconfig')['html'].setup {
   on_attach = on_attach,
   mirrorCursorOnMatchingTag = true
 }
-
-vim.lsp.set_log_level("debug")
 
 return M

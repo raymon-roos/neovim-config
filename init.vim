@@ -23,7 +23,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp' 
-    " Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
@@ -49,7 +48,7 @@ set cmdheight=2
 set clipboard+=unnamedplus
 set ignorecase smartcase
 set updatetime=300
-set timeoutlen=1000
+set timeoutlen=800
 set undofile
 :packadd matchit
 
