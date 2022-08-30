@@ -20,9 +20,6 @@ require("null-ls").setup({
 require("trouble").setup {
 }
 
-local M = {}
-
-  M.setup = function()
 
   local lsp_defaults = {
     flags = {
@@ -75,7 +72,6 @@ local M = {}
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
-end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
@@ -144,25 +140,20 @@ require('lspconfig')['sumneko_lua'].setup {
   },
 }
 
-require('lspconfig')['bashls'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
+local servers = {
+  'bashls',
+  'ltex',
+  'vimls',
+  'phpactor',
 }
 
-require('lspconfig')['ltex'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
 
-require('lspconfig')['vimls'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-require('lspconfig')['phpactor'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+for _, server in ipairs(servers) do
+  lspconfig[server].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+end
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig')['html'].setup {
@@ -170,5 +161,3 @@ require('lspconfig')['html'].setup {
   on_attach = on_attach,
   mirrorCursorOnMatchingTag = true
 }
-
-return M

@@ -7,9 +7,10 @@ else
 
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'morhetz/gruvbox'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airlineairblade/vim-gitgutter'  
-    Plug 'airblade/vim-gitgutter'  
+    Plug 'nvim-lualine/lualine.nvim'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airlineairblade/vim-gitgutter'  
+    " Plug 'airblade/vim-gitgutter'  
     Plug 'lervag/vimtex'
 
     Plug 'williamboman/mason.nvim'
@@ -40,6 +41,7 @@ set autoindent smartindent
 set number relativenumber
 set wrap
 set linebreak breakindent 
+set breakindentopt=shift:1
 set cpoptions+=n
 set scrolloff=8
 set splitright
@@ -114,7 +116,8 @@ source $XDG_CONFIG_HOME/nvim/spellcheck.vim
 source $XDG_CONFIG_HOME/nvim/zettelkasten.vim
 
 " lua / lsp / completion stuff
-source $XDG_CONFIG_HOME/nvim/lua/lsp.lua 
-source $XDG_CONFIG_HOME/nvim/lua/nvim_cmp.lua
+lua require('plugins.lsp')
+lua require('plugins.nvim_cmp')
+lua require('plugins.lualine_conf')
 
 endif
