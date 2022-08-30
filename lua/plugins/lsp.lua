@@ -1,19 +1,19 @@
 require("mason").setup({
   ui = {
-      style = "minimal",
-      border = "single",
-      icons = {
-	package_installed = "✓",
-	package_pending = "➜",
-	package_uninstalled = "✗"
-	},
-      },
-  })
+		style = "minimal",
+    border = "single",
+    icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗"
+		},
+  },
+})
 
 require("null-ls").setup({
   sources = {
-      -- require("null-ls").builtins.completion.spell,
-      require("null-ls").builtins.code_actions.refactoring
+    require("null-ls").builtins.completion.spell,
+    require("null-ls").builtins.code_actions.refactoring
   },
 })
 
@@ -21,57 +21,57 @@ require("trouble").setup {
 }
 
 
-  local lsp_defaults = {
-    flags = {
-      debounce_text_changes = 120,
-    },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    ),
-  }
+local lsp_defaults = {
+  flags = {
+    debounce_text_changes = 120,
+  },
+  capabilities = require('cmp_nvim_lsp').update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  ),
+}
 
-  local lspconfig = require('lspconfig')
-  lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
+local lspconfig = require('lspconfig')
+lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
 
 
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
+local signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
+}
 
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
 
-  local config = {
-    virtual_text = false,
-    signs = {
-      active = signs,
-    },
-    update_in_insert = true,
-    underline = true,
-    severity_sort = true,
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  }
-
-  vim.diagnostic.config(config)
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+local config = {
+  virtual_text = false,
+  signs = {
+    active = signs,
+  },
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
     border = "rounded",
-  })
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+}
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
+vim.diagnostic.config(config)
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities

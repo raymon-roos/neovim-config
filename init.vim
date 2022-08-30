@@ -8,9 +8,6 @@ else
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'morhetz/gruvbox'
     Plug 'nvim-lualine/lualine.nvim'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airlineairblade/vim-gitgutter'  
-    " Plug 'airblade/vim-gitgutter'  
     Plug 'lervag/vimtex'
 
     Plug 'williamboman/mason.nvim'
@@ -104,9 +101,6 @@ nnoremap <leader>cd :cd %:h<CR>:pwd<CR>
 let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 let g:vimtex_complete_close_braces = 1
 let g:vimtex_view_method = 'mupdf'
-let g:airline#extensions#vimtex#enabled = 1
-let g:airline#extensions#vimtex#continuous = "C"
-let g:airline#extensions#vimtex#wordcount = 1 " might slow down vim
 " let g:vimtex_view_mupdf_send_keys = '<shift>z'
 
 " Spellchecking config 
@@ -116,6 +110,7 @@ source $XDG_CONFIG_HOME/nvim/spellcheck.vim
 source $XDG_CONFIG_HOME/nvim/zettelkasten.vim
 
 " lua / lsp / completion stuff
+lua require('core.autocmds')
 lua require('plugins.lsp')
 lua require('plugins.nvim_cmp')
 lua require('plugins.lualine_conf')
