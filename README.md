@@ -2,10 +2,11 @@
 
 I use vim for writing prose in LaTeX and zettelkasten notes in Markdown, and recently I
 have been working on setting up LSP server integration, for supplying auto-completion and
-diagnostics, to use in coding projects. It is very much still a work in progress and of
-poor quality. 
+diagnostics to use in coding projects, as well as converting my old viml configs into pure
+lua. It is very much still a work in progress and of poor quality, but improving with
+every commit. 
 
-### Zettelkasten in vanilla Neovim
+### Zettelkasten in vanilla vim
 
 Copied largely from [this excellent blog post
 series](https://www.edwinwenink.xyz/posts/42-vim_notetaking/). Notes (zettels) I make are
