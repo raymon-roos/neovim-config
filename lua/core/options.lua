@@ -1,7 +1,7 @@
 local o = vim.opt
 local g = vim.g
 
-g.filetype = 'plugin indent off'
+g.filetype = 'plugin indent on'
 g.syntax_on = true
 
 o.softtabstop = 4
