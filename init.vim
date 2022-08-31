@@ -1,5 +1,5 @@
-if exists('g:vscode') " VSCode settings
-  lua require ('core.vscode_nvim')
+if exists('g:vscode') 
+  lua require ('core.vscode_nvim') " VSCode settings
 else
   call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'morhetz/gruvbox' "colour theme
@@ -22,13 +22,10 @@ else
     Plug 'folke/trouble.nvim' "Diagnostics window
   call plug#end()
 
-  " Spellchecking config 
-  source $XDG_CONFIG_HOME/nvim/spellcheck.vim
-
   " Zettelkasten config
   " source $XDG_CONFIG_HOME/nvim/zettelkasten.vim
 
-  " lua / lsp / completion stuff
+  " lua configs
   lua require('core.autocmds')
   lua require('core.options')
   lua require('core.keybindings')

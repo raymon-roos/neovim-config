@@ -23,28 +23,28 @@ nmap('k', 'gk')
 
 -- rapidly abort
 imap('kj', '<esc>')
-cmap('kj', '<C-C>')
+cmap('kj', '<c-c>')
 
 -- window navigation, in terminal/normal/insert/visual modes
-tmap('<A-h>', '<C-\\><C-N><C-w>h')
-tmap('<A-j>', '<C-\\><C-N><C-w>j')
-tmap('<A-k>', '<C-\\><C-N><C-w>k')
-tmap('<A-l>', '<C-\\><C-N><C-w>l')
+tmap('<a-h>', '<c-\\><C-N><C-w>h')
+tmap('<a-j>', '<c-\\><C-N><C-w>j')
+tmap('<a-k>', '<c-\\><C-N><C-w>k')
+tmap('<a-l>', '<c-\\><C-N><C-w>l')
 
-imap('<A-h>', '<C-\\><C-N><C-w>h')
-imap('<A-j>', '<C-\\><C-N><C-w>j')
-imap('<A-k>', '<C-\\><C-N><C-w>k')
-imap('<A-l>', '<C-\\><C-N><C-w>l')
+imap('<a-h>', '<c-\\><C-N><C-w>h')
+imap('<a-j>', '<c-\\><C-N><C-w>j')
+imap('<a-k>', '<c-\\><C-N><C-w>k')
+imap('<a-l>', '<c-\\><C-N><C-w>l')
 
-nmap('<A-h>', '<C-w>h')
-nmap('<A-j>', '<C-w>j')
-nmap('<A-k>', '<C-w>k')
-nmap('<A-l>', '<C-w>l')
+nmap('<a-h>', '<c-w>h')
+nmap('<a-j>', '<c-w>j')
+nmap('<a-k>', '<c-w>k')
+nmap('<a-l>', '<c-w>l')
 
-vmap('<A-h>', '<C-w>h')
-vmap('<A-j>', '<C-w>j')
-vmap('<A-k>', '<C-w>k')
-vmap('<A-l>', '<C-w>l')
+vmap('<a-h>', '<c-w>h')
+vmap('<a-j>', '<c-w>j')
+vmap('<a-k>', '<c-w>k')
+vmap('<a-l>', '<c-w>l')
 
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
@@ -63,12 +63,18 @@ nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
 nmap('<leader>mm', '<cmd> Mason <cr>')
 nmap('<leader>pp', '<cmd> LspInfo <cr>')
 
--- controll the diagnostics window
+-- control the diagnostics window
 nmap('<leader>xx', '<cmd> TroubleToggle <cr>')
 nmap('<leader>xw', '<cmd> TroubleToggle workspace_diagnostics <cr>')
 nmap('<leader>xd', '<cmd> TroubleToggle document_diagnostics <cr>')
 nmap('<leader>xq', '<cmd> TroubleToggle quickfix <cr>')
 nmap('<leader>xl', '<cmd> TroubleToggle loclist <cr>')
 nmap('<leader>xr', '<Cmd> TroubleToggle lsp_references <cr>')
+
+-- control builtin spell Checking
+nmap('<leader>sb', '<cmd> setlocal spell spelllang=en,nl <cr>') -- turn on English + Dutch
+nmap('<leader>se', '<cmd> setlocal spell spelllang=en_gb <cr>') -- turn on just Brittish English
+nmap('<leader>sn', '<cmd> setlocal spell spelllang=nl <cr>') -- turn on just Dutch
+nmap('<leader>ss', '<cmd> setlocal spell! <cr>') -- turn on just Brittish English
 
 return nmap
