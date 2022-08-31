@@ -37,7 +37,7 @@ nmap('<leader><', ':exe "vertical resize " . (winwidth(0) * 4/5)<cr>')
 nmap('<leader>+', ':exe "resize " . (winheight(0) * 5/4)<cr>')
 nmap('<leader>-', ':exe "resize " . (winheight(0) * 4/5)<cr>')
 
-nmap('<leader>cd', '<cmd> cd %h <cr> <cmd> pwd <cr>')
+nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
 
 nmap('<leader>mm', '<cmd> Mason <cr>')
 nmap('<leader>pp', '<cmd> LspInfo <cr>')
