@@ -1,6 +1,9 @@
 local o = vim.opt
 local g = vim.g
 
+g.filetype = 'plugin indent off'
+g.syntax_on = true
+
 o.softtabstop = 4
 o.shiftwidth = 4
 o.autoindent = true
@@ -18,7 +21,7 @@ o.clipboard:append('unnamedplus')
 o.ignorecase  = true
 o.smartcase = true
 o.updatetime = 300
-o.timeoutlen = 800
+o.timeoutlen = 500
 o.undofile  = true
 o.spell = false
 
