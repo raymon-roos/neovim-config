@@ -30,89 +30,23 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
     Plug 'folke/trouble.nvim'
 call plug#end()
 
-filetype plugin indent on
-syntax enable
-set softtabstop=4
-set shiftwidth=4
-set autoindent smartindent
-set number relativenumber
-set wrap
-set linebreak breakindent 
-set breakindentopt=shift:1
-set cpoptions+=n
-set scrolloff=8
-set splitright
-set mouse=a  
-set cmdheight=2
-set clipboard+=unnamedplus
-set ignorecase smartcase
-set updatetime=300
-set timeoutlen=800
-set undofile
-:packadd matchit
-
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-
-set background=dark
-set termguicolors
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_transparent_bg = '1'
-let g:gruvbox_italic = '1'
-colorscheme gruvbox
-
-: let mapleader=" "
-nnoremap <Space> <Nop>
-
-nnoremap j gj
-nnoremap k gk
-inoremap kj <esc>
-cnoremap kj <C-C>
-
-" windows
-nnoremap <C-h> <C-w>h 
-nnoremap <C-j> <C-w>j 
-nnoremap <C-k> <C-w>k 
-nnoremap <C-l> <C-w>l 
-nnoremap <silent> <leader>ee :exe "Lexplore 15" <CR>
-nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 5/4)<CR>
-nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
-nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 5/4)<CR>
-nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 4/5)<CR>
-
-nnoremap <silent> <leader>mm :exe "Mason" <CR>
-nnoremap <silent> <leader>pp :exe "LspInfo" <CR>
-
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap gR <cmd>TroubleToggle lsp_references<cr>
-
-" commands to turn tabs into x number of spaces (or vice versa)
-:command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
-:command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
-
-" Change directory to directory of current file
-nnoremap <leader>cd :cd %:h<CR>:pwd<CR>
-
-" Latex related
-let g:vimtex_quickfix_autoclose_after_keystrokes = 2
-let g:vimtex_complete_close_braces = 1
-let g:vimtex_view_method = 'mupdf'
-" let g:vimtex_view_mupdf_send_keys = '<shift>z'
-
 " Spellchecking config 
 source $XDG_CONFIG_HOME/nvim/spellcheck.vim
 
 " Zettelkasten config
-source $XDG_CONFIG_HOME/nvim/zettelkasten.vim
+" source $XDG_CONFIG_HOME/nvim/zettelkasten.vim
 
 " lua / lsp / completion stuff
 lua require('core.autocmds')
+lua require('core.options')
+lua require('core.keybindings')
+lua require('plugins.lualine_conf')
 lua require('plugins.lsp')
 lua require('plugins.nvim_cmp')
-lua require('plugins.lualine_conf')
+lua require('plugins.zettelkasten')
+
+" using lua to define vim user command
+lua vim.api.nvim_command([[:command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')']])
+lua vim.api.nvim_command([[:command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( {'.&ts.'})+#=repeat("\t", len(submatch(0))/' . &ts . ')']])
 
 endif
