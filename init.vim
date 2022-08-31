@@ -1,8 +1,5 @@
 if exists('g:vscode') " VSCode settings
-    set nonumber
-    filetype indent off
-    set nowrap 
-    set scrolloff=8
+    source "./vscode_nvim.vim"
 else
 
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
