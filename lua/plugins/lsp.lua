@@ -1,26 +1,3 @@
-require("mason").setup({
-  ui = {
-		style = "minimal",
-    border = "single",
-    icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗"
-		},
-  },
-})
-
-require("null-ls").setup({
-  sources = {
-    require("null-ls").builtins.completion.spell,
-    require("null-ls").builtins.code_actions.refactoring
-  },
-})
-
-require("trouble").setup {
-}
-
-
 local lsp_defaults = {
   flags = {
     debounce_text_changes = 120,
@@ -32,7 +9,6 @@ local lsp_defaults = {
 
 local lspconfig = require('lspconfig')
 lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
-
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },
@@ -123,6 +99,24 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local servers = {
+  'bashls',
+  'cssls',
+  'ltex',
+  'phpactor',
+  'sqlls',
+  'tailwindcss',
+  'vimls'
+}
+
+for _, server in ipairs(servers) do
+  lspconfig[server].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+end
+
 require('lspconfig')['sumneko_lua'].setup {
   capabilities = capabilities,
   settings = {
@@ -139,21 +133,6 @@ require('lspconfig')['sumneko_lua'].setup {
     },
   },
 }
-
-local servers = {
-  'bashls',
-  'ltex',
-  'vimls',
-  'phpactor',
-}
-
-
-for _, server in ipairs(servers) do
-  lspconfig[server].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
-end
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig')['html'].setup {

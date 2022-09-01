@@ -5,11 +5,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -37,6 +32,11 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
+
+local check_backspace = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
 
 cmp.setup({
   snippet = {
@@ -84,8 +84,8 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
-      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         nvim_lua = "[NVIM_LUA]",
@@ -106,18 +106,21 @@ cmp.setup({
 })
 
   -- Set configuration for specific filetype.
-  cmp.setup.filetype('help', {
-    sources = cmp.config.sources({
-  { name = '' },
-    })
-  })
+  -- cmp.setup.filetype('help', {
+  --   sources = cmp.config.sources({
+  -- { name = '' },
+  --   })
+  -- })
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' }
-    }
+    },
+    -- view = {
+    --   entries = {name = 'wildmenu', separator = '|' },
+    -- },
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -127,6 +130,9 @@ cmp.setup({
       { name = 'path' }
     }, {
       { name = 'cmdline' }
-    })
+    }),
+    -- view = {
+    --   entries = {name = 'wildmenu', separator = '|' },
+    -- },
   })
 
