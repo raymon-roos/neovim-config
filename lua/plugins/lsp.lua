@@ -22,7 +22,7 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-  virtual_text = false,
+  virtual_text = true,
   signs = {
     active = signs,
   },
@@ -85,7 +85,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap("n", "<leader>D", vim.lsp.buf.type_definition, opts)
     vim.api.nvim_buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
     vim.api.nvim_buf_set_keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    -- vim.api.nvim_buf_set_keymr, "n", "<leader>f", vim.diagnostic.open_float(), opts)
+    -- vim.api.nvim_buf_set_keymap("n", "<leader>f", vim.diagnostic.open_float(), opts)
     vim.api.nvim_buf_set_keymap("n", "[d", vim.diagnostic.goto_prev({ border = "rounded" }), opts)
     vim.api.nvim_buf_set_keymap("n", "]d", vim.diagnostic.goto_next({ border = "rounded" }), opts)
     vim.api.nvim_buf_set_keymap("n", "gl", vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" }), opts)
