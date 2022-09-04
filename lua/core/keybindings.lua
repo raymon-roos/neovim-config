@@ -25,7 +25,8 @@ nmap('k', 'gk')
 imap('kj', '<esc>')
 cmap('kj', '<c-c>')
 
--- window navigation, in terminal/normal/insert/visual modes
+-- window navigation, in terminal/normal/insert/visual modes 
+-- using alt for all window operations
 tmap('<a-h>', '<c-\\><C-N><C-w>h')
 tmap('<a-j>', '<c-\\><C-N><C-w>j')
 tmap('<a-k>', '<c-\\><C-N><C-w>k')
@@ -46,15 +47,17 @@ vmap('<a-j>', '<c-w>j')
 vmap('<a-k>', '<c-w>k')
 vmap('<a-l>', '<c-w>l')
 
+-- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
+nmap('<a-.>', ':exe "vertical resize " . (winwidth(0) * 5/4)<cr>')
+nmap('<a-,>', ':exe "vertical resize " . (winwidth(0) * 4/5)<cr>')
+nmap('<a-=>', ':exe "resize " . (winheight(0) * 5/4)<cr>')
+nmap('<a-->', ':exe "resize " . (winheight(0) * 4/5)<cr>')
+
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
 
 -- using netrw as a filedrawer
-nmap('<leader>ee', '<cmd> Lexplore 15 <cr>')
-nmap('<leader>>', ':exe "vertical resize " . (winwidth(0) * 5/4)<cr>')
-nmap('<leader><', ':exe "vertical resize " . (winwidth(0) * 4/5)<cr>')
-nmap('<leader>+', ':exe "resize " . (winheight(0) * 5/4)<cr>')
-nmap('<leader>-', ':exe "resize " . (winheight(0) * 4/5)<cr>')
+nmap('<a-e>', '<cmd> Lexplore 15 <cr>')
 
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
@@ -62,6 +65,7 @@ nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
 -- easily open windows of relevant plugins
 nmap('<leader>mm', '<cmd> Mason <cr>')
 nmap('<leader>pp', '<cmd> LspInfo <cr>')
+nmap('<leader>ps', '<cmd> PackerStatus <cr>')
 
 -- control the diagnostics window
 nmap('<leader>xx', '<cmd> TroubleToggle <cr>')

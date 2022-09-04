@@ -118,9 +118,6 @@ cmp.setup({
     sources = {
       { name = 'buffer' }
     },
-    -- view = {
-    --   entries = {name = 'wildmenu', separator = '|' },
-    -- },
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -131,8 +128,5 @@ cmp.setup({
     }, {
       { name = 'cmdline' }
     }),
-    -- view = {
-    --   entries = {name = 'wildmenu', separator = '|' },
-    -- },
   })
 

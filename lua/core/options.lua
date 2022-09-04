@@ -35,7 +35,6 @@ o.termguicolors = true
 g.gruvbox_contrast_dark = 'hard'
 g.gruvbox_transparent_bg = '1'
 g.gruvbox_italic = '1'
-vim.cmd [[colorscheme gruvbox]]
 
 g.vimtex_quickfix_autoclose_after_keystrokes = 2
 g.vimtex_complete_close_braces = 1
