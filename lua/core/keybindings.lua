@@ -57,7 +57,7 @@ nmap('<a-->', ':exe "resize " . (winheight(0) * 4/5)<cr>')
 tmap('<Esc>', '<C-\\><C-n>')
 
 -- using netrw as a filedrawer
-nmap('<a-e>', '<cmd> Lexplore 15 <cr>')
+nmap('<leader>ee', '<cmd> Lexplore 15 <cr>')
 
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
