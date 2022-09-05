@@ -27,6 +27,10 @@ o.timeoutlen = 500
 o.undofile  = true
 o.spell = false
 
+if vim.fn.executable('rg') == 1 then
+  o.grepprg='rg --vimgrep'
+end
+
 g.netrw_liststyle = 3
 g.netrw_banner = 0
 
