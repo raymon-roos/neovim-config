@@ -71,39 +71,37 @@ local on_attach = function(client, bufnr)
           autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
           autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
-      ]],
+      ]] ,
         false
       )
     end
   end
 
-  local function lsp_keymaps(bufnr)
-    local function map(lhs, rhs)
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', lhs, rhs, { noremap = true, silent = true })
-    end
-    map("gD", vim.lsp.buf.declaration())
-    map("gd", vim.lsp.buf.definition())
-    map("<leader>D", vim.lsp.buf.type_definition)
-    map("K", vim.lsp.buf.hover())
-    map("gi", vim.lsp.buf.implementation())
-    map("<C-k>", vim.lsp.buf.signature_help())
-    map("gr", vim.lsp.buf.references())
-    map("<leader>wa", vim.lsp.buf.add_workspace_folder)
-    map("<leader>wr", vim.lsp.buf.remove_workspace_folder)
-    map("<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
-    map("<leader>rn", vim.lsp.buf.rename)
-    map("<leader>ca", vim.lsp.buf.code_action)
-    -- map("<leader>f", vim.diagnostic.open_float())
-    map("[d", vim.diagnostic.goto_prev({ border = "rounded" }))
-    map("]d", vim.diagnostic.goto_next({ border = "rounded" }))
-    map("gl", vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" }))
-    map("<leader>q", vim.diagnostic.setloclist())
-    map("<leader>f", vim.lsp.buf.formatting)
+  local function map(lhs, rhs)
+    vim.keymap.set('n', lhs, rhs, { buffer = bufnr, remap = false, silent = true, })
   end
 
-  vim.api.nvim_exec_autocmds('User', {pattern = 'LspAttached'})
+  map("gD", vim.lsp.buf.declaration)
+  map("gd", vim.lsp.buf.definition)
+  map("<leader>D", vim.lsp.buf.type_definition)
+  map("K", vim.lsp.buf.hover)
+  map("gi", vim.lsp.buf.implementation)
+  map("<C-k>", vim.lsp.buf.signature_help)
+  map("gr", vim.lsp.buf.references)
+  map("<leader>wa", vim.lsp.buf.add_workspace_folder)
+  map("<leader>wr", vim.lsp.buf.remove_workspace_folder)
+  map("<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
+  map("<leader>rn", vim.lsp.buf.rename)
+  map("<leader>ca", vim.lsp.buf.code_action)
+  -- map("<leader>f", vim.diagnostic.open_float))
+  -- map("[d", vim.diagnostic.goto_prev({ border = "rounded" }))
+  -- map("]d", vim.diagnostic.goto_next({ border = "rounded" }))
+  -- map("gl", vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" }))
+  map("<leader>q", vim.diagnostic.setloclist)
+  map("<leader>f", vim.lsp.buf.formatting)
+
+  vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
   lsp_highlight_document(client)
-  -- lsp_keymaps()
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -111,47 +109,47 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({
-    -- The first entry (without a key) will be the default handler
-    -- and will be called for each installed server that doesn't have
-    -- a dedicated handler.
-    function (server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-        }
-    end,
-    -- Next, you can provide targeted overrides for specific servers.
-    ["sumneko_lua"] = function ()
-        lspconfig.sumneko_lua.setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.stdpath("config") .. "/lua"] = true,
-                },
-              },
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function(server_name) -- default handler (optional)
+    require("lspconfig")[server_name].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+  end,
+  -- Next, you can provide targeted overrides for specific servers.
+  ["sumneko_lua"] = function()
+    lspconfig.sumneko_lua.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
             },
           },
-        }
-    end,
-    ['html'] = function ()
-      lspconfig.html.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        mirrorCursorOnMatchingTag = true
-      }
-    end,
-    ['tailwindcss'] = function ()
-      lspconfig.tailwindcss.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetypes = { 'html', 'php', 'javascript' }
-      }
-    end
+        },
+      },
+    }
+  end,
+  ['html'] = function()
+    lspconfig.html.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      mirrorCursorOnMatchingTag = true
+    }
+  end,
+  ['tailwindcss'] = function()
+    lspconfig.tailwindcss.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'html', 'php', 'javascript' }
+    }
+  end
 })
