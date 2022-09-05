@@ -50,7 +50,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 local on_attach = function(client, bufnr)
-  local function lsp_highlight_document(client)
+  local function lsp_highlight_document()
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
       vim.api.nvim_exec(
@@ -93,15 +93,15 @@ local on_attach = function(client, bufnr)
   map("<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
   map("<leader>rn", vim.lsp.buf.rename)
   map("<leader>ca", vim.lsp.buf.code_action)
-  -- map("<leader>f", vim.diagnostic.open_float))
-  -- map("[d", vim.diagnostic.goto_prev({ border = "rounded" }))
-  -- map("]d", vim.diagnostic.goto_next({ border = "rounded" }))
-  -- map("gl", vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" }))
-  map("<leader>q", vim.diagnostic.setloclist)
+  -- map("<leader>f", vim.diagnostic.open_float)
+  map("[d", vim.diagnostic.goto_prev)
+  map("]d", vim.diagnostic.goto_next)
+  map("gl", vim.lsp.diagnostic.show_line_diagnostics)
+  map("<leader>q", vim.diagnostic.setloclist) -- trouble.nvim does a way better job at this
   map("<leader>f", vim.lsp.buf.formatting)
 
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-  lsp_highlight_document(client)
+  lsp_highlight_document()
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

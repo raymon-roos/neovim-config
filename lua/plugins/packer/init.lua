@@ -55,14 +55,10 @@ require('packer').startup({function(use)
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require("trouble").setup()  end
       },
-      -- Integrates non-lsp plugins into lsp system
-      -- { 'jose-elias-alvarez/null-ls.nvim',
-      --   requires = { 'nvim-lua/plenary.nvim', opt = true}
-      -- }
-      -- use {
-      --   'jose-elias-alvarez/null-ls.nvim',
-      --   requires = { 'nvim-lua/plenary.nvim' , opt = true }
-      -- }
+      { -- Integrates seperate linter programs into nvim native diagnostics module
+       'mfussenegger/nvim-lint',
+       config = function() require('plugins.nvim_lint') end
+      }
     }
 
     -- Auto-completion
