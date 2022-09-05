@@ -54,10 +54,14 @@ require('packer').startup({function(use)
         'folke/trouble.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require("trouble").setup()  end
-      }
+      },
       -- Integrates non-lsp plugins into lsp system
       -- { 'jose-elias-alvarez/null-ls.nvim',
       --   requires = { 'nvim-lua/plenary.nvim', opt = true}
+      -- }
+      -- use {
+      --   'jose-elias-alvarez/null-ls.nvim',
+      --   requires = { 'nvim-lua/plenary.nvim' , opt = true }
       -- }
     }
 
@@ -79,7 +83,11 @@ require('packer').startup({function(use)
       }
     }
 
-    use { 'lervag/vimtex', opt = true }  -- latex integration for vim
+    use {  -- latex integration for vim
+      'lervag/vimtex',
+      opt = true,
+      ft = {'tex', 'bib'}
+    }
 
   end,
   -- Settings for packer
