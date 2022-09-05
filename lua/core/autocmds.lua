@@ -23,7 +23,7 @@ augroup('setProse', { clear = true })
 autocmd('Filetype', {
   group = 'setProse',
   pattern = { '*.tex', '*.md' },
-  command = 'setlocal spell spelllang=en,nl textwidth=90 fo=tcrqn1'
+  command = 'setlocal spell spelllang=en,nl textwidth=90 fo=atcrqn1'
 })
 autocmd('Filetype', {
   group = 'setProse',
@@ -32,10 +32,18 @@ autocmd('Filetype', {
 })
 
 -- Auto-recompile after changing packer's plugin file 
-augroup('packer_config', { clear = true })
+augroup('packerConfig', { clear = true })
 autocmd('BufWritePost', {
-  group = 'packer_config',
+  group = 'packerConfig',
   pattern = '*packer/init.lua',
   command = 'source <afile> | PackerCompile'
 })
+-- Auto source after changing nvim settings
+augroup('nvimOpts', { clear = true })
+autocmd('BufWritePost', {
+  group = 'nvimOpts',
+  pattern = 'core/options.lua',
+  command = 'source <afile>'
+})
+
 
