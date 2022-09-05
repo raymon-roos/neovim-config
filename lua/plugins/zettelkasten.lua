@@ -19,12 +19,10 @@ vim.cmd( -- seriously nasty way of doing this, but hey, *pure lua*
   nnoremap <leader>zz :NewZettel
   " mnemonic: zettel->zettel
 
-
   " Create a new note in a vertically stacked window
   command! -nargs=1 SplitZettel :execute ":split" fnameescape($NOTES_DIR . "/<args>-") . strftime("%Y%m%d%H%M") . ".md"
   nnoremap <leader>zv :SplitZettel
   " mnemonic: zettel->vertical
-
 
   " Update tag list in index.md 
   " Very much work in progress, haven't found a good way to delete the old list
@@ -34,16 +32,19 @@ vim.cmd( -- seriously nasty way of doing this, but hey, *pure lua*
   " :execute ':%read !sed ''/^\!_/d'' $NOTES_DIR/tags | sed ''/^\@/d'' $NOTES_DIR/index-202202270044.md | awk ''{ print "@" $1 }'' | sort -u'
   " endfunction
 
-  command! GenerateTags :execute "%read !sed '/^\!_/d' $NOTES_DIR/tags | awk '{ print "@" $1 }' | sort -u"
+  command! GenerateTags :execute '%read !sed '/^\!_/d' $NOTES_DIR/tags | awk '{ print "@" $1 }' | sort -u'
   nnoremap <leader>tg GenerateTags <CR>
   " mnemonic: tags->generate
 
+  " Make :grep use ripgrep
+  " if executable('rg')
+  "     set grepprg=rg\ --vimgrep
+  " endif
 
   " Look for notes
-  command! -nargs=1 Ngrep grep! -r "<args>" $NOTES_DIR
+  command! -nargs=1 Ngrep grep "<args>" -g "*.md" $NOTES_DIR
   nnoremap <leader>zs :Ngrep
   " mnemonic: zettel->search
-
 
   " Open a navigation panel for grep'd  notes
   command! Vlist botright vertical copen | vertical resize 50
