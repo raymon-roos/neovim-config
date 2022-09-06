@@ -55,10 +55,10 @@ require('packer').startup({function(use)
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require("trouble").setup()  end
       },
-      { -- Integrates seperate linter programs into nvim native diagnostics module
-       'mfussenegger/nvim-lint',
-       config = function() require('plugins.nvim_lint') end
-      }
+      -- { -- Integrates seperate linter programs into nvim native diagnostics module
+      --  'mfussenegger/nvim-lint',
+      --  config = function() require('plugins.nvim_lint') end
+      -- }
     }
 
     -- Auto-completion
