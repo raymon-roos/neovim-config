@@ -23,12 +23,10 @@ augroup('setProse', { clear = true })
 autocmd('Filetype', {
   group = 'setProse',
   pattern = { '*.tex', '*.md' },
-  command = 'setlocal spell spelllang=en,nl textwidth=90 fo=atcrqn1'
-})
-autocmd('Filetype', {
-  group = 'setProse',
-  pattern = { '*.md' },
-  command = 'setlocal fo=atcrqn1'
+  callback = function (args)
+    vim.bo[args.buf].textwidth = 90
+    vim.bo[args.buf].fo:append('atcrqn1')
+  end
 })
 
 -- Auto-recompile after changing packer's plugin file 
@@ -38,6 +36,7 @@ autocmd('BufWritePost', {
   pattern = '*packer/init.lua',
   command = 'source <afile> | PackerCompile'
 })
+
 -- Auto source after changing nvim settings
 augroup('nvimOpts', { clear = true })
 autocmd('BufWritePost', {
