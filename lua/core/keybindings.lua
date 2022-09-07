@@ -81,4 +81,5 @@ nmap('<leader>se', '<cmd> setlocal spell spelllang=en_gb <cr>') -- turn on just 
 nmap('<leader>sn', '<cmd> setlocal spell spelllang=nl <cr>') -- turn on just Dutch
 nmap('<leader>ss', '<cmd> setlocal spell! <cr>') -- turn on just Brittish English
 
-return nmap
+local mappers = {v = vmap, n = nmap, i = imap, t = tmap, c = cmap}
+return mappers
