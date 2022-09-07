@@ -1,9 +1,9 @@
 ## Welcome to my Neovim configuration 
 
 I use vim for writing prose in LaTeX and zettelkasten notes in Markdown, and recently
-I have been working on setting up LSP server integration, for supplying autocompletion
-and diagnostics to use in coding projects, as well as converting my old viml configs into
-pure lua. It is very much still a work in progress and of poor quality, but improving with
+I have been working on setting up LSP server integration, for supplying autocompletion and
+diagnostics to use in coding projects, as well as converting my old viml configs into pure
+lua. It is very much still a work in progress and of poor quality, but improving with
 every commit. 
 
 ### Zettelkasten in vanilla vim

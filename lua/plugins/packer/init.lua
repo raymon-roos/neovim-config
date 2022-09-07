@@ -53,12 +53,16 @@ require('packer').startup({function(use)
       { -- Diagnostics window
         'folke/trouble.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require("trouble").setup()  end
+        config = function() require("trouble").setup() end
       },
-      -- { -- Integrates seperate linter programs into nvim native diagnostics module
-      --  'mfussenegger/nvim-lint',
-      --  config = function() require('plugins.nvim_lint') end
-      -- }
+      { -- Integrates non-lsp plugins into lsp framework
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {
+          'neovim/nvim-lspconfig',
+          "nvim-lua/plenary.nvim"
+        },
+        config = function() require('plugins.null_ls') end
+      }
     }
 
     -- Auto-completion

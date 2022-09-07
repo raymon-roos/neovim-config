@@ -151,5 +151,17 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
       filetypes = { 'html', 'php', 'javascript' }
     }
+  end,
+  ['ltex'] = function()
+    lspconfig.ltex.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        ltex = {
+          language = 'en-GB'
+        }
+      }
+    }
   end
+
 })
