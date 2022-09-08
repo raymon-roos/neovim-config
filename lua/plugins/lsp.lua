@@ -149,6 +149,7 @@ mason_lspconfig.setup_handlers({
     lspconfig.tailwindcss.setup {
       capabilities = capabilities,
       on_attach = on_attach,
+      root_pattern = { "tailwind.config.js" },
       filetypes = { 'html', 'php', 'javascript' }
     }
   end,
