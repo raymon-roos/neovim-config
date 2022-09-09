@@ -1,10 +1,16 @@
+-- Modules required() with `plugins.` prefixed, are custom configuration files for said plugins 
+-- Modules required() ending in `.setup()` are plugins with all default configuration 
+-- Modules required() with `core.` prefixed, are custom configuration files for nvim itself (i.e. vim.o. for instance)
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup({function(use)
     use { 'wbthomason/packer.nvim', opt = true }
 
+    -------------------------------------------------------
     -- Appearance
+    -------------------------------------------------------
     use {
       { -- Color scheme 
         'ellisonleao/gruvbox.nvim',
@@ -17,7 +23,9 @@ require('packer').startup({function(use)
       }
     }
 
+    -------------------------------------------------------
     -- Coding quality of life
+    -------------------------------------------------------
     use {
       { -- Autocomplete brackets while typing
         'windwp/nvim-autopairs',
@@ -30,10 +38,16 @@ require('packer').startup({function(use)
       { -- easilly comment blocks of code
         'terrortylor/nvim-comment',
         config = function() require('plugins.coding.comment') end
+      },
+      {
+        'kylechui/nvim-surround',
+        config = function() require('nvim-surround').setup() end
       }
     }
 
+    -------------------------------------------------------
     -- lsp related *Note the order in which the plugins are loaded*
+    -------------------------------------------------------
     use {
       { -- LSP server installer/manager
         'williamboman/mason.nvim',
@@ -53,19 +67,21 @@ require('packer').startup({function(use)
       { -- Diagnostics window
         'folke/trouble.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require("trouble").setup() end
+        config = function() require('trouble').setup() end
       },
       { -- Integrates non-lsp plugins into lsp framework
         'jose-elias-alvarez/null-ls.nvim',
         requires = {
           'neovim/nvim-lspconfig',
-          "nvim-lua/plenary.nvim"
+          'nvim-lua/plenary.nvim'
         },
         config = function() require('plugins.null_ls') end
       }
     }
 
+    -------------------------------------------------------
     -- Auto-completion
+    -------------------------------------------------------
     use { -- Completion sources
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
@@ -83,14 +99,25 @@ require('packer').startup({function(use)
       }
     }
 
-    use {  -- latex integration for vim
+  -------------------------------------------------------
+  -- Single-purpose plugins
+  -------------------------------------------------------
+    use { -- latex integration for vim
       'lervag/vimtex',
       opt = true,
       ft = {'tex', 'bib'}
     }
 
+    use { -- Git tracking integration in nvim
+      'lewis6991/gitsigns.nvim',
+      config = function()
+	require('plugins.gitsigns') end
+    }
+
   end,
+  -------------------------------------------------------
   -- Settings for packer
+  -------------------------------------------------------
   config = {
     compile_path = vim.fn.stdpath('config') .. '/lua/plugins/packer/packer_compiled.lua',
     display = {
@@ -100,5 +127,5 @@ require('packer').startup({function(use)
     }
   }
 })
-
-require('plugins.packer.packer_compiled') -- Needed when compiled autloads are not in their default location
+-- Needed when compiled autloads are not in their default location
+require('plugins.packer.packer_compiled')
