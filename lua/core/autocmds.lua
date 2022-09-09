@@ -44,5 +44,3 @@ autocmd('BufWritePost', {
   pattern = 'core/options.lua',
   command = 'source <afile>'
 })
-
-
