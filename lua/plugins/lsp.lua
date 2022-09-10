@@ -1,15 +1,3 @@
-local lsp_defaults = {
-  flags = {
-    debounce_text_changes = 100,
-  },
-  capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
-}
-
-local lspconfig = require('lspconfig')
-lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
-
 local signs = {
   { name = "DiagnosticSignError", text = "" },
   { name = "DiagnosticSignWarn", text = "" },
@@ -93,19 +81,32 @@ local on_attach = function(client, bufnr)
   map("<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
   map("<leader>rn", vim.lsp.buf.rename)
   map("<leader>ca", vim.lsp.buf.code_action)
-  -- map("<leader>f", vim.diagnostic.open_float)
+  map("gl", vim.diagnostic.open_float)
   map("[d", vim.diagnostic.goto_prev)
   map("]d", vim.diagnostic.goto_next)
-  map("gl", vim.lsp.diagnostic.show_line_diagnostics)
-  map("<leader>q", vim.diagnostic.setloclist) -- trouble.nvim does a way better job at this
+  -- map("<leader>q", vim.diagnostic.setloclist) -- trouble.nvim does a way better job at this
   map("<leader>f", vim.lsp.buf.formatting)
 
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
   lsp_highlight_document()
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilitiesUpdated = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+capabilitiesUpdated.textDocument.completion.completionItem.snippetSupport = true
+
+local lsp_defaults = {
+  flags = {
+    debounce_text_changes = 100,
+  },
+  capabilities = capabilitiesUpdated
+}
+
+local lspconfig = require('lspconfig')
+lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
+
+local capabilities = lsp_defaults.capabilities
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({
@@ -149,8 +150,18 @@ mason_lspconfig.setup_handlers({
     lspconfig.tailwindcss.setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      root_pattern = { "tailwind.config.js" },
+      root_pattern = { 'tailwind.config.js' },
       filetypes = { 'html', 'php', 'javascript' }
+    }
+  end,
+  ['intelephense'] = function()
+    lspconfig.util.default_config = vim.tbl_deep_extend(
+      'force', lspconfig.util.default_config, require('plugins.intelephense')
+    )
+    lspconfig.intelephense.setup {
+      -- default_config = require('plugins.intelephense'),
+      capabilities = capabilities,
+      on_attach = on_attach,
     }
   end,
   ['ltex'] = function()
@@ -159,10 +170,9 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
       settings = {
         ltex = {
-          language = 'en-GB'
+          language = { 'en-GB', 'nl-NL' }
         }
       }
     }
   end
-
 })

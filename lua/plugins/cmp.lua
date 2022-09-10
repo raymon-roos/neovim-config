@@ -106,9 +106,9 @@ cmp.setup({
 })
 
   -- Set configuration for specific filetype.
-  -- cmp.setup.filetype('help', {
+  -- cmp.setup.filetype('php', {
   --   sources = cmp.config.sources({
-  -- { name = '' },
+  --     { name = 'phpactor' },
   --   })
   -- })
 
