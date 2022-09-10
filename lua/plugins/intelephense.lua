@@ -15,7 +15,7 @@ return {
     end,
     init_options = {
       storagePath = "/tmp/",
-      globalStoragePath = "/home/ray/.xdg/local/state/intelephense",
+      globalStoragePath = vim.fn.expand("$XDG_STATE_HOME") .."/intelephense",
     },
     settings = {
       intelephense = {
