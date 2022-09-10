@@ -25,7 +25,7 @@ o.clipboard:append('unnamedplus')
 o.ignorecase  = true
 o.smartcase = true
 o.updatetime = 300
-o.timeoutlen = 500
+o.timeoutlen = 700
 o.undofile  = true
 o.spell = false
 
