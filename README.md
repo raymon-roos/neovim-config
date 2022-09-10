@@ -10,7 +10,7 @@ every commit.
 
 - Packer plugin managemnt, with autoloading (though currently autoloads
   practically all plugins regardless, considering most manage themselves anyway.
-  _Blazingly fast_ nvimm config, anyone??).
+   _Blazingly fast_ nvim config, anyone??).
 - Awesome (lua based) gruvbox theme, with slight tweaks
 - Visual indentation guides.
 - Auto complete matching pair while typing (i.e. `{},[],'',"" etc`).
