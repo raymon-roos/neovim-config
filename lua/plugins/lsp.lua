@@ -170,7 +170,7 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
       settings = {
         ltex = {
-          language = { 'en-GB', 'nl-NL' }
+          language = { 'en-GB' }
         }
       }
     }
