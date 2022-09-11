@@ -36,11 +36,6 @@ vim.cmd( -- seriously nasty way of doing this, but hey, *pure lua*
   nnoremap <leader>tg GenerateTags <CR>
   " mnemonic: tags->generate
 
-  " Make :grep use ripgrep
-  " if executable('rg')
-  "     set grepprg=rg\ --vimgrep
-  " endif
-
   " Look for notes
   command! -nargs=1 Ngrep grep "<args>" -g "*.md" $NOTES_DIR
   nnoremap <leader>zs :Ngrep
