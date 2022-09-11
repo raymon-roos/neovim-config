@@ -19,6 +19,6 @@ null_ls.setup({
     }),
 
   -- register sources for completion
-    null_ls.builtins.completion.spell,
+    -- null_ls.builtins.completion.spell,
   },
 })
