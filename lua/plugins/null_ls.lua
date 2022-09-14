@@ -10,15 +10,17 @@ null_ls.setup({
   -- Register sources for diagnostics
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.diagnostics.phpcs.with({
-      extra_args = { "--standard=/home/ray/files/bit-academy/phpcs.xml" },
+      command = vim.fn.expand('$XDG_CONFIG_HOME') .. "/composer/vendor/squizlabs/php_codesniffer/bin/phpcs",
+      extra_args = { "--standard=~/files/bit-academy/phpcs.xml" },
     }),
 
   -- Register sources for formating
     null_ls.builtins.formatting.phpcbf.with({
-      extra_args = { "--standard=/home/ray/files/bit-academy/phpcs.xml" },
+      command = vim.fn.expand('$XDG_CONFIG_HOME') .. "/composer/vendor/squizlabs/php_codesniffer/bin/phpcbf",
+      extra_args = { "--standard=~/files/bit-academy/phpcs.xml" },
     }),
 
   -- register sources for completion
-    -- null_ls.builtins.completion.spell,
+    -- null_ls.builtins.completion.phpactor,
   },
 })
