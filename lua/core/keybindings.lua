@@ -17,6 +17,8 @@ local function tmap(lhs, rhs, opts) map('t', lhs, rhs, opts) end
 vim.g.mapleader = " "
 nmap('<space>', '<nop>')
 
+nmap('<leader>hh', ':vertical help', { silent = false })
+
 -- navigate wrapped lines more easily
 nmap('j', 'gj')
 nmap('k', 'gk')
