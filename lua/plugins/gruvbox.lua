@@ -16,6 +16,7 @@ require("gruvbox").setup({
   overrides = {
     String = { italic = false },
     SignColumn = { bg = 'NONE' },
+    FoldColumn = { bg = 'NONE' },
     GruvboxGreenSign = { bg = 'NONE' },
     GruvboxRedSign = { bg = 'NONE' },
     GruvboxBlueSign = { bg = 'NONE' },
