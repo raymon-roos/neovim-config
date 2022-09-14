@@ -147,22 +147,27 @@ mason_lspconfig.setup_handlers({
     }
   end,
   ['tailwindcss'] = function()
-    lspconfig.tailwindcss.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      root_pattern = { 'tailwind.config.js' },
-      filetypes = { 'html', 'php', 'javascript' }
-    }
+    -- lspconfig.tailwindcss.setup {
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   root_pattern = { 'tailwind.config.js' },
+    --   filetypes = { 'html', 'php', 'javascript' }
+    -- }
   end,
   ['intelephense'] = function()
     lspconfig.util.default_config = vim.tbl_deep_extend(
       'force', lspconfig.util.default_config, require('plugins.intelephense')
     )
     lspconfig.intelephense.setup {
-      -- default_config = require('plugins.intelephense'),
       capabilities = capabilities,
       on_attach = on_attach,
     }
+  end,
+  ['phpactor'] = function()
+    -- lspconfig.phpactor.setup {
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- }
   end,
   ['ltex'] = function()
     lspconfig.ltex.setup {

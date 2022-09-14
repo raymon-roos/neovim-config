@@ -1,14 +1,11 @@
 local util = require('lspconfig.util')
 
-local bin_name = 'intelephense'
-local cmd = { bin_name, '--stdio' }
-
 return {
-    cmd = cmd,
+    cmd =  'intelephense --stdio' ,
     filetypes = { 'php' },
     root_dir = function(pattern)
       local cwd = vim.loop.cwd()
-      local root = util.root_pattern('composer.json', '.git', 'index.php', pattern)
+      local root = util.root_pattern('composer.json', '.git', pattern)
 
       -- prefer cwd if root is a descendant
       return util.path.is_descendant(cwd, root) and cwd or root
@@ -20,7 +17,7 @@ return {
     settings = {
       intelephense = {
 	files = {
-	  maxSize = 10000,
+	  maxSize = 1000000, -- In bytes
 	},
 	telemetry = {
 	  enabled = false,

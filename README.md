@@ -12,6 +12,7 @@ every commit.
   practically all plugins regardless, considering most manage themselves anyway.
    _Blazingly fast_ nvim config, anyone??).
 - Awesome (lua based) gruvbox theme, with slight tweaks
+- Lualine as a status line plugin. 
 - Visual indentation guides.
 - Auto complete matching pair while typing (i.e. `{},[],'',"" etc`).
 - Advanced pair navigation, the '%' key jumps between `function()` and `end`,
