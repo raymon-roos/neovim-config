@@ -8,7 +8,7 @@ every commit.
 
 ### Current features in place: 
 
-- Packer plugin managemnt, with autoloading (though currently autoloads
+- Packer plugin management, with autoloading (though currently autoloads
   practically all plugins regardless, considering most manage themselves anyway.
    _Blazingly fast_ nvim config, anyone??).
 - Awesome (lua based) gruvbox theme, with slight tweaks
@@ -33,12 +33,11 @@ every commit.
 ### Zettelkasten in vanilla vim
 
 Copied largely from [this excellent blog post
-series](https://www.edwinwenink.xyz/posts/42-vim_notetaking/). Currently merely
-a said of viml commands, called with `vim.exec()`, not yet converted to lua.
-Notes (zettels) I make are small, covering a single subject and are all stored
-together in a single flat directory and are linked to other relevant notes
-through file links, making use of filename completion. Filenames get
-a timestamp appended on creation, so they can be manipulated programmatically
-in the future. The tag system is build on universal-c-tags, which integrates
-into vim natively. 
+series](https://www.edwinwenink.xyz/posts/42-vim_notetaking/). Currently, merely a set of
+vimL commands, called with `vim.exec()`, not yet converted to lua. Notes (zettels) I make
+are small, covering a single subject and are all stored together in a single flat
+directory and are linked to other relevant notes through file links, making use of
+filename completion. Filenames get a timestamp appended on creation, so they can be
+manipulated programmatically in the future. The tag system is build on universal-c-tags,
+which integrates into vim natively. 
 
