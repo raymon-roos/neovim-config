@@ -99,7 +99,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  }, {
+    { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
     { name = 'buffer' },
   })
@@ -115,9 +115,11 @@ cmp.setup({
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp_document_symbol' }
+    }, {
       { name = 'buffer' }
-    },
+    })
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).

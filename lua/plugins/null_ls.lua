@@ -2,7 +2,7 @@ local null_ls = require('null-ls')
 
 local eslintrc = '--config=' .. vim.fn.expand('$XDG_DATA_HOME') .. '/npm/lib/.eslintrc.js'
 local composerBin = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/'
-local composerStandard =  '--standard=~/files/bit-academy/phpcs.xml'
+local composerStandard = '--standard=~/files/bit-academy/phpcs.xml'
 
 null_ls.setup({
   sources = {
