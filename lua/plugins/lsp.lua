@@ -163,12 +163,6 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
     }
   end,
-  ['phpactor'] = function()
-    -- lspconfig.phpactor.setup {
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- }
-  end,
   ['ltex'] = function()
     lspconfig.ltex.setup {
       capabilities = capabilities,
