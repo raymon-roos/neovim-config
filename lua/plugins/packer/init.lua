@@ -87,9 +87,9 @@ require('packer').startup({function(use)
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      'davidsierradz/cmp-conventionalcommits',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'quangnguyen30192/cmp-nvim-tags',
 
       -- Snippets
       'saadparwaiz1/cmp_luasnip',     -- luasnip integration for cmp
