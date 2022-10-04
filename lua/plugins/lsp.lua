@@ -40,7 +40,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 local on_attach = function(client, bufnr)
   local function lsp_highlight_document()
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
       vim.api.nvim_exec(
       -- vim.api.nvim_create_augroup('lsp_document_highlight' , { clear = true })
       -- vim.api.nvim_create_autocmd('CursorHold', {
