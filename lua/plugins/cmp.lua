@@ -102,13 +102,14 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'tags' },
   })
 })
 
   -- Set configuration for specific filetype.
   -- cmp.setup.filetype('php', {
   --   sources = cmp.config.sources({
-  --     { name = 'phpactor' },
+  --     { name = '' },
   --   })
   -- })
 
