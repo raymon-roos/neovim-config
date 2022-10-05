@@ -4,8 +4,9 @@ local g = vim.g
 g.filetype = 'plugin indent on'
 g.syntax_on = true
 
-g.foldmethod = 'expr'
-g.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldmethod = 'expr'
+o.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldlevel = 2
 
 o.softtabstop = 4
 o.shiftwidth = 4

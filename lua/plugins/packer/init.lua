@@ -39,7 +39,7 @@ require('packer').startup({function(use)
         'terrortylor/nvim-comment',
         config = function() require('plugins.coding.comment') end
       },
-      {
+      { -- easilly suround text with given character or tag
         'kylechui/nvim-surround',
         config = function() require('nvim-surround').setup() end
       }
