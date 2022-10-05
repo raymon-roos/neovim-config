@@ -143,16 +143,20 @@ mason_lspconfig.setup_handlers({
     lspconfig.html.setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      mirrorCursorOnMatchingTag = true
+      settings = {
+	html = {
+	  mirrorCursorOnMatchingTag = true
+	}
+      }
     }
   end,
   ['tailwindcss'] = function()
-    -- lspconfig.tailwindcss.setup {
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    --   root_pattern = { 'tailwind.config.js' },
-    --   filetypes = { 'html', 'php', 'javascript' }
-    -- }
+    lspconfig.tailwindcss.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      autostart = { false },
+      filetypes = { 'html', 'php', 'javascript' }
+    }
   end,
   ['intelephense'] = function()
     lspconfig.util.default_config = vim.tbl_deep_extend(
