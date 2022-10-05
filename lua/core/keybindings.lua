@@ -55,6 +55,15 @@ nmap('<a-,>', ':exe "vertical resize " . (winwidth(0) * 4/5)<cr>')
 nmap('<a-=>', ':exe "resize " . (winheight(0) * 5/4)<cr>')
 nmap('<a-->', ':exe "resize " . (winheight(0) * 4/5)<cr>')
 
+-- control buffers
+nmap("<leader>bl", "<cmd>ls<CR>")
+nmap("<leader>bd", "<cmd>bd<CR>")
+nmap("<leader>bD", "<cmd>bd!<CR>")
+nmap("<leader>bo", "<cmd>wall | %bd | e#<CR>")
+nmap("<leader>bad", "<cmd>%bd<CR>")
+nmap("<leader>bw", "<cmd>update<CR>")
+nmap("<leader>bW", "<cmd>update!<CR>")
+
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
 
