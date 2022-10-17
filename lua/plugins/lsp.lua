@@ -38,32 +38,32 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 local on_attach = function(client, bufnr)
-  local function lsp_highlight_document()
-    -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.document_highlight then
-      vim.api.nvim_exec(
-      -- vim.api.nvim_create_augroup('lsp_document_highlight' , { clear = true })
-      -- vim.api.nvim_create_autocmd('CursorHold', {
-      --   group = 'lsp_document_highlight',
-      --   pattern = '* <buffer>',
-      --   command = '<buffer> lua vim.lsp.buff.document_highlight()'
-      -- })
-      -- vim.api.nvim_create_autocmd('CursorMoved', {
-      --   group = 'lsp_document_highlight',
-      --   pattern = '* <buffer>',
-      --   command = '<buffer> lua vim.lsp.buff.clear_references()'
-      -- })
-        [[
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]] ,
-        false
-      )
-    end
-  end
+  -- local function lsp_highlight_document()
+  --   -- Set autocommands conditional on server_capabilities
+  --   if client.server_capabilities.document_highlight then
+  --     vim.api.nvim_exec(
+  --     -- vim.api.nvim_create_augroup('lsp_document_highlight' , { clear = true })
+  --     -- vim.api.nvim_create_autocmd('CursorHold', {
+  --     --   group = 'lsp_document_highlight',
+  --     --   pattern = '* <buffer>',
+  --     --   command = '<buffer> lua vim.lsp.buff.document_highlight()'
+  --     -- })
+  --     -- vim.api.nvim_create_autocmd('CursorMoved', {
+  --     --   group = 'lsp_document_highlight',
+  --     --   pattern = '* <buffer>',
+  --     --   command = '<buffer> lua vim.lsp.buff.clear_references()'
+  --     -- })
+  --       [[
+  --       augroup lsp_document_highlight
+  --         autocmd! * <buffer>
+  --         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+  --         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  --       augroup END
+  --     ]] ,
+  --       false
+  --     )
+  --   end
+  -- end
 
   local function map(lhs, rhs)
     vim.keymap.set('n', lhs, rhs, { buffer = bufnr, remap = false, silent = true, })
@@ -87,8 +87,22 @@ local on_attach = function(client, bufnr)
   -- map("<leader>q", vim.diagnostic.setloclist) -- trouble.nvim does a way better job at this
   map("<leader>f", function() vim.lsp.buf.format { async = true } end)
 
-  vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-  lsp_highlight_document()
+  -- vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
+  -- lsp_highlight_document()
+
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      vim.diagnostic.open_float(nil, {
+	focusable = false,
+	close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+	border = 'rounded',
+	source = 'always',
+	prefix = ' ',
+	scope = 'cursor',
+      })
+    end
+  })
 end
 
 local capabilitiesUpdated = require('cmp_nvim_lsp').default_capabilities(
