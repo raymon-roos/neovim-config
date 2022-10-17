@@ -106,9 +106,14 @@ require('packer').startup({function(use)
   -- Tree sitter related
   -------------------------------------------------------
     use { -- Tree sitter
+    {
       'nvim-treesitter/nvim-treesitter',
       config = function() require('plugins.treesitter') end,
       run = ':TSUpdate'
+    },
+    {
+      'nvim-treesitter/nvim-treesitter-refactor'
+    }
     }
 
 
