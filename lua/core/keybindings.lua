@@ -61,6 +61,7 @@ nmap("<leader>bd", "<cmd>bd<CR>")
 nmap("<leader>bD", "<cmd>bd!<CR>")
 nmap("<leader>bo", "<cmd>wall | %bd | e#<CR>")
 nmap("<leader>bad", "<cmd>%bd<CR>")
+nmap("<c-s>", "<cmd>update<CR>") -- Cheeky little crtl+s bind
 nmap("<leader>bw", "<cmd>update<CR>")
 nmap("<leader>bW", "<cmd>update!<CR>")
 
