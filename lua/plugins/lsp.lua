@@ -91,7 +91,7 @@ local on_attach = function(client, bufnr)
   lsp_highlight_document()
 end
 
-local capabilitiesUpdated = require('cmp_nvim_lsp').update_capabilities(
+local capabilitiesUpdated = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 capabilitiesUpdated.textDocument.completion.completionItem.snippetSupport = true
