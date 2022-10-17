@@ -43,6 +43,6 @@ g.netrw_banner = 0
 
 o.termguicolors = true
 
-g.vimtex_quickfix_autoclose_after_keystrokes = 2
+-- g.vimtex_quickfix_autoclose_after_keystrokes = 2
 g.vimtex_complete_close_braces = 1
 g.vimtex_view_method = 'mupdf'
