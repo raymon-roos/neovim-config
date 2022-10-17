@@ -9,7 +9,6 @@ null_ls.setup({
   sources = {
     -- js
     b.code_actions.eslint.with({ extra_args = { eslintrc } }),
-    b.diagnostics.eslint.with({ extra_args = { eslintrc } }),
     b.formatting.eslint.with({ extra_args = { eslintrc } }),
 
     -- php
