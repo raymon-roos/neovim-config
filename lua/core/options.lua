@@ -41,11 +41,7 @@ end
 g.netrw_liststyle = 3
 g.netrw_banner = 0
 
-o.background = 'dark'
 o.termguicolors = true
-g.gruvbox_contrast_dark = 'hard'
-g.gruvbox_transparent_bg = '1'
-g.gruvbox_italic = '1'
 
 g.vimtex_quickfix_autoclose_after_keystrokes = 2
 g.vimtex_complete_close_braces = 1
