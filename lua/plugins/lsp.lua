@@ -85,7 +85,7 @@ local on_attach = function(client, bufnr)
   map("[d", vim.diagnostic.goto_prev)
   map("]d", vim.diagnostic.goto_next)
   -- map("<leader>q", vim.diagnostic.setloclist) -- trouble.nvim does a way better job at this
-  map("<leader>f", vim.lsp.buf.formatting)
+  map("<leader>f", function() vim.lsp.buf.format { async = true } end)
 
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
   lsp_highlight_document()
