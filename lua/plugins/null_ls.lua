@@ -7,12 +7,12 @@ local composerStandard = '--standard=~/files/bit-academy/phpcs.xml'
 local b = null_ls.builtins
 null_ls.setup({
   sources = {
-    -- eslint 
+    -- js
     b.code_actions.eslint.with({ extra_args = { eslintrc } }),
     b.diagnostics.eslint.with({ extra_args = { eslintrc } }),
     b.formatting.eslint.with({ extra_args = { eslintrc } }),
 
-    -- phpcs / phpcbf
+    -- php
     b.diagnostics.phpcs.with({
       command = composerBin .. 'phpcs',
       extra_args = { composerStandard },
@@ -22,10 +22,15 @@ null_ls.setup({
       extra_args = { composerStandard },
     }),
 
+    -- sql
+    b.formatting.sqlfluff.with({
+        extra_args = { "--dialect", "mysql" }
+    }),
+
     b.code_actions.shellcheck,
     b.code_actions.gitsigns,
 
     -- register sources for completion
-    -- b.completion.phpactor,
+    -- b.completion.luasnip
   },
 })
