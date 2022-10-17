@@ -15,15 +15,15 @@ require("gruvbox").setup({
   contrast = 'hard', -- can be "hard", "soft" or empty string
   overrides = {
     String = { italic = false },
-    SignColumn = { bg = 'NONE' },
-    FoldColumn = { bg = 'NONE' },
-    GruvboxGreenSign = { bg = 'NONE' },
-    GruvboxRedSign = { bg = 'NONE' },
-    GruvboxBlueSign = { bg = 'NONE' },
-    GruvboxYellowSign = { bg = 'NONE' },
-    GruvboxPurpleSign = { bg = 'NONE' },
-    GruvboxAquaSign = { bg = 'NONE' },
-    GruvboxOrangeSign = { bg = 'NONE' },
+    SignColumn = { bg = 'none' },
+    FoldColumn = { bg = 'none' },
+    GruvboxGreenSign = { bg = 'none' },
+    GruvboxRedSign = { bg = 'none' },
+    GruvboxBlueSign = { bg = 'none' },
+    GruvboxYellowSign = { bg = 'none' },
+    GruvboxPurpleSign = { bg = 'none' },
+    GruvboxAquaSign = { bg = 'none' },
+    GruvboxOrangeSign = { bg = 'none' },
   }
 })
 
