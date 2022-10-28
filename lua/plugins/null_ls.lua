@@ -22,9 +22,7 @@ null_ls.setup({
     }),
 
     -- sql
-    b.formatting.sqlfluff.with({
-        extra_args = { "--dialect", "mysql" }
-    }),
+    b.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }),
 
     b.code_actions.shellcheck,
     b.code_actions.gitsigns,
