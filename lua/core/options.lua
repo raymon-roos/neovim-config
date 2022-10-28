@@ -42,6 +42,7 @@ g.netrw_liststyle = 3
 g.netrw_banner = 0
 
 o.termguicolors = true
+o.background = 'dark'
 
 -- g.vimtex_quickfix_autoclose_after_keystrokes = 2
 g.vimtex_complete_close_braces = 1
