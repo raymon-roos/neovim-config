@@ -8,8 +8,8 @@ g.syntax_on = true
 -- o.foldexpr = 'nvim_treesitter#foldexpr()'
 o.foldlevel = 2
 
-o.softtabstop = 4
-o.shiftwidth = 4
+o.tabstop = 4
+o.shiftwidth = 0
 o.autoindent = true
 o.smartindent = true
 o.signcolumn = 'yes:1'
