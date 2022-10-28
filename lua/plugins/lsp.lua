@@ -9,7 +9,7 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-local config = {
+vim.diagnostic.config({
   virtual_text = true,
   signs = {
     active = signs,
@@ -25,46 +25,22 @@ local config = {
     header = "",
     prefix = "",
   },
-}
-
-vim.diagnostic.config(config)
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
 })
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "rounded",
+  }
+)
 
-local on_attach = function(client, bufnr)
-  -- local function lsp_highlight_document()
-  --   -- Set autocommands conditional on server_capabilities
-  --   if client.server_capabilities.document_highlight then
-  --     vim.api.nvim_exec(
-  --     -- vim.api.nvim_create_augroup('lsp_document_highlight' , { clear = true })
-  --     -- vim.api.nvim_create_autocmd('CursorHold', {
-  --     --   group = 'lsp_document_highlight',
-  --     --   pattern = '* <buffer>',
-  --     --   command = '<buffer> lua vim.lsp.buff.document_highlight()'
-  --     -- })
-  --     -- vim.api.nvim_create_autocmd('CursorMoved', {
-  --     --   group = 'lsp_document_highlight',
-  --     --   pattern = '* <buffer>',
-  --     --   command = '<buffer> lua vim.lsp.buff.clear_references()'
-  --     -- })
-  --       [[
-  --       augroup lsp_document_highlight
-  --         autocmd! * <buffer>
-  --         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-  --         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-  --       augroup END
-  --     ]] ,
-  --       false
-  --     )
-  --   end
-  -- end
 
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  }
+)
+
+local on_attach = function(_, bufnr)
   local function map(lhs, rhs)
     vim.keymap.set('n', lhs, rhs, { buffer = bufnr, remap = false, silent = true, })
   end
@@ -84,31 +60,14 @@ local on_attach = function(client, bufnr)
   map("gl", vim.diagnostic.open_float)
   map("[d", vim.diagnostic.goto_prev)
   map("]d", vim.diagnostic.goto_next)
-  -- map("<leader>q", vim.diagnostic.setloclist) -- trouble.nvim does a way better job at this
   map("<leader>f", function() vim.lsp.buf.format { async = true } end)
 
-  -- vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-  -- lsp_highlight_document()
-
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      vim.diagnostic.open_float(nil, {
-	focusable = false,
-	close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-	border = 'rounded',
-	source = 'always',
-	prefix = ' ',
-	scope = 'cursor',
-      })
-    end
-  })
+  vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end
 
 local capabilitiesUpdated = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
-capabilitiesUpdated.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp_defaults = {
   flags = {
@@ -118,19 +77,30 @@ local lsp_defaults = {
 }
 
 local lspconfig = require('lspconfig')
-lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
+local util = lspconfig.util
+util.default_config = vim.tbl_deep_extend('force', util.default_config, lsp_defaults)
 
 local capabilities = lsp_defaults.capabilities
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
+  -- The first entry (without a key) will be the default handler and will be
+  -- called for each installed server that doesn't have a dedicated handler.
+  function(server_name)
+    lspconfig[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
+      -- settings = {
+      --  server_name = {
+      --    root_dir = function()
+      --      return util.find_package_json_ancestor()
+      --        or util.find_node_modules_ancestor()
+      --        or util.find_git_ancestor()
+      --        or util.root_pattern('composer.lock', 'composer.json', 'vendor', 'dist', '.git', 'src', 'package-lock.json')
+      --        or vim.fn.cwd()
+      --    end
+      --  }
+      -- }
     }
   end,
   -- Next, you can provide targeted overrides for specific servers.
@@ -158,9 +128,9 @@ mason_lspconfig.setup_handlers({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
-	html = {
-	  mirrorCursorOnMatchingTag = true
-	}
+        html = {
+          mirrorCursorOnMatchingTag = true
+        }
       }
     }
   end,
@@ -173,8 +143,8 @@ mason_lspconfig.setup_handlers({
     }
   end,
   ['intelephense'] = function()
-    lspconfig.util.default_config = vim.tbl_deep_extend(
-      'force', lspconfig.util.default_config, require('plugins.intelephense')
+    util.default_config = vim.tbl_deep_extend(
+      'force', util.default_config, require('plugins.intelephense')
     )
     lspconfig.intelephense.setup {
       capabilities = capabilities,
