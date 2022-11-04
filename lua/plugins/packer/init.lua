@@ -1,20 +1,26 @@
--- Modules required() with `plugins.` prefixed, are custom configuration files for said plugins 
--- Modules required() ending in `.setup()` are plugins with all default configuration 
--- Modules required() with `core.` prefixed, are custom configuration files for nvim itself (i.e. vim.o. for instance)
+-- Required() modules naming scheme:
+-- `plugins.` prefixed, are custom configuration files for said plugins
+-- `core.` prefixed, are custom configuration files for nvim itself (i.e. vim.o. for instance)
+-- `.setup()` functions are for plugins with all default configuration
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup({function(use)
+require('packer').startup({
+  function(use)
     use { 'wbthomason/packer.nvim', opt = true }
 
     -------------------------------------------------------
     -- Appearance
     -------------------------------------------------------
     use {
-      { -- Color scheme 
+      { -- Color scheme
         'ellisonleao/gruvbox.nvim',
-        config = function() require('plugins.gruvbox') end
+        -- config = function() require('plugins.gruvbox') end
+      },
+      {
+        'RRethy/nvim-base16',
+        config = function() vim.cmd([[ colorscheme base16-gruvbox-dark-medium ]]) end
       },
       { -- status line
         'nvim-lualine/lualine.nvim',
@@ -61,7 +67,6 @@ require('packer').startup({function(use)
       },
       { -- Collection of just-works configurations for lsp servers
         'neovim/nvim-lspconfig',
-        bufread = false,
         config = function() require('plugins.lsp') end
       },
       { -- Diagnostics window
@@ -72,7 +77,6 @@ require('packer').startup({function(use)
       { -- Integrates non-lsp plugins into lsp framework
         'jose-elias-alvarez/null-ls.nvim',
         requires = {
-          'neovim/nvim-lspconfig',
           'nvim-lua/plenary.nvim'
         },
         config = function() require('plugins.null_ls') end
@@ -92,9 +96,9 @@ require('packer').startup({function(use)
       'quangnguyen30192/cmp-nvim-tags',
 
       -- Snippets
-      'saadparwaiz1/cmp_luasnip',     -- luasnip integration for cmp
+      'saadparwaiz1/cmp_luasnip', -- luasnip integration for cmp
       'rafamadriz/friendly-snippets', -- More snippets to use with luasnip
-      'L3MON4D3/LuaSnip',             -- Snippet engine itself
+      'L3MON4D3/LuaSnip', -- Snippet engine itself
 
       -- Auto-completion engine itself
       { 'hrsh7th/nvim-cmp',
@@ -102,36 +106,37 @@ require('packer').startup({function(use)
       }
     }
 
-  -------------------------------------------------------
-  -- Tree sitter related
-  -------------------------------------------------------
+    -------------------------------------------------------
+    -- Tree sitter related
+    -------------------------------------------------------
     use { -- Tree sitter
-    {
-      'nvim-treesitter/nvim-treesitter',
-      config = function() require('plugins.treesitter') end,
-      run = ':TSUpdate'
-    },
-    {
-      'nvim-treesitter/nvim-treesitter-refactor'
-    }
+      {
+        'nvim-treesitter/nvim-treesitter',
+        config = function() require('plugins.treesitter') end,
+        run = ':TSUpdate'
+      },
+      {
+        'nvim-treesitter/nvim-treesitter-refactor'
+      },
+      {
+        'windwp/nvim-ts-autotag',
+        config = function() require('nvim-ts-autotag').setup() end
+      }
     }
 
-
-  -------------------------------------------------------
-  -- Single-purpose plugins
-  -------------------------------------------------------
+    -------------------------------------------------------
+    -- Single-purpose plugins
+    -------------------------------------------------------
     use { -- latex integration for vim
       'lervag/vimtex',
       opt = true,
-      ft = {'tex', 'bib'}
+      ft = { 'tex', 'bib' }
     }
 
     use { -- Git tracking integration in nvim
       'lewis6991/gitsigns.nvim',
-      config = function()
-	require('plugins.gitsigns') end
+      config = function() require('plugins.gitsigns') end
     }
-
   end,
 
   -------------------------------------------------------
