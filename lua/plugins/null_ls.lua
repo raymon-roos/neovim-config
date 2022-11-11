@@ -1,8 +1,12 @@
 local null_ls = require('null-ls')
 
 local eslintrc = '--config=' .. vim.fn.expand('$XDG_DATA_HOME') .. '/npm/lib/.eslintrc.js'
-local composerBin = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/'
-local composerStandard = '--standard=~/files/bit-academy/phpcs.xml'
+
+local composerPaths = {
+  phpcs = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/phpcs',
+  phpbf = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/phpbf',
+  linterRules = '--standard=' .. vim.fn.expand('$HOME') .. '/files/bit-academy/phpcs.xml'
+}
 
 local b = null_ls.builtins
 null_ls.setup({
@@ -13,12 +17,12 @@ null_ls.setup({
 
     -- php
     b.diagnostics.phpcs.with({
-      command = composerBin .. 'phpcs',
-      extra_args = { composerStandard },
+      command = composerPaths.phpcs,
+      extra_args = { composerPaths.linterRules },
     }),
     b.formatting.phpcbf.with({
-      command = composerBin .. 'phpcbf',
-      extra_args = { composerStandard },
+      command = composerPaths.phpbf,
+      extra_args = { composerPaths.linterRules },
     }),
 
     -- sql
