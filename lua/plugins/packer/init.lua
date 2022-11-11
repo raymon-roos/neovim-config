@@ -1,19 +1,15 @@
--- Required() modules naming scheme:
--- `plugins.` prefixed, are custom configuration files for said plugins
--- `core.` prefixed, are custom configuration files for nvim itself (i.e. vim.o. for instance)
--- `.setup()` functions are for plugins with all default configuration
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]] -- Only required if you have packer configured as `opt`
 
 require('packer').startup({
   function(use)
-    use { 'wbthomason/packer.nvim', opt = true }
-
-    -------------------------------------------------------
-    -- Appearance
-    -------------------------------------------------------
     use {
+      {
+        'wbthomason/packer.nvim',
+        opt = true
+      },
+      -------------------------------------------------------
+      -- Appearance
+      -------------------------------------------------------
       { -- Color scheme
         'ellisonleao/gruvbox.nvim',
         -- config = function() require('plugins.gruvbox') end
@@ -26,13 +22,11 @@ require('packer').startup({
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins.lualine') end
-      }
-    }
+      },
 
-    -------------------------------------------------------
-    -- Coding quality of life
-    -------------------------------------------------------
-    use {
+      -------------------------------------------------------
+      -- Coding quality of life
+      -------------------------------------------------------
       { -- Autocomplete brackets while typing
         'windwp/nvim-autopairs',
         config = function() require('plugins.coding.autopairs') end
@@ -48,13 +42,11 @@ require('packer').startup({
       { -- easilly suround text with given character or tag
         'kylechui/nvim-surround',
         config = function() require('nvim-surround').setup() end
-      }
-    }
+      },
 
-    -------------------------------------------------------
-    -- lsp related *Note the order in which the plugins are loaded*
-    -------------------------------------------------------
-    use {
+      -------------------------------------------------------
+      -- lsp related *Note the order in which the plugins are loaded*
+      -------------------------------------------------------
       { -- LSP server installer/manager
         'williamboman/mason.nvim',
         bufread = false,
@@ -80,36 +72,33 @@ require('packer').startup({
           'nvim-lua/plenary.nvim'
         },
         config = function() require('plugins.null_ls') end
-      }
-    }
+      },
 
-    -------------------------------------------------------
-    -- Auto-completion
-    -------------------------------------------------------
-    use { -- Completion sources
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp-document-symbol',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'quangnguyen30192/cmp-nvim-tags',
-
-      -- Snippets
-      'saadparwaiz1/cmp_luasnip', -- luasnip integration for cmp
-      'rafamadriz/friendly-snippets', -- More snippets to use with luasnip
-      'L3MON4D3/LuaSnip', -- Snippet engine itself
-
-      -- Auto-completion engine itself
-      { 'hrsh7th/nvim-cmp',
+      -------------------------------------------------------
+      -- Auto-completion
+      -------------------------------------------------------
+      {
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lsp-document-symbol',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        'quangnguyen30192/cmp-nvim-tags',
+      },
+      { -- Snippet providers
+        'saadparwaiz1/cmp_luasnip', -- luasnip integration for cmp
+        'rafamadriz/friendly-snippets', -- More snippets to use with luasnip
+        'L3MON4D3/LuaSnip', -- Snippet engine itself
+      },
+      { -- Auto-completion engine itself
+        'hrsh7th/nvim-cmp',
         config = function() require('plugins.cmp') end
-      }
-    }
+      },
 
-    -------------------------------------------------------
-    -- Tree sitter related
-    -------------------------------------------------------
-    use { -- Tree sitter
+      -------------------------------------------------------
+      -- Tree sitter related
+      -------------------------------------------------------
       {
         'nvim-treesitter/nvim-treesitter',
         config = function() require('plugins.treesitter') end,
@@ -121,21 +110,24 @@ require('packer').startup({
       {
         'windwp/nvim-ts-autotag',
         config = function() require('nvim-ts-autotag').setup() end
-      }
-    }
+      },
+      {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        config = function() require('plugins.ts_textobs') end
+      },
 
-    -------------------------------------------------------
-    -- Single-purpose plugins
-    -------------------------------------------------------
-    use { -- latex integration for vim
-      'lervag/vimtex',
-      opt = true,
-      ft = { 'tex', 'bib' }
-    }
-
-    use { -- Git tracking integration in nvim
-      'lewis6991/gitsigns.nvim',
-      config = function() require('plugins.gitsigns') end
+      -------------------------------------------------------
+      -- Single-purpose plugins
+      -------------------------------------------------------
+      { -- latex integration for vim
+        'lervag/vimtex',
+        opt = true,
+        ft = { 'tex', 'bib' }
+      },
+      { -- Git tracking integration in nvim
+        'lewis6991/gitsigns.nvim',
+        config = function() require('plugins.gitsigns') end
+      },
     }
   end,
 
