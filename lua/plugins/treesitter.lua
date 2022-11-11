@@ -39,17 +39,19 @@ require('nvim-treesitter.configs').setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
     enable = true,
     disable = { 'latex' }
   },
+  autotag = {
+    enable = true,
+  },
   refactor = {
     highlight_definitions = {
       enable = true,
-      -- Set to false if you have an `updatetime` of ~100.
-      clear_on_cursor_move = true,
+      clear_on_cursor_move = true, -- Set to false if you have an `updatetime` of ~100.
     },
     smart_rename = {
       enable = true,
