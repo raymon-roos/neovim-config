@@ -4,7 +4,7 @@ local eslintrc = '--config=' .. vim.fn.expand('$XDG_DATA_HOME') .. '/npm/lib/.es
 
 local composerPaths = {
   phpcs = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/phpcs',
-  phpbf = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/phpbf',
+  phpcbf = vim.fn.expand('$XDG_DATA_HOME') .. '/composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
   linterRules = '--standard=' .. vim.fn.expand('$HOME') .. '/files/bit-academy/phpcs.xml'
 }
 
@@ -21,7 +21,7 @@ null_ls.setup({
       extra_args = { composerPaths.linterRules },
     }),
     b.formatting.phpcbf.with({
-      command = composerPaths.phpbf,
+      command = composerPaths.phpcbf,
       extra_args = { composerPaths.linterRules },
     }),
 
