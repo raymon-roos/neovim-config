@@ -16,7 +16,7 @@ require('packer').startup({
       },
       {
         'RRethy/nvim-base16',
-        config = function() vim.cmd([[ colorscheme base16-gruvbox-dark-medium ]]) end
+        config = function() vim.cmd([[ colorscheme base16-gruvbox-dark-hard ]]) end
       },
       { -- status line
         'nvim-lualine/lualine.nvim',
