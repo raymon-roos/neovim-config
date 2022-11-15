@@ -27,18 +27,20 @@ vim.diagnostic.config({
   },
 })
 
+local border = 'rounded'
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded",
-  }
+  vim.lsp.handlers.hover, { border = border, }
 )
-
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  }
+  vim.lsp.handlers.signature_help, { border = border, }
 )
+
+vim.diagnostic.config {
+  float = { border = border }
+}
+
+require('lspconfig.ui.windows').default_options.border = 'rounded'
 
 local on_attach = function(_, bufnr)
   local function map(lhs, rhs)
@@ -65,19 +67,18 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end
 
-local capabilitiesUpdated = require('cmp_nvim_lsp').default_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
-
 local lsp_defaults = {
   flags = {
     debounce_text_changes = 100,
   },
-  capabilities = capabilitiesUpdated
+  capabilities = require('cmp_nvim_lsp').default_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  )
 }
 
 local lspconfig = require('lspconfig')
 local util = lspconfig.util
+
 util.default_config = vim.tbl_deep_extend('force', util.default_config, lsp_defaults)
 
 local capabilities = lsp_defaults.capabilities
@@ -90,17 +91,17 @@ mason_lspconfig.setup_handlers({
     lspconfig[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      -- settings = {
-      --  server_name = {
-      --    root_dir = function()
-      --      return util.find_package_json_ancestor()
-      --        or util.find_node_modules_ancestor()
-      --        or util.find_git_ancestor()
-      --        or util.root_pattern('composer.lock', 'composer.json', 'vendor', 'dist', '.git', 'src', 'package-lock.json')
-      --        or vim.fn.cwd()
-      --    end
-      --  }
-      -- }
+      settings = {
+       server_name = {
+         root_dir = function()
+           return util.find_package_json_ancestor()
+             or util.find_node_modules_ancestor()
+             or util.find_git_ancestor()
+             or util.root_pattern('composer.lock', 'composer.json', 'vendor', 'dist', '.git', 'src', 'package-lock.json')
+             or vim.fn.cwd()
+         end
+       }
+      }
     }
   end,
   -- Next, you can provide targeted overrides for specific servers.
@@ -129,18 +130,22 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
       settings = {
         html = {
-          mirrorCursorOnMatchingTag = true
-        }
+          mirrorCursorOnMatchingTag = { true },
+          filetypes = { 'html', 'twig', 'php' },
+        },
       }
     }
   end,
   ['tailwindcss'] = function()
-    lspconfig.tailwindcss.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      autostart = { false },
-      filetypes = { 'html', 'php', 'javascript' }
-    }
+    --   lspconfig.tailwindcss.setup {
+    --     capabilities = capabilities,
+    --     on_attach = on_attach,
+    --     settings = {
+    --       tailwindCSS = {
+    --         autostart = false,
+    --       }
+    --     }
+    --   }
   end,
   ['intelephense'] = function()
     util.default_config = vim.tbl_deep_extend(
