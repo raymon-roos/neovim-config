@@ -40,7 +40,9 @@ vim.diagnostic.config {
   float = { border = border }
 }
 
-require('lspconfig.ui.windows').default_options.border = 'rounded'
+require('lspconfig.ui.windows').default_options.border = border
+
+vim.lsp.set_log_level("off")
 
 local on_attach = function(_, bufnr)
   local function map(lhs, rhs)
