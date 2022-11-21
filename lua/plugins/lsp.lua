@@ -93,17 +93,6 @@ mason_lspconfig.setup_handlers({
     lspconfig[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = {
-       server_name = {
-         root_dir = function()
-           return util.find_package_json_ancestor()
-             or util.find_node_modules_ancestor()
-             or util.find_git_ancestor()
-             or util.root_pattern('composer.lock', 'composer.json', 'vendor', 'dist', '.git', 'src', 'package-lock.json')
-             or vim.fn.cwd()
-         end
-       }
-      }
     }
   end,
   -- Next, you can provide targeted overrides for specific servers.
