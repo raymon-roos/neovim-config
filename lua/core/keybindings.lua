@@ -79,14 +79,6 @@ nmap('<leader>mm', '<cmd> Mason <cr>')
 nmap('<leader>pp', '<cmd> LspInfo <cr>')
 nmap('<leader>ps', '<cmd> PackerStatus <cr>')
 
--- control the diagnostics window
-nmap('<leader>xx', '<cmd> TroubleToggle <cr>')
-nmap('<leader>xw', '<cmd> TroubleToggle workspace_diagnostics <cr>')
-nmap('<leader>xd', '<cmd> TroubleToggle document_diagnostics <cr>')
-nmap('<leader>xq', '<cmd> TroubleToggle quickfix <cr>')
-nmap('<leader>xl', '<cmd> TroubleToggle loclist <cr>')
-nmap('<leader>xr', '<Cmd> TroubleToggle lsp_references <cr>')
-
 -- control builtin spell Checking
 nmap('<leader>sb', '<cmd> setlocal spell spelllang=en,nl <cr>') -- turn on English + Dutch
 nmap('<leader>se', '<cmd> setlocal spell spelllang=en_gb <cr>') -- turn on just Brittish English

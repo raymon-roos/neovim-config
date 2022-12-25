@@ -3,7 +3,7 @@ vim.cmd [[packadd packer.nvim]] -- Only required if you have packer configured a
 require('packer').startup({
   function(use)
     use {
-      {
+      { -- Packer can manage itself
         'wbthomason/packer.nvim',
         opt = true
       },
@@ -11,10 +11,10 @@ require('packer').startup({
       -- Appearance
       -------------------------------------------------------
       { -- Color scheme
-        'ellisonleao/gruvbox.nvim',
+        -- 'ellisonleao/gruvbox.nvim',
         -- config = function() require('plugins.gruvbox') end
       },
-      {
+      { -- Color scheme
         'RRethy/nvim-base16',
         config = function()
           vim.cmd([[ colorscheme base16-gruvbox-dark-hard ]])
@@ -63,11 +63,6 @@ require('packer').startup({
       { -- Collection of just-works configurations for lsp servers
         'neovim/nvim-lspconfig',
         config = function() require('plugins.lsp') end
-      },
-      { -- Diagnostics window
-        'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('trouble').setup() end
       },
       { -- Integrates non-lsp plugins into lsp framework
         'jose-elias-alvarez/null-ls.nvim',
