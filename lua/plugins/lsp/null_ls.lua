@@ -28,6 +28,9 @@ null_ls.setup({
     b.code_actions.shellcheck,
     b.code_actions.gitsigns,
 
+    -- rust
+    b.formatting.rustfmt,
+
     -- register sources for completion
     -- b.completion.luasnip
   },

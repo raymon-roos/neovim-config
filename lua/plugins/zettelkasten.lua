@@ -2,7 +2,7 @@
 --  Note that $NOTES_DIR is an environment variable pointing to the single flat
 --  directory I keep all my zettels in
 
-local nmap = require('core.keybindings').n
+local nmap = require('core.keymapper').nmap
 
 --  Change working directory to zettelkasten and open index
 nmap('<leader>zi', '<cmd> e $NOTES_DIR/index-202202270044.md <cr> <cmd> cd $NOTES_DIR <cr> <cmd> pwd <cr>')

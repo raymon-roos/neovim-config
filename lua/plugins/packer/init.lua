@@ -24,7 +24,7 @@ require('packer').startup({
       { -- status line
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins.lualine') end
+        config = function() require('plugins.appearance.lualine') end
       },
 
       -------------------------------------------------------
@@ -53,23 +53,28 @@ require('packer').startup({
       { -- LSP server installer/manager
         'williamboman/mason.nvim',
         bufread = false,
-        config = function() require('plugins.mason') end
       },
       { -- Mason integration with lsp-config
         'williamboman/mason-lspconfig.nvim',
         buffread = false,
+        requires = {
+          'williamboman/mason.nvim',
+        },
         config = function() require('mason-lspconfig').setup() end
       },
       { -- Collection of just-works configurations for lsp servers
         'neovim/nvim-lspconfig',
+        require = {
+          'williamboman/mason-lspconfig.nvim',
+        },
         config = function() require('plugins.lsp') end
       },
       { -- Integrates non-lsp plugins into lsp framework
         'jose-elias-alvarez/null-ls.nvim',
         requires = {
-          'nvim-lua/plenary.nvim'
+          'nvim-lua/plenary.nvim',
+          'neovim/nvim-lspconfig',
         },
-        config = function() require('plugins.null_ls') end
       },
 
       -------------------------------------------------------
@@ -99,7 +104,7 @@ require('packer').startup({
       -------------------------------------------------------
       {
         'nvim-treesitter/nvim-treesitter',
-        config = function() require('plugins.treesitter') end,
+        config = function() require('plugins.ts') end,
         run = ':TSUpdate'
       },
       {
@@ -111,7 +116,7 @@ require('packer').startup({
       },
       {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        config = function() require('plugins.ts_textobs') end
+        requires = 'nvim-treesitter/nvim-treesitter-refactor',
       },
 
       -------------------------------------------------------
