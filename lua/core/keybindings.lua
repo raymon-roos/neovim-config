@@ -34,9 +34,9 @@ map({ 'n', 'v', 't' }, '<leader>Tg', '<cmd> vsplit | terminal gitui <cr>')
 map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
-nmap('<A-.>', ':exe "vertical resize " . (winwidth(0) * 6/6)<cr>')
+nmap('<A-.>', ':exe "vertical resize " . (winwidth(0) * 7/6)<cr>')
 nmap('<A-,>', ':exe "vertical resize " . (winwidth(0) * 5/6)<cr>')
-nmap('<A-=>', ':exe "resize " . (winheight(0) * 6/5)<cr>')
+nmap('<A-=>', ':exe "resize " . (winheight(0) * 7/6)<cr>')
 nmap('<A-->', ':exe "resize " . (winheight(0) * 5/6)<cr>')
 
 -- control buffers
