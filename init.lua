@@ -7,6 +7,6 @@ for _, config in ipairs({
 }) do
   local ok, err = pcall(require, config)
   if not ok then
-    print(config, ' : caused an error', err)
+    print(config, ': caused an error', err)
   end
 end
