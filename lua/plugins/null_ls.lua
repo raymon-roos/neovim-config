@@ -31,4 +31,5 @@ null_ls.setup({
     -- register sources for completion
     -- b.completion.luasnip
   },
+  border = 'rounded',
 })
