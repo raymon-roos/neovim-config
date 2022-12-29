@@ -122,21 +122,22 @@ mason_lspconfig.setup_handlers({
       settings = {
         html = {
           mirrorCursorOnMatchingTag = { true },
-          filetypes = { 'html', 'twig', 'php' },
+          filetypes = { 'html', 'twig', 'php', 'blade' },
         },
       }
     }
   end,
   ['tailwindcss'] = function()
-    --   lspconfig.tailwindcss.setup {
-    --     capabilities = capabilities,
-    --     on_attach = on_attach,
-    --     settings = {
-    --       tailwindCSS = {
-    --         autostart = false,
-    --       }
-    --     }
-    --   }
+    lspconfig.tailwindcss.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        tailwindCSS = {
+          filetypes = { 'php', 'html', 'js' },
+          autostart = false,
+        }
+      }
+    }
   end,
   ['intelephense'] = function()
     util.default_config = vim.tbl_deep_extend(
