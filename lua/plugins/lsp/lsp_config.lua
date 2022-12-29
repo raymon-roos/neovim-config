@@ -1,48 +1,22 @@
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
-
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = {
-    active = signs,
-  },
-  update_in_insert = true,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
-})
-
-local border = 'rounded'
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, { border = border, }
-)
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, { border = border, }
-)
-
-vim.diagnostic.config {
-  float = { border = border }
-}
-
-require('lspconfig.ui.windows').default_options.border = border
-
 vim.lsp.set_log_level("off")
+
+local lspconfig = require('lspconfig')
+
+local util = lspconfig.util
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
+util.default_config = vim.tbl_deep_extend('force',
+  util.default_config,
+  {
+    flags = {
+      debounce_text_changes = 100,
+    },
+    capabilities = capabilities
+  }
+)
 
 local on_attach = function(_, bufnr)
   local function map(lhs, rhs)
@@ -69,22 +43,6 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end
 
-local lsp_defaults = {
-  flags = {
-    debounce_text_changes = 100,
-  },
-  capabilities = require('cmp_nvim_lsp').default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
-}
-
-local lspconfig = require('lspconfig')
-local util = lspconfig.util
-
-util.default_config = vim.tbl_deep_extend('force', util.default_config, lsp_defaults)
-
-local capabilities = lsp_defaults.capabilities
-
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({
   -- The first entry (without a key) will be the default handler and will be
@@ -97,11 +55,19 @@ mason_lspconfig.setup_handlers({
   end,
   -- Next, you can provide targeted overrides for specific servers.
   ["sumneko_lua"] = function()
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
+
     lspconfig.sumneko_lua.setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         Lua = {
+          runtime = {
+            version = 'LuaJIT', -- Nvim uses LuaJIT
+            path = runtime_path,
+          },
           diagnostics = {
             globals = { "vim" },
           },
@@ -110,6 +76,9 @@ mason_lspconfig.setup_handlers({
               [vim.fn.expand("$VIMRUNTIME/lua")] = true,
               [vim.fn.stdpath("config") .. "/lua"] = true,
             },
+          },
+          telemetry = {
+            enable = false,
           },
         },
       },
@@ -141,7 +110,7 @@ mason_lspconfig.setup_handlers({
   end,
   ['intelephense'] = function()
     util.default_config = vim.tbl_deep_extend(
-      'force', util.default_config, require('plugins.intelephense')
+      'force', util.default_config, require('plugins.lsp.intelephense')
     )
     lspconfig.intelephense.setup {
       capabilities = capabilities,
@@ -160,3 +129,7 @@ mason_lspconfig.setup_handlers({
     }
   end
 })
+
+-- for server_name,setup_callback in ipairs(require('plugins.lsp.server_configs')) do
+--   table.insert(mason_lspconfig.setup_handlers[server_name], setup_callback)
+-- end
