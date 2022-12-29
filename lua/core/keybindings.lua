@@ -77,6 +77,7 @@ nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
 -- easily open windows of relevant plugins
 nmap('<leader>mm', '<cmd> Mason <cr>')
 nmap('<leader>pp', '<cmd> LspInfo <cr>')
+nmap('<leader>ns', '<cmd> NullLsInfo <cr>')
 nmap('<leader>ps', '<cmd> PackerStatus <cr>')
 
 -- control the diagnostics window
