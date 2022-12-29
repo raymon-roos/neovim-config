@@ -28,45 +28,45 @@ map({ 'n', 'v', 'i', 't' }, '<A-j>', '<C-\\><C-N><C-w>j')
 map({ 'n', 'v', 'i', 't' }, '<A-k>', '<C-\\><C-N><C-w>k')
 map({ 'n', 'v', 'i', 't' }, '<A-l>', '<C-\\><C-N><C-w>l')
 -- spawn a terminal
-map({ 'n', 'v', 't' }, '<leader>T', '<cmd> vsplit | terminal <cr>')
-map({ 'n', 'v', 't' }, '<leader>Tg', '<cmd> vsplit | terminal gitui <cr>')
+map({ 'n', 'v', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
+map({ 'n', 'v', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 
 map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
-nmap('<A-.>', ':exe "vertical resize " . (winwidth(0) * 7/6)<cr>')
-nmap('<A-,>', ':exe "vertical resize " . (winwidth(0) * 5/6)<cr>')
-nmap('<A-=>', ':exe "resize " . (winheight(0) * 7/6)<cr>')
-nmap('<A-->', ':exe "resize " . (winheight(0) * 5/6)<cr>')
+nmap('<A-.>', ':exe "vertical resize " . (winwidth(0) * 7/6)<CR>')
+nmap('<A-,>', ':exe "vertical resize " . (winwidth(0) * 5/6)<CR>')
+nmap('<A-=>', ':exe "resize " . (winheight(0) * 7/6)<CR>')
+nmap('<A-->', ':exe "resize " . (winheight(0) * 5/6)<CR>')
 
 -- control buffers
-nmap("<leader>bl", "<cmd>ls<CR>")
-nmap("<leader>bd", "<cmd>bd<CR>")
-nmap("<leader>bD", "<cmd>bd!<CR>")
-nmap("<leader>bo", "<cmd>wall | %bd | e#<CR>")
-nmap("<leader>bad", "<cmd>%bd<CR>")
-nmap("<C-s>", "<cmd>update<CR>") -- Cheeky little crtl+s bind
-nmap("<leader>bw", "<cmd>update<CR>")
-nmap("<leader>bW", "<cmd>update!<CR>")
+nmap("<leader>bl", "<CMD>ls<CR>")
+nmap("<leader>bd", "<CMD>bd<CR>")
+nmap("<leader>bD", "<CMD>bd!<CR>")
+nmap("<leader>bo", "<CMD>wall | %bd | e#<CR>")
+nmap("<leader>bad", "<CMD>%bd<CR>")
+nmap("<C-s>", "<CMD>update<CR>") -- Cheeky little crtl+s bind
+nmap("<leader>bw", "<CMD>update<CR>")
+nmap("<leader>bW", "<CMD>update!<CR>")
 
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
 
 -- using netrw as a filedrawer
-nmap('<leader>ee', '<cmd> Lexplore 15 <cr>')
+nmap('<leader>ee', '<CMD> Lexplore 15 <CR>')
 
 -- switch working dir to directory of current file
-nmap('<leader>cd', '<cmd> cd %:h <cr> <cmd> pwd <cr>')
+nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
 
 -- easily open windows of relevant plugins
-nmap('<leader>mm', '<cmd> Mason <cr>')
-nmap('<leader>pp', '<cmd> LspInfo <cr>')
-nmap('<leader>ns', '<cmd> NullLsInfo <cr>')
-nmap('<leader>ps', '<cmd> PackerStatus <cr>')
+nmap('<leader>mm', '<CMD> Mason <CR>')
+nmap('<leader>pp', '<CMD> LspInfo <CR>')
+nmap('<leader>ns', '<CMD> NullLsInfo <CR>')
+nmap('<leader>ps', '<CMD> PackerStatus <CR>')
 
 -- control builtin spell Checking
-nmap('<leader>ss', '<cmd> setlocal spell! <cr>') -- toggle spell checking
-nmap('<leader>sb', '<cmd> setlocal spell spelllang=en,nl <cr>') -- turn on English + Dutch
-nmap('<leader>se', '<cmd> setlocal spell spelllang=en_gb <cr>') -- turn on just Brittish English
-nmap('<leader>sn', '<cmd> setlocal spell spelllang=nl <cr>') -- turn on just Dutch
+nmap('<leader>ss', '<CMD> setlocal spell! <CR>') -- toggle spell checking
+nmap('<leader>sb', '<CMD> setlocal spell spelllang=en,nl <CR>') -- turn on English + Dutch
+nmap('<leader>se', '<CMD> setlocal spell spelllang=en_gb <CR>') -- turn on just Brittish English
+nmap('<leader>sn', '<CMD> setlocal spell spelllang=nl <CR>') -- turn on just Dutch
 
