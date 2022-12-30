@@ -18,6 +18,7 @@ o.relativenumber = true
 o.cursorline = true
 o.wrap = true
 o.linebreak  = true
+o.breakindent  = true
 o.scrolloff = 8
 o.splitbelow = false
 o.splitright = true
