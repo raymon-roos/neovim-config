@@ -1,7 +1,7 @@
 local null_ls = require('null-ls')
 
 local phpcs_path = vim.fn.stdpath('data') .. '/mason/bin/'
-local linterRules = '--standard=' .. vim.fn.expand('$HOME') .. '/files/bit-academy/phpcs.xml'
+local phpcs_rules = '--standard=' .. vim.fn.expand('$HOME') .. '/files/bit-academy/phpcs.xml'
 
 local eslint_extra_args = {
   '--config=' .. vim.fn.expand('$XDG_DATA_HOME') .. '/npm/lib/.eslintrc.js',
@@ -15,8 +15,8 @@ null_ls.setup({
     b.diagnostics.eslint_d.with({ extra_args = eslint_extra_args, }), -- js
     b.diagnostics.phpcs.with({ -- php
       command = phpcs_path .. 'phpcs',
-      extra_args = { linterRules }, }
-    ),
+      extra_args = { phpcs_rules },
+    }),
 
     b.code_actions.eslint_d.with({ extra_args = eslint_extra_args }), -- js
     b.code_actions.shellcheck, -- sh
@@ -28,8 +28,8 @@ null_ls.setup({
     b.formatting.eslint_d.with({ extra_args = eslint_extra_args }), -- js
     b.formatting.phpcbf.with({ -- php
       command = phpcs_path .. 'phpcbf',
-      extra_args = { linterRules }, }
-    ),
+      extra_args = { phpcs_rules },
+    }),
 
     -- completion
     -- b.completion.luasnip
