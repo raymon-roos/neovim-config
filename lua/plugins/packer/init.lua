@@ -11,8 +11,9 @@ require('packer').startup({
       -- Appearance
       -------------------------------------------------------
       { -- Color scheme
-        -- 'ellisonleao/gruvbox.nvim',
-        -- config = function() require('plugins.gruvbox') end
+        'ellisonleao/gruvbox.nvim',
+        disable = true,
+        config = function() require('plugins.gruvbox') end
       },
       { -- Color scheme
         'RRethy/nvim-base16',
