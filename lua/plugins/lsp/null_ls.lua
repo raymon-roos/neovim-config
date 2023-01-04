@@ -23,9 +23,11 @@ null_ls.setup({
     b.code_actions.gitsigns, -- git integration
 
     b.formatting.rustfmt, -- rust
-    b.formatting.prettierd, -- js(frameworks)/html/css/md
     b.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }), -- sql
     b.formatting.eslint_d.with({ extra_args = eslint_extra_args }), -- js
+    b.formatting.prettierd.with({ -- js(frameworks)/html/css/md
+      disabled_filetypes = { 'html' }, -- html-ls already takes care of this
+    }),
     b.formatting.phpcbf.with({ -- php
       command = phpcs_path .. 'phpcbf',
       extra_args = { phpcs_rules },
