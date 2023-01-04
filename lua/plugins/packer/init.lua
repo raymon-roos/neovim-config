@@ -136,6 +136,10 @@ require('packer').startup({
         'lewis6991/gitsigns.nvim',
         config = function() require('plugins.gitsigns') end
       },
+      { -- Free extra performance?
+        'lewis6991/impatient.nvim',
+        config = function() require('plugins.impatient') end
+      },
     }
   end,
 
