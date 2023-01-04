@@ -27,6 +27,10 @@ require('packer').startup({
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins.appearance.lualine') end
       },
+      { -- fancy window dressing
+        'stevearc/dressing.nvim',
+        config = function() require('plugins.appearance.dressing') end
+      },
 
       -------------------------------------------------------
       -- Coding quality of life
