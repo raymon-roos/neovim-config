@@ -7,6 +7,8 @@ g.syntax_on = true
 o.foldlevel = 2
 
 o.tabstop = 4
+o.softtabstop = 4
+o.expandtab = true
 o.shiftwidth = 0
 o.autoindent = true
 o.smartindent = true
