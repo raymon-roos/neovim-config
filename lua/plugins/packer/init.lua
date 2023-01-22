@@ -32,7 +32,12 @@ require('packer').startup({
         'stevearc/dressing.nvim',
         config = function() require('plugins.appearance.dressing') end
       },
-
+      { -- colorizer/color picker
+        'uga-rosa/ccc.nvim',
+        opt = true,
+        ft = { 'css', 'scss', 'html' },
+        cmd = { 'CccPick', 'CccConvert', 'CccHighlighterToggle', 'CccHighlighterEnable', 'CccHighlighterEnable' },
+      },
       -------------------------------------------------------
       -- Coding quality of life
       -------------------------------------------------------
