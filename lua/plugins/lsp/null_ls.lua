@@ -32,6 +32,7 @@ null_ls.setup({
       command = phpcs_path .. 'phpcbf',
       extra_args = { phpcs_rules },
     }),
+    b.formatting.stylua, -- lua
 
     -- completion
     -- b.completion.luasnip
