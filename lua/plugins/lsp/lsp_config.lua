@@ -108,15 +108,6 @@ mason_lspconfig.setup_handlers({
       }
     }
   end,
-  ['intelephense'] = function()
-    util.default_config = vim.tbl_deep_extend(
-      'force', util.default_config, require('plugins.lsp.intelephense')
-    )
-    lspconfig.intelephense.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }
-  end,
   ['ltex'] = function()
     lspconfig.ltex.setup {
       capabilities = capabilities,
@@ -132,6 +123,15 @@ mason_lspconfig.setup_handlers({
           hiddenFalsePositives = { 'Bit', 'Academy' },
         },
       },
+    }
+  end,
+  ['intelephense'] = function()
+    util.default_config = vim.tbl_deep_extend(
+      'force', util.default_config, require('plugins.lsp.intelephense')
+    )
+    lspconfig.intelephense.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
     }
   end
 })
