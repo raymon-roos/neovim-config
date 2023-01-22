@@ -12,7 +12,7 @@ util.default_config = vim.tbl_deep_extend('force',
   util.default_config,
   {
     flags = {
-      debounce_text_changes = 200,
+      debounce_text_changes = 250,
     },
     capabilities = capabilities
   }
