@@ -7,6 +7,7 @@ require('packer').startup({
         'wbthomason/packer.nvim',
         opt = true
       },
+
       -------------------------------------------------------
       -- Appearance
       -------------------------------------------------------
@@ -143,6 +144,16 @@ require('packer').startup({
       {
         'ggandor/leap.nvim',
         config = function() require('leap').add_default_mappings() end
+      },
+      {
+        'ggandor/leap-spooky.nvim',
+        config = function() require('plugins.leap_spooky') end
+      },
+      {
+        'ggandor/leap-ast.nvim',
+        config = function()
+          vim.keymap.set({ 'n', 'x', 'o' }, '<leader>t', function() require 'leap-ast'.leap() end, {})
+        end
       },
     }
   end,
