@@ -100,11 +100,10 @@ mason_lspconfig.setup_handlers({
     lspconfig.tailwindcss.setup {
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { 'php', 'html', 'js', 'blade.php' },
+      autostart = false,
       settings = {
-        tailwindCSS = {
-          filetypes = { 'php', 'html', 'js' },
-          autostart = false,
-        }
+        tailwindcss = {}
       }
     }
   end,
