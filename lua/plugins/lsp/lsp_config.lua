@@ -65,7 +65,7 @@ mason_lspconfig.setup_handlers({
       settings = {
         Lua = {
           runtime = {
-            version = 'LuaJIT', -- Nvim uses LuaJIT
+            version = 'LuaJIT',
             path = runtime_path,
           },
           diagnostics = {
