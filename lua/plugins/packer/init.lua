@@ -38,6 +38,7 @@ require('packer').startup({
         ft = { 'css', 'scss', 'html' },
         cmd = { 'CccPick', 'CccConvert', 'CccHighlighterToggle', 'CccHighlighterEnable', 'CccHighlighterEnable' },
       },
+
       -------------------------------------------------------
       -- Coding quality of life
       -------------------------------------------------------
@@ -146,15 +147,15 @@ require('packer').startup({
         'lewis6991/impatient.nvim',
         config = function() require('plugins.impatient') end
       },
-      { -- f/t style (cross) buffer navigation
+      { -- f/t style cross buffer navigation
         'ggandor/leap.nvim',
         config = function() require('leap').add_default_mappings() end
       },
-      {
+      { -- Operatore on remote - i.e. away from the cursor - native text objects
         'ggandor/leap-spooky.nvim',
         config = function() require('plugins.leap_spooky') end
       },
-      {
+      { -- Operate on remote TS objects
         'ggandor/leap-ast.nvim',
         config = function()
           vim.keymap.set({ 'n', 'x', 'o' }, '<leader>t', function() require 'leap-ast'.leap() end, {})

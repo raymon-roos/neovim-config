@@ -1,6 +1,6 @@
 --  ZETTELKASTEN CONFIGURATION
---  Note that $NOTES_DIR is an environment variable pointing to the single flat
---  directory I keep all my zettels in
+--  Note that $NOTES_DIR is an environment variable pointing to the single
+--  flat directory holding all the notes or "zettels"
 
 local nmap = require('core.keymapper').nmap
 
@@ -12,7 +12,7 @@ nmap('<leader>zi', '<cmd> e $NOTES_DIR/index-202202270044.md <cr> <cmd> cd $NOTE
 nmap('<leader>tt', '<cmd> !ctags -R <cr>')
 -- mnemonic: tags->tags
 
-vim.cmd( -- seriously nasty way of doing this, but hey, *pure lua* 
+vim.cmd(
 [[
   " Quickly create a new entry into the zettelkasten 
   command! -nargs=1 NewZettel :execute ":e" fnameescape($NOTES_DIR . "/<args>-") . strftime("%Y%m%d%H%M") . ".md" 
