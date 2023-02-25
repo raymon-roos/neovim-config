@@ -28,9 +28,8 @@ map({ 'n', 'v', 'i', 't' }, '<A-j>', '<C-\\><C-N><C-w>j')
 map({ 'n', 'v', 'i', 't' }, '<A-k>', '<C-\\><C-N><C-w>k')
 map({ 'n', 'v', 'i', 't' }, '<A-l>', '<C-\\><C-N><C-w>l')
 -- spawn a terminal
-map({ 'n', 'v', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
-map({ 'n', 'v', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
-
+map({ 'n', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
+map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
 nmap('<A-.>', ':exe "vertical resize " . (winwidth(0) * 7/6)<CR>')
