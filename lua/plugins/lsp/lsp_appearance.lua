@@ -1,3 +1,5 @@
+vim.cmd [[autocmd! ColorScheme * highlight LspInfoBorder guifg=#d5c4a1]]
+
 local signs = {
   { name = "DiagnosticSignError", text = " " },
   { name = "DiagnosticSignWarn", text = " " },
@@ -42,5 +44,3 @@ vim.diagnostic.config {
 }
 
 require('lspconfig.ui.windows').default_options.border = border
-
-

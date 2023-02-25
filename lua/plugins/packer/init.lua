@@ -20,7 +20,6 @@ require('packer').startup({
         'RRethy/nvim-base16',
         config = function()
           vim.cmd([[ colorscheme base16-gruvbox-dark-hard ]])
-          vim.api.nvim_set_hl(0, 'LspInfoBorder', { link = 'normalNC' })
         end
       },
       { -- status line
