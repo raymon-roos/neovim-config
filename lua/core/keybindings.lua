@@ -31,7 +31,6 @@ map({ 'n', 'v', 'i', 't' }, '<A-l>', '<C-\\><C-N><C-w>l')
 map({ 'n', 'v', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
 map({ 'n', 'v', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 
-map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
 nmap('<A-.>', ':exe "vertical resize " . (winwidth(0) * 7/6)<CR>')
@@ -69,4 +68,3 @@ nmap('<leader>ss', '<CMD> setlocal spell! <CR>') -- toggle spell checking
 nmap('<leader>sb', '<CMD> setlocal spell spelllang=en_gb,nl <CR>') -- turn on English + Dutch
 nmap('<leader>se', '<CMD> setlocal spell spelllang=en_gb <CR>') -- turn on just Brittish English
 nmap('<leader>sn', '<CMD> setlocal spell spelllang=nl <CR>') -- turn on just Dutch
-
