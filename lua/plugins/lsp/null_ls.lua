@@ -22,6 +22,7 @@ null_ls.setup({
     b.code_actions.shellcheck, -- sh
     b.code_actions.gitsigns, -- git integration
 
+    b.formatting.shellharden, -- sh
     b.formatting.rustfmt, -- rust
     b.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }), -- sql
     b.formatting.eslint_d.with({ extra_args = eslint_extra_args }), -- js
