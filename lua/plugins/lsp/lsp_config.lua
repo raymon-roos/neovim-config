@@ -31,12 +31,12 @@ mason_lspconfig.setup_handlers({
     }
   end,
   -- Next, you can provide targeted overrides for specific servers.
-  ["sumneko_lua"] = function()
+  ["lua_ls"] = function()
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
 
-    lspconfig.sumneko_lua.setup {
+    lspconfig.lua_ls.setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
