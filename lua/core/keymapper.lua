@@ -8,7 +8,7 @@ local keymapper = {}
 --- @param rhs string
 --- @param opts table?
 --- @return nil
- function keymapper.map(modes, lhs, rhs, opts)
+function keymapper.map(modes, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)

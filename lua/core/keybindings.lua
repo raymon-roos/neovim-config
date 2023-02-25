@@ -8,7 +8,7 @@ local imap = mappers.imap
 local tmap = mappers.tmap
 
 -- space as (global) leader key
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 map({ 'n', 'v' }, '<space>', '<nop>')
 
 nmap('<leader>hh', ':vertical help', { silent = false })
