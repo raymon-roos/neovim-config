@@ -67,3 +67,9 @@ nmap('<leader>ss', '<CMD> setlocal spell! <CR>') -- toggle spell checking
 nmap('<leader>sb', '<CMD> setlocal spell spelllang=en_gb,nl <CR>') -- turn on English + Dutch
 nmap('<leader>se', '<CMD> setlocal spell spelllang=en_gb <CR>') -- turn on just Brittish English
 nmap('<leader>sn', '<CMD> setlocal spell spelllang=nl <CR>') -- turn on just Dutch
+
+-- Change all double quotes to single quotes in selected lines
+nmap('<leader>qD', '<CMD> %s#\'#"#g <CR>') --mnemonic: quotes -> single
+nmap('<leader>qS', '<CMD> %s#"#\'#g <CR>') --mnemonic: quotes -> double
+vmap('<leader>qs', '<CMD> s#"#\'#g <CR>')
+vmap('<leader>qd', '<CMD> s#\'#"#g <CR>')
