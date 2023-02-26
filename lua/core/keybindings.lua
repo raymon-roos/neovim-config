@@ -46,6 +46,7 @@ nmap("<leader>bad", "<CMD>%bd<CR>")
 nmap("<C-s>", "<CMD>update<CR>") -- Cheeky little crtl+s bind
 nmap("<leader>bw", "<CMD>update<CR>")
 nmap("<leader>bW", "<CMD>update!<CR>")
+nmap("<leader>bp", "<CMD>echo expand('%:p')<CR>")
 
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
