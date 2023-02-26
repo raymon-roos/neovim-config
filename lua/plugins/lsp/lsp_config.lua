@@ -1,12 +1,8 @@
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level('off')
 
 local lspconfig = require('lspconfig')
 
 local util = lspconfig.util
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
 
 util.default_config = vim.tbl_deep_extend('force',
   util.default_config,
@@ -14,11 +10,13 @@ util.default_config = vim.tbl_deep_extend('force',
     flags = {
       debounce_text_changes = 250,
     },
-    capabilities = capabilities
+    -- insert propterties into _every_ attached server instance
+    capabilities = require('cmp_nvim_lsp').default_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    ),
+    on_attach = require('plugins.lsp.on_attach_callback'),
   }
 )
-
-local on_attach = require('plugins.lsp.on_attach_callback')
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({
@@ -26,19 +24,17 @@ mason_lspconfig.setup_handlers({
   -- called for each installed server that doesn't have a dedicated handler.
   function(server_name)
     lspconfig[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
+      -- capabilities = capabilities,
+      -- on_attach = on_attach,
     }
   end,
   -- Next, you can provide targeted overrides for specific servers.
-  ["lua_ls"] = function()
+  ['lua_ls'] = function()
     local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
+    table.insert(runtime_path, 'lua/?.lua')
+    table.insert(runtime_path, 'lua/?/init.lua')
 
     lspconfig.lua_ls.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
       settings = {
         Lua = {
           runtime = {
@@ -46,12 +42,12 @@ mason_lspconfig.setup_handlers({
             path = runtime_path,
           },
           diagnostics = {
-            globals = { "vim" },
+            globals = { 'vim' },
           },
           workspace = {
             library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
+              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+              [vim.fn.stdpath('config') .. '/lua'] = true,
             },
           },
           telemetry = {
@@ -63,8 +59,6 @@ mason_lspconfig.setup_handlers({
   end,
   ['html'] = function()
     lspconfig.html.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
       filetypes = { 'html', 'twig' },
       settings = {
         html = {
@@ -75,8 +69,6 @@ mason_lspconfig.setup_handlers({
   end,
   ['tailwindcss'] = function()
     lspconfig.tailwindcss.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
       filetypes = { 'php', 'html', 'js', 'blade.php' },
       autostart = false,
       settings = {
@@ -86,8 +78,8 @@ mason_lspconfig.setup_handlers({
   end,
   ['ltex'] = function()
     lspconfig.ltex.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
+      -- capabilities = capabilities,
+      -- on_attach = on_attach,
       settings = {
         ltex = {
           language = 'en-GB',
@@ -97,21 +89,26 @@ mason_lspconfig.setup_handlers({
             motherTongue = 'nl',
           },
           hiddenFalsePositives = { 'Bit', 'Academy' },
+          log_level = { 'finest' },
         },
       },
     }
   end,
   ['intelephense'] = function()
-    util.default_config = vim.tbl_deep_extend(
-      'force', util.default_config, require('plugins.lsp.intelephense')
-    )
     lspconfig.intelephense.setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
+      init_options = {
+        globalStoragePath = vim.fn.expand("$XDG_STATE_HOME") .. "/intelephense",
+      },
+      settings = {
+        intelephense = {
+          files = {
+            maxSize = 2000000, -- In bytes
+          },
+          telemetry = {
+            enabled = false,
+          },
+        },
+      }
     }
   end
 })
-
--- for server_name,setup_callback in ipairs(require('plugins.lsp.server_configs')) do
---   table.insert(mason_lspconfig.setup_handlers[server_name], setup_callback)
--- end

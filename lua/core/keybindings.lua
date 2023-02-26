@@ -57,6 +57,15 @@ nmap('<leader>ee', '<CMD> Lexplore 15 <CR>')
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
 
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files)
+vim.keymap.set('n', '<leader>fo', builtin.oldfiles)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep)
+vim.keymap.set('n', '<leader>fb', builtin.buffers)
+vim.keymap.set('n', '<leader>fh', builtin.help_tags)
+vim.keymap.set('n', '<leader>fc', builtin.command_history)
+vim.keymap.set('n', '<leader>fp', builtin.registers)
+
 -- easily open windows of relevant plugins
 nmap('<leader>mm', '<CMD> Mason <CR>')
 nmap('<leader>pp', '<CMD> LspInfo <CR>')
@@ -68,6 +77,7 @@ nmap('<leader>ss', '<CMD> setlocal spell! <CR>') -- toggle spell checking
 nmap('<leader>sb', '<CMD> setlocal spell spelllang=en_gb,nl <CR>') -- turn on English + Dutch
 nmap('<leader>se', '<CMD> setlocal spell spelllang=en_gb <CR>') -- turn on just Brittish English
 nmap('<leader>sn', '<CMD> setlocal spell spelllang=nl <CR>') -- turn on just Dutch
+vim.keymap.set('n', '<leader>fs', builtin.spell_suggest)
 
 -- Change all double quotes to single quotes in selected lines
 nmap('<leader>qD', '<CMD> %s#\'#"#g <CR>') --mnemonic: quotes -> single

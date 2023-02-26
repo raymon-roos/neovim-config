@@ -13,14 +13,14 @@ require('packer').startup({
       -------------------------------------------------------
       { -- Color scheme
         'ellisonleao/gruvbox.nvim',
-        disable = true,
-        config = function() require('plugins.gruvbox') end
+        disable = false,
+        config = function() require('plugins.appearance.gruvbox') end,
       },
       { -- Color scheme
         'RRethy/nvim-base16',
-        config = function()
-          vim.cmd([[ colorscheme base16-gruvbox-dark-hard ]])
-        end
+        -- config = function()
+        -- vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+        -- end
       },
       { -- status line
         'nvim-lualine/lualine.nvim',
@@ -158,9 +158,24 @@ require('packer').startup({
           vim.keymap.set({ 'n', 'x', 'o' }, '<leader>t', function() require 'leap-ast'.leap() end, {})
         end
       },
+
+      -------------------------------------------------------
+      -- Telescopoe related
+      -------------------------------------------------------
+      { -- Picker/finder interface
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('plugins.telescope') end
+      },
+      {
+        'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
+        config = function()
+          require('telescope').load_extension('fzf')
+        end
+      },
     }
   end,
-
   -------------------------------------------------------
   -- Settings for packer
   -------------------------------------------------------
