@@ -65,10 +65,10 @@ mason_lspconfig.setup_handlers({
     lspconfig.html.setup {
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { 'html', 'twig' },
       settings = {
         html = {
           mirrorCursorOnMatchingTag = { true },
-          filetypes = { 'html', 'twig', 'php', 'blade' },
         },
       }
     }
