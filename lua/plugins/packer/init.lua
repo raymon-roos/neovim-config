@@ -63,11 +63,9 @@ require('packer').startup({
       -------------------------------------------------------
       { -- LSP server installer/manager
         'williamboman/mason.nvim',
-        bufread = false,
       },
       { -- Mason integration with lsp-config
         'williamboman/mason-lspconfig.nvim',
-        buffread = false,
         requires = {
           'williamboman/mason.nvim',
         },
