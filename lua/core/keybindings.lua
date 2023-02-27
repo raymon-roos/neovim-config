@@ -65,6 +65,7 @@ nmap('<leader>fb', telescope.buffers)
 nmap('<leader>fh', telescope.help_tags)
 nmap('<leader>fc', telescope.command_history)
 nmap('<leader>fp', telescope.registers)
+nmap('<leader>fP', '<CMD> Telescope neoclip layout_strategy=fle<CR>')
 nmap('<leader>fr', telescope.lsp_references)
 nmap('<leader>fw', telescope.lsp_workspace_symbols)
 

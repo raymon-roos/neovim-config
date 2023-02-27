@@ -169,10 +169,19 @@ require('packer').startup({
         config = function() require('plugins.telescope_config') end
       },
       {
-        'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make',
+        requires = 'nvim-telescope/telescope.nvim',
+        config = function() require('telescope').load_extension('fzf') end
+      },
+      {
+        "AckslD/nvim-neoclip.lua",
+        requires = 'nvim-telescope/telescope.nvim',
         config = function()
-          require('telescope').load_extension('fzf')
-        end
+          require('telescope').load_extension('neoclip')
+          require('telescope').load_extension('macroscope')
+          require('neoclip').setup()
+        end,
       },
     }
   end,
