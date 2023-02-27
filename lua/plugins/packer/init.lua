@@ -166,7 +166,7 @@ require('packer').startup({
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         requires = 'nvim-lua/plenary.nvim',
-        config = function() require('plugins.telescope') end
+        config = function() require('plugins.telescope_config') end
       },
       {
         'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
