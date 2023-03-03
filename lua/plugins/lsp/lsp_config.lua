@@ -80,6 +80,7 @@ mason_lspconfig.setup_handlers({
     lspconfig.ltex.setup {
       -- capabilities = capabilities,
       -- on_attach = on_attach,
+      filetypes = { 'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc', 'text' },
       settings = {
         ltex = {
           language = 'en-GB',
