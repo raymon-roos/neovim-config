@@ -31,7 +31,7 @@ null_ls.setup({
     }),
     b.formatting.phpcbf.with({ -- php
       command = phpcs_path .. 'phpcbf',
-      extra_args = { phpcs_rules },
+      extra_args = { phpcs_rules, '--config-set tab_width 4' },
     }),
     b.formatting.stylua, -- lua
 
