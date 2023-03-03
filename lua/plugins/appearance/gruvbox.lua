@@ -1,4 +1,4 @@
-require("gruvbox").setup({
+require('gruvbox').setup({
   undercurl = true,
   underline = true,
   underlineline = true,
@@ -11,10 +11,10 @@ require("gruvbox").setup({
   invert_signs = false,
   invert_tabline = false,
   invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = 'hard', -- can be "hard", "soft" or empty string
+  inverse = false, -- invert background for search, diffs, statuslines and errors
+  contrast = 'hard', -- can be 'hard', 'soft' or empty string
   overrides = {
-    String = { italic = false },
+    String = { italic = true },
     SignColumn = { bg = 'none' },
     FoldColumn = { bg = 'none' },
     GruvboxGreenSign = { bg = 'none' },
