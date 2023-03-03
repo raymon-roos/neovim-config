@@ -8,22 +8,22 @@ telescope.setup {
         ['q']     = actions.close,
         ['<C-u>'] = actions.results_scrolling_up,
         ['<C-d>'] = actions.results_scrolling_down,
-        ['<C-f>'] = actions.preview_scrolling_up,
-        ['<C-b>'] = actions.preview_scrolling_down,
+        ['<C-b>'] = actions.preview_scrolling_up,
+        ['<C-f>'] = actions.preview_scrolling_down,
       },
       i = {
         ['<C-u>'] = actions.results_scrolling_up,
         ['<C-d>'] = actions.results_scrolling_down,
-        ['<C-f>'] = actions.preview_scrolling_up,
-        ['<C-b>'] = actions.preview_scrolling_down,
+        ['<C-b>'] = actions.preview_scrolling_up,
+        ['<C-f>'] = actions.preview_scrolling_down,
       }
     },
     layout_config = {
       flex = {
         horizontal = {
-          preview_width = 0.65,
+          preview_width = 0.60,
         },
-        flip_columns = 150,
+        flip_columns = 170,
         width = 0.65,
         height = 0.8,
         anchor = 'c',
