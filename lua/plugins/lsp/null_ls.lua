@@ -34,6 +34,7 @@ null_ls.setup({
       extra_args = { phpcs_rules, '--config-set tab_width 4' },
     }),
     b.formatting.stylua, -- lua
+    b.formatting.blade_formatter, -- laravel blade templates
 
     -- completion
     -- b.completion.luasnip
