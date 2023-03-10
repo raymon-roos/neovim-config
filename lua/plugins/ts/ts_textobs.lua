@@ -2,18 +2,19 @@ require 'nvim-treesitter.configs'.setup {
   textobjects = {
     select = {
       enable = true,
-
       -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
-
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["aC"] = "@class.outer",
-        -- You can optionally set descriptions to the mappings (used in the desc parameter of
-        -- nvim_buf_set_keymap) which plugins like which-key display
-        ["iC"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ['if'] = '@function.inner',
+        ['af'] = '@function.outer',
+        ['iC'] = '@class.inner',
+        ['aC'] = '@class.outer',
+        ['as'] = '@scope',
+        ['il'] = '@loop.inner',
+        ['al'] = '@loop.outer',
+        ['ii'] = '@conditional.inner',
+        ['ai'] = '@conditional.outer',
       },
       -- You can choose the select mode (default is charwise 'v')
       --
@@ -23,9 +24,10 @@ require 'nvim-treesitter.configs'.setup {
       -- and should return the mode ('v', 'V', or '<c-v>') or a table
       -- mapping query_strings to modes.
       selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
+        ['@parameter.outer'] = 'v',
+        ['@function.outer'] = 'v',
+        ['@class.outer'] = 'V',
+        ['@scope'] = '<c-v>',
       },
       -- If you set this to `true` (default is `false`) then any textobject is
       -- extended to include preceding or succeeding whitespace. Succeeding
@@ -41,19 +43,31 @@ require 'nvim-treesitter.configs'.setup {
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>s"] = "@parameter.inner",
+        ['<leader>s'] = '@parameter.inner',
       },
       swap_previous = {
-        ["<leader>S"] = "@parameter.inner",
+        ['<leader>S'] = '@parameter.inner',
       },
     },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next = {
+        [']i'] = '@conditional.outer',
+        [']l'] = '@loop.outer',
+      },
+      goto_previous = {
+        ['[i'] = '@conditional.outer',
+        ['[l'] = '@loop.outer',
+      }
+    }
   },
   lsp_interop = {
     enable = true,
-    border = 'none',
+    border = 'rounded',
     peek_definition_code = {
-      ["<leader>df"] = "@function.outer",
-      ["<leader>dF"] = "@class.outer",
+      ['<leader>tf'] = '@function.outer',
+      ['<leader>tF'] = '@class.outer',
     },
   },
 }
