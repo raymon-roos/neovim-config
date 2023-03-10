@@ -35,8 +35,7 @@ null_ls.setup({
     b.formatting.stylua, -- lua
     b.formatting.blade_formatter, -- laravel blade templates
 
-    -- completion
-    -- b.completion.luasnip
+    b.completion.tags,
   },
 
   border = 'rounded',
