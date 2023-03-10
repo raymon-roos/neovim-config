@@ -14,6 +14,34 @@ autocmd('TextYankPost', {
 augroup('nvimOpts', { clear = true })
 autocmd('BufWritePost', {
   group = 'nvimOpts',
-  pattern = 'core/options.lua',
+  pattern = vim.fn.stdpath('config') .. '**/*.lua',
   command = 'source <afile>'
+})
+
+-- set highlights after colorscheme
+augroup('highlights', { clear = true })
+autocmd('ColorScheme', {
+  group = 'highlights',
+  pattern = '*',
+  callback = function()
+    -- The below settings make Leap's highlighting closer to what you've been
+    -- used to in Lightspeed. Has the adventage of giving imediate visual
+    -- feedback when the leap key is triggered.
+
+    vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
+
+    vim.api.nvim_set_hl(0, 'LeapMatch', {
+      fg = 'white', bold = true, nocombine = true,
+    })
+
+    vim.api.nvim_set_hl(0, 'LeapLabelPrimary', {
+      fg = 'yellow', bold = true, nocombine = true,
+    })
+
+    vim.api.nvim_set_hl(0, 'LeapLabelSecondary', {
+      fg = 'blue', bold = true, nocombine = true,
+    })
+
+    require('leap').opts.highlight_unlabeled_phase_one_targets = true
+  end
 })
