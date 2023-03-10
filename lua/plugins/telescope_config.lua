@@ -18,6 +18,7 @@ telescope.setup {
         ['<C-f>'] = actions.preview_scrolling_down,
       }
     },
+    layout_strategy = 'flex',
     layout_config = {
       flex = {
         horizontal = {
@@ -31,9 +32,6 @@ telescope.setup {
     },
   },
   pickers = {
-    find_files = {
-      layout_strategy = 'flex'
-    },
     buffers = {
       theme = 'ivy',
       layout_config = {
