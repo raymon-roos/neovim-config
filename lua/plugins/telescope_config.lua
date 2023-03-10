@@ -24,7 +24,7 @@ telescope.setup {
         horizontal = {
           preview_width = 0.60,
         },
-        flip_columns = 170,
+        flip_columns = 180,
         width = 0.65,
         height = 0.8,
         anchor = 'c',
