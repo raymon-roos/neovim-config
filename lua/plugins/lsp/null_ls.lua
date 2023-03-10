@@ -19,7 +19,6 @@ null_ls.setup({
     }),
 
     b.code_actions.eslint_d.with({ extra_args = eslint_extra_args }), -- js
-    b.code_actions.shellcheck, -- sh
     b.code_actions.gitsigns, -- git integration
 
     b.formatting.shellharden, -- sh
