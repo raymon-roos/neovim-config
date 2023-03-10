@@ -1,4 +1,4 @@
-vim.cmd [[autocmd! ColorScheme * highlight LspInfoBorder guifg=#d5c4a1]]
+vim.cmd [[autocmd! ColorScheme * highlight link LspInfoBorder FloatBorder]]
 
 local signs = {
   { name = "DiagnosticSignError", text = " " },
