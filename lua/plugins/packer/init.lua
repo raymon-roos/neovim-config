@@ -51,7 +51,7 @@ require('packer').startup({
         'terrortylor/nvim-comment',
         config = function() require('plugins.coding.comment') end
       },
-      { -- easilly suround text with given character or tag
+      { -- easilly suround text with given character or tag or function call
         'kylechui/nvim-surround',
         config = function() require('nvim-surround').setup() end
       },
@@ -87,7 +87,7 @@ require('packer').startup({
       -------------------------------------------------------
       -- Auto-completion
       -------------------------------------------------------
-      {
+      { -- completion sources
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
@@ -166,13 +166,13 @@ require('packer').startup({
         requires = 'nvim-lua/plenary.nvim',
         config = function() require('plugins.telescope_config') end
       },
-      {
+      { -- Integrates external fuzzy matcher/sorter program
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make',
         requires = 'nvim-telescope/telescope.nvim',
         config = function() require('telescope').load_extension('fzf') end
       },
-      {
+      { -- Clipboard management through Telescope interface
         "AckslD/nvim-neoclip.lua",
         requires = 'nvim-telescope/telescope.nvim',
         config = function()
