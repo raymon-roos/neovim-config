@@ -70,7 +70,7 @@ require('dressing').setup({
     enabled = true,
 
     -- Priority list of preferred vim.select implementations
-    backend = { "builtin", "telescope", "fzf_lua", "fzf", "nui" },
+    backend = { "telescope", "builtin", "fzf_lua", "fzf", "nui" },
 
     -- Trim trailing `:` from prompt
     trim_prompt = true,
@@ -78,7 +78,7 @@ require('dressing').setup({
     -- Options for telescope selector
     -- These are passed into the telescope picker directly. Can be used like:
     -- telescope = require('telescope.themes').get_ivy({...})
-    telescope = nil,
+    telescope = require('telescope.themes').get_cursor(),
 
     -- Options for built-in selector
     builtin = {
