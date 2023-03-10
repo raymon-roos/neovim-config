@@ -150,11 +150,9 @@ require('packer').startup({
         'ggandor/leap-spooky.nvim',
         config = function() require('plugins.leap_spooky') end
       },
-      { -- Operate on remote TS objects
-        'ggandor/leap-ast.nvim',
-        config = function()
-          vim.keymap.set({ 'n', 'x', 'o' }, '<leader>t', function() require 'leap-ast'.leap() end, {})
-        end
+      { -- f/t motions on steriods, extending leap interface. (labeled targets. single key searches and repeats)
+        'ggandor/flit.nvim',
+        config = function() require('flit').setup() end,
       },
 
       -------------------------------------------------------
