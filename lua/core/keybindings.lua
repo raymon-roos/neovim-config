@@ -27,6 +27,7 @@ map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
 map({ 'n', 'v', 'i', 't' }, '<A-j>', '<C-\\><C-N><C-w>j')
 map({ 'n', 'v', 'i', 't' }, '<A-k>', '<C-\\><C-N><C-w>k')
 map({ 'n', 'v', 'i', 't' }, '<A-l>', '<C-\\><C-N><C-w>l')
+
 -- spawn a terminal
 map({ 'n', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
 map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
