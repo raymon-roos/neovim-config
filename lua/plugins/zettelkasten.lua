@@ -1,53 +1,66 @@
---  ZETTELKASTEN CONFIGURATION
---  Note that $NOTES_DIR is an environment variable pointing to the single
---  flat directory holding all the notes or "zettels"
+--  Note that $NOTES_DIR is a shell environment variable pointing to
+--  the single flat directory holding all the notes or "zettels"
 
 local nmap = require('core.keymapper').nmap
+local user_func = vim.api.nvim_create_user_command
+local fn = vim.fn
 
---  Change working directory to zettelkasten and open index
-nmap('<leader>zi', '<cmd> e $NOTES_DIR/index-202202270044.md <cr> <cmd> cd $NOTES_DIR <cr> <cmd> pwd <cr>')
---  mnemonic: zettel->index
+local function create_zettel(file_name, split)
+  local zettel_name = fn.fnameescape(
+    fn.expand('$NOTES_DIR/') .. file_name
+    .. fn.strftime("-%Y%m%d%H%M") .. '.md'
+  )
 
--- Generate ctags
-nmap('<leader>tt', '<cmd> !ctags -R <cr>')
--- mnemonic: tags->tags
+  if split ~= 'split' and split ~= 'vsplit' and split ~= 'edit' then
+    split = 'edit'
+  end
 
-vim.cmd(
-[[
-  " Quickly create a new entry into the zettelkasten 
-  command! -nargs=1 NewZettel :execute ":e" fnameescape($NOTES_DIR . "/<args>-") . strftime("%Y%m%d%H%M") . ".md" 
-  nnoremap <leader>zz :NewZettel
-  " mnemonic: zettel->zettel
+  vim.cmd(split .. ' ' .. zettel_name)
+  print(fn.expand('%:p:~'))
+end
 
-  " Create a new note in a vertically stacked window
-  command! -nargs=1 SplitZettel :execute ":split" fnameescape($NOTES_DIR . "/<args>-") . strftime("%Y%m%d%H%M") . ".md"
-  nnoremap <leader>zv :SplitZettel
-  " mnemonic: zettel->vertical
+user_func('NewZettel', function(opts)
+    create_zettel(opts.fargs[1], 'edit')
+  end,
+  { nargs = 1 }
+)
+nmap('<leader>zz', ':NewZettel ', { silent = false })
+--  mnemonic: zettel->zettel
 
-  " Update tag list in index.md 
-  " Very much work in progress, haven't found a good way to delete the old list
-  " of tags from index yet
+user_func('SplitZettel', function(opts)
+    create_zettel(opts.fargs[1], 'split')
+  end,
+  { nargs = 1 }
+)
+nmap('<leader>zs', ':SplitZettel ', { silent = false })
+--  mnemonic: zettel->split
 
-  " function GenerateTags()
-  " :execute ':%read !sed ''/^\!_/d'' $NOTES_DIR/tags | sed ''/^\@/d'' $NOTES_DIR/index-202202270044.md | awk ''{ print "@" $1 }'' | sort -u'
-  " endfunction
+user_func('VertZettel', function(opts)
+    create_zettel(opts.fargs[1], 'vsplit')
+  end,
+  { nargs = 1 }
+)
+nmap('<leader>zv', ':VertZettel ', { silent = false })
+--  mnemonic: zettel->vertical
 
-  command! GenerateTags :execute '%read !sed '/^\!_/d' $NOTES_DIR/tags | awk '{ print "@" $1 }' | sort -u'
-  nnoremap <leader>tg GenerateTags <CR>
-  " mnemonic: tags->generate
+nmap( -- Change working directory to zettelkasten and open index
+  '<leader>zi',
+  '<CMD> e $NOTES_DIR/index-202202270044.md <CR>'
+  .. '<CMD> cd $NOTES_DIR <CR>'
+  .. '<CMD> pwd <CR>'
+) --  mnemonic: zettel->index
 
-  " Look for notes
-  command! -nargs=1 Ngrep grep "<args>" -g "*.md" $NOTES_DIR
-  nnoremap <leader>zs :Ngrep
-  " mnemonic: zettel->search
+-- Be explicit about input and output files,
+-- to prevent running accidently on the wrong project.
+-- Also, don't parse the index file, 'cause I keep a
+-- list of all tags there for easy navigation.
+nmap( -- Generate ctags
+  '<leader>zt',
+  '<CMD> !ctags -R --exclude=index-202202270044.md -f "$NOTES_DIR"/tags "$NOTES_DIR"/*.md <CR>'
+) -- mnemonic: zettel->tags
 
-  " Open a navigation panel for grep'd  notes
-  command! Vlist botright vertical copen | vertical resize 50
-  nnoremap <leader>zl :Vlist<CR>
-  " mnemonic: zettel->list
-]], true)
-
-
-
-
-
+-- nmap( -- update the list of tags at the end of index.md
+--   '<leader>zT',
+--   "<CMD> execute 'g/^` @[a-z-]* `/d' | %read !awk '\\!/^\\!_TAG_/ {print \"` @\" $1 \" `\"}' ./tags | sort -u <CR>"
+-- ) -- works like a dream, but decided there are plenty powerful tools for
+-- listing/searching/finding tags so it's counter productive maintaining a list manually.
