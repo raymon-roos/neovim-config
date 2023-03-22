@@ -150,10 +150,6 @@ require('packer').startup({
         'ggandor/leap-spooky.nvim',
         config = function() require('plugins.leap_spooky') end
       },
-      { -- f/t motions on steriods, extending leap interface. (labeled targets. single key searches and repeats)
-        'ggandor/flit.nvim',
-        config = function() require('flit').setup() end,
-      },
 
       -------------------------------------------------------
       -- Telescopoe related
