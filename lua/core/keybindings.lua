@@ -11,11 +11,15 @@ local tmap = mappers.tmap
 vim.g.mapleader = ' '
 map({ 'n', 'v' }, '<space>', '<nop>')
 
-nmap('<leader>hh', ':vertical help', { silent = false })
-
 -- navigate wrapped lines more easily
 nmap('j', 'gj')
 nmap('k', 'gk')
+
+-- "drag" lines up and down
+nmap('<S-A-j>', '<CMD> move .+1 <CR>')
+nmap('<S-A-k>', '<CMD> move .-2 <CR>')
+vmap('<S-A-j>', ": '<,'>move '>+1 <CR> gvgv")
+vmap('<S-A-k>', ": '<,'>move '<-2 <CR> gvgv")
 
 -- rapidly abort
 imap('kj', '<esc>')
@@ -54,6 +58,8 @@ tmap('<Esc>', '<C-\\><C-n>')
 
 -- using netrw as a filedrawer
 nmap('<leader>ee', '<CMD> Lexplore 15 <CR>')
+
+nmap('<leader>hh', ':vertical help', { silent = false })
 
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
