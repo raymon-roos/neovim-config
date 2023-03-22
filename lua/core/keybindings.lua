@@ -29,16 +29,21 @@ nmap('<leader>O', function() vim.fn.append(vim.fn.line('.') - 1, '') end)
 imap('kj', '<esc>')
 cmap('kj', '<C-c>')
 
--- window navigation, in terminal/normal/insert/visual modes
--- using alt for all window operations
+-- using alt as a modifier for window and buffer navigation
+
+-- quickly set and switch between some marks
+nmap('<C-A-o>', '<CMD> mark O <CR>')
+nmap('<C-A-i>', '<CMD> mark I <CR>')
+nmap('<C-A-u>', '<CMD> mark U <CR>')
+nmap('<A-o>', '`O zz')
+nmap('<A-i>', '`I zz')
+nmap('<A-u>', '`U zz')
+
+-- window navigation, alt+h/j/k/l to move to another window
 map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
 map({ 'n', 'v', 'i', 't' }, '<A-j>', '<C-\\><C-N><C-w>j')
 map({ 'n', 'v', 'i', 't' }, '<A-k>', '<C-\\><C-N><C-w>k')
 map({ 'n', 'v', 'i', 't' }, '<A-l>', '<C-\\><C-N><C-w>l')
-
--- spawn a terminal
-map({ 'n', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
-map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
 nmap('<A-.>', '<CMD> vertical resize +7 <CR>')
@@ -56,6 +61,10 @@ nmap("<C-s>", "<CMD>update<CR>") -- Cheeky little crtl+s bind
 nmap("<leader>bw", "<CMD>update<CR>")
 nmap("<leader>bW", "<CMD>update!<CR>")
 nmap("<leader>bp", "<CMD>echo expand('%:p')<CR>")
+
+-- spawn a terminal
+map({ 'n', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
+map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
