@@ -68,6 +68,7 @@ nmap('<leader>hh', ':vertical help', { silent = false })
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
 
+-- Telescope. 'f' for find
 local telescope = require('telescope.builtin')
 nmap('<leader>ff', telescope.find_files)
 nmap('<leader>fo', telescope.oldfiles)
@@ -82,6 +83,7 @@ nmap('<leader>fr', telescope.lsp_references)
 nmap('<leader>fw', telescope.lsp_document_symbols)
 nmap('<leader>fW', telescope.lsp_dynamic_workspace_symbols)
 nmap('<leader>fR', telescope.resume)
+nmap('<leader>fu', '<CMD> Telescope undo layout_strategy=flex<CR>')
 
 -- easily open windows of relevant plugins
 nmap('<leader>mm', '<CMD> Mason <CR>')
