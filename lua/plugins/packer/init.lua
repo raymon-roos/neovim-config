@@ -12,13 +12,13 @@ require('packer').startup({
       -- Appearance
       -------------------------------------------------------
       { -- Color scheme
-        -- 'ellisonleao/gruvbox.nvim',
-        -- disable = false,
-        -- config = function() require('plugins.appearance.gruvbox') end,
+        'ellisonleao/gruvbox.nvim',
+        disable = true,
+        config = function() require('plugins.appearance.gruvbox') end,
       },
       { -- Color scheme
         'RRethy/nvim-base16',
-        config = function() vim.cmd.colorscheme 'base16-tomorrow-night-eighties' end
+        config = function() vim.cmd.colorscheme('base16-tomorrow-night-eighties') end
       },
       { -- status line
         'nvim-lualine/lualine.nvim',
@@ -51,7 +51,7 @@ require('packer').startup({
         'terrortylor/nvim-comment',
         config = function() require('plugins.coding.comment') end
       },
-      { -- easilly suround text with given character or tag or function call
+      { -- easilly suround text with given character, tag or function call
         'kylechui/nvim-surround',
         config = function() require('nvim-surround').setup() end
       },
