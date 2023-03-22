@@ -45,3 +45,12 @@ autocmd('ColorScheme', {
     require('leap').opts.highlight_unlabeled_phase_one_targets = true
   end
 })
+
+-- null-ls has an issue with gqq when an lsp is attached, but the below solves it. See:
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1259
+-- Use internal formatting for bindings like gq.
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        vim.bo[args.buf].formatexpr = nil
+    end,
+})
