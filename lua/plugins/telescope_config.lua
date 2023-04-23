@@ -35,6 +35,10 @@ telescope.setup {
     buffers = {
       theme = 'ivy',
       layout_config = {
+        height = 24,
+        preview_width = 0.55
+      }
+    },
     diagnostics = {
       theme = 'ivy',
       layout_config = {
