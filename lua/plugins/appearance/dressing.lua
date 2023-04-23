@@ -78,8 +78,13 @@ require('dressing').setup({
     -- Options for telescope selector
     -- These are passed into the telescope picker directly. Can be used like:
     -- telescope = require('telescope.themes').get_ivy({...})
-    telescope = require('telescope.themes').get_cursor(),
 
+    telescope = require('telescope.themes').get_cursor({
+      initial_mode = 'normal',
+      layout_config = {
+        height = 14,
+      }
+    }),
     -- Options for built-in selector
     builtin = {
       -- These are passed to nvim_open_win
