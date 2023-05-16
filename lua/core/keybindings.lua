@@ -83,6 +83,7 @@ nmap('<leader>dd', vim.diagnostic.hide)
 -- Telescope. 'f' for find
 local telescope = require('telescope.builtin')
 nmap('<leader>ff', telescope.find_files)
+nmap('<leader>FF', function() telescope.find_files({ no_ignore = true }) end)
 nmap('<leader>fo', telescope.oldfiles)
 nmap('<leader>fg', telescope.current_buffer_fuzzy_find)
 nmap('<leader>fG', telescope.live_grep)
