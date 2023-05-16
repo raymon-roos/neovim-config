@@ -163,7 +163,7 @@ require('packer').startup({
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         requires = 'nvim-lua/plenary.nvim',
-        config = function() require('plugins.telescope_config') end
+        config = function() require('plugins.tls.config') end
       },
       { -- Integrates external fuzzy matcher/sorter program
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -174,11 +174,7 @@ require('packer').startup({
       { -- Clipboard management through Telescope interface
         'AckslD/nvim-neoclip.lua',
         requires = 'nvim-telescope/telescope.nvim',
-        config = function()
-          require('telescope').load_extension('neoclip')
-          require('telescope').load_extension('macroscope')
-          require('neoclip').setup()
-        end,
+        config = function() require('plugins.tls.neoclip') end,
       },
       { -- Undo tree management through Telescope interface
         'debugloop/telescope-undo.nvim',

@@ -62,8 +62,12 @@ telescope.setup {
         anchor = 's',
       }
     },
+    spell_suggest = {
+      theme = 'cursor',
+      layout_config = {
+        height = 14,
+      }
+    }
   },
-  extensions = {
-    -- ...
-  }
+  extensions = {}
 }
