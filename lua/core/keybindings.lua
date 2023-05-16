@@ -109,7 +109,7 @@ nmap('<leader>sn', '<CMD> setlocal spell spelllang=nl <CR>')       -- turn on ju
 nmap('<leader>fs', telescope.spell_suggest)
 
 -- Change all double quotes to single quotes in selected lines
-nmap('<leader>qD', '<CMD> %s#\'#"#g <CR>') --mnemonic: quotes -> single
-nmap('<leader>qS', '<CMD> %s#"#\'#g <CR>') --mnemonic: quotes -> double
+nmap('<leader>qD', '<CMD> %s#\'#"#g <CR>') --mnemonic: quotes -> double
+nmap('<leader>qS', '<CMD> %s#"#\'#g <CR>') --mnemonic: quotes -> single
 vmap('<leader>qs', '<CMD> s#"#\'#g <CR>')
 vmap('<leader>qd', '<CMD> s#\'#"#g <CR>')
