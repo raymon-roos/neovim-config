@@ -21,6 +21,12 @@ nmap('<S-A-k>', '<CMD> move .-2 <CR>')
 vmap('<S-A-j>', ": '<,'>move '>+1 <CR> gvgv")
 vmap('<S-A-k>', ": '<,'>move '<-2 <CR> gvgv")
 
+-- Swap arguments
+local iswap = require('iswap')
+nmap('<leader>a', function() iswap.iswap_with() end)
+nmap('<leader>ga', function() iswap.iswap() end)
+nmap('<leader>gA', function() iswap.iswap_node() end)
+
 -- insert empty line
 nmap('<leader>o', function() vim.fn.append(vim.fn.line('.'), '') end)
 nmap('<leader>O', function() vim.fn.append(vim.fn.line('.') - 1, '') end)

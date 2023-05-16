@@ -151,6 +151,10 @@ require('packer').startup({
         'ggandor/leap-spooky.nvim',
         config = function() require('plugins.leap_spooky') end
       },
+      {
+        'mizlan/iswap.nvim',
+        config = function() require('iswap').setup() end
+      },
 
       -------------------------------------------------------
       -- Telescopoe related
