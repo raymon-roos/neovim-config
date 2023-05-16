@@ -1,6 +1,8 @@
 local o = vim.opt
 local g = vim.g
 
+vim.loader.enable()
+
 g.filetype = 'plugin indent on'
 g.syntax_on = true
 

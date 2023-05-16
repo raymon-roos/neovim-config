@@ -143,10 +143,6 @@ require('packer').startup({
         'lewis6991/gitsigns.nvim',
         config = function() require('plugins.gitsigns') end
       },
-      { -- Free extra performance?
-        'lewis6991/impatient.nvim',
-        config = function() require('plugins.impatient') end
-      },
       { -- f/t style (cross) window navigation
         'ggandor/leap.nvim',
         config = function() require('leap').add_default_mappings() end
