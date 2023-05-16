@@ -20,7 +20,6 @@ M.on_attach = function(_, bufnr)
   map('gl', vim.diagnostic.open_float)
   map('[d', vim.diagnostic.goto_prev)
   map(']d', vim.diagnostic.goto_next)
-  map('<leader>f', function() vim.lsp.buf.format { async = true } end)
   map('<leader>fm', function() vim.lsp.buf.format { async = true } end)
   map('<leader>F', function() vim.lsp.buf.format { async = true } end)
 
