@@ -77,6 +77,9 @@ nmap('<leader>hh', ':vertical help', { silent = false })
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
 
+-- Temporarily hide diagnostics
+nmap('<leader>dd', vim.diagnostic.hide)
+
 -- Telescope. 'f' for find
 local telescope = require('telescope.builtin')
 nmap('<leader>ff', telescope.find_files)
