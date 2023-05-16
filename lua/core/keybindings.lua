@@ -102,7 +102,8 @@ nmap('<leader>fu', '<CMD> Telescope undo layout_strategy=flex<CR>')
 nmap('<leader>mm', '<CMD> Mason <CR>')
 nmap('<leader>pp', '<CMD> LspInfo <CR>')
 nmap('<leader>ns', '<CMD> NullLsInfo <CR>')
-nmap('<leader>ps', '<CMD> PackerStatus <CR>')
+nmap('<leader>ps', '<CMD> PackerSync <CR>')
+nmap('<leader>PS', '<CMD> PackerStatus <CR>')
 
 -- control builtin spell Checking
 nmap('<leader>ss', '<CMD> setlocal spell! <CR>')                   -- toggle spell checking
