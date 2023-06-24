@@ -76,7 +76,7 @@ require('packer').startup({
       },
       { -- Collection of just-works configurations for lsp servers
         'neovim/nvim-lspconfig',
-        require = {
+        requires = {
           'williamboman/mason-lspconfig.nvim',
         },
         config = function() require('plugins.lsp') end
