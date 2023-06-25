@@ -51,9 +51,9 @@ require('packer').startup({
         'lukas-reineke/indent-blankline.nvim',
         config = function() require('plugins.coding.indentguide') end
       },
-      { -- easilly comment blocks of code
-        'terrortylor/nvim-comment',
-        config = function() require('plugins.coding.comment') end
+      { -- Easily comment blocks of code
+        'numToStr/Comment.nvim',
+        config = function() require('Comment').setup() end
       },
       { -- easilly suround text with given character, tag or function call
         'kylechui/nvim-surround',
