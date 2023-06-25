@@ -1,4 +1,4 @@
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -39,7 +39,7 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
- window = {
+  window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
@@ -110,30 +110,29 @@ cmp.setup({
   })
 })
 
-  -- Set configuration for specific filetype.
-  -- cmp.setup.filetype('php', {
-  --   sources = cmp.config.sources({
-  --     { name = '' },
-  --   })
-  -- })
+-- Set configuration for specific filetype.
+-- cmp.setup.filetype('php', {
+--   sources = cmp.config.sources({
+--     { name = '' },
+--   })
+-- })
 
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline({'/', '?'}, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp_document_symbol' }
-    }, {
-      { name = 'buffer' }
-    })
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' }
+  }, {
+    { name = 'buffer' }
   })
+})
 
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
   })
-
+})
