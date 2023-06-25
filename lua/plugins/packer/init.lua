@@ -154,7 +154,12 @@ require('packer').startup({
       },
       {
         'mizlan/iswap.nvim',
-        config = function() require('iswap').setup() end
+        config = function()
+          require('iswap').setup({
+            keys = 'arstdmhneio',
+            autoswap = true,
+          })
+        end
       },
 
       -------------------------------------------------------
