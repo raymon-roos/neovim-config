@@ -40,11 +40,19 @@ cmap('tn', '<C-c>')
 
 -- using alt as a modifier for window and buffer navigation
 
--- window navigation, alt+h/j/k/l to move to another window
-map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
-map({ 'n', 'v', 'i', 't' }, '<A-j>', '<C-\\><C-N><C-w>j')
-map({ 'n', 'v', 'i', 't' }, '<A-k>', '<C-\\><C-N><C-w>k')
-map({ 'n', 'v', 'i', 't' }, '<A-l>', '<C-\\><C-N><C-w>l')
+-- window navigation, alt+n/e/i/o to move to another window
+map({ 'n', 't' }, '<A-n>', '<C-\\><C-N><C-w>h')
+map({ 'n', 't' }, '<A-e>', '<C-\\><C-N><C-w>j')
+map({ 'n', 't' }, '<A-i>', '<C-\\><C-N><C-w>k')
+map({ 'n', 't' }, '<A-o>', '<C-\\><C-N><C-w>l')
+map({ 'n', 't' }, '<A-Left>', '<C-\\><C-N><C-w>h')
+map({ 'n', 't' }, '<A-Down>', '<C-\\><C-N><C-w>j')
+map({ 'n', 't' }, '<A-Up>', '<C-\\><C-N><C-w>k')
+map({ 'n', 't' }, '<A-Right>', '<C-\\><C-N><C-w>l')
+map({ 'n', 't' }, '<A-S-n>', '<C-\\><C-N><C-w>H')
+map({ 'n', 't' }, '<A-S-e>', '<C-\\><C-N><C-w>J')
+map({ 'n', 't' }, '<A-S-i>', '<C-\\><C-N><C-w>K')
+map({ 'n', 't' }, '<A-S-o>', '<C-\\><C-N><C-w>L')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
 nmap('<A-.>', '<CMD> vertical resize +7 <CR>')
