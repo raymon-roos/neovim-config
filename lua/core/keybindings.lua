@@ -78,8 +78,6 @@ tmap('<Esc>', '<C-\\><C-n>')
 -- using netrw as a filedrawer
 nmap('<leader>ee', '<CMD> Lexplore 15 <CR>')
 
-nmap('<leader>hh', ':vertical help', { silent = false })
-
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
 
