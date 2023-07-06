@@ -40,14 +40,6 @@ cmap('tn', '<C-c>')
 
 -- using alt as a modifier for window and buffer navigation
 
--- quickly set and switch between some marks
-nmap('<C-A-o>', '<CMD> mark O <CR>')
-nmap('<C-A-i>', '<CMD> mark I <CR>')
-nmap('<C-A-u>', '<CMD> mark U <CR>')
-nmap('<A-o>', '`O zz')
-nmap('<A-i>', '`I zz')
-nmap('<A-u>', '`U zz')
-
 -- window navigation, alt+h/j/k/l to move to another window
 map({ 'n', 'v', 'i', 't' }, '<A-h>', '<C-\\><C-N><C-w>h')
 map({ 'n', 'v', 'i', 't' }, '<A-j>', '<C-\\><C-N><C-w>j')
