@@ -35,8 +35,8 @@ nmap('<leader>O', function() vim.fn.append(vim.fn.line('.') - 1, '') end)
 imap('<A-;>', '<C-o>mo<C-o>A;<C-o>`o<C-o><CMD>delmarks o<CR>')
 
 -- rapidly abort
-imap('kj', '<esc>')
-cmap('kj', '<C-c>')
+imap('tn', '<esc>')
+cmap('tn', '<C-c>')
 
 -- using alt as a modifier for window and buffer navigation
 
