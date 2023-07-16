@@ -37,7 +37,7 @@ require('packer').startup({
       },
       { -- Tint inactive windows
         'levouh/tint.nvim',
-        config = function () require('tint').setup() end,
+        config = function() require('tint').setup() end,
       },
 
       -------------------------------------------------------
@@ -131,6 +131,15 @@ require('packer').startup({
         'nvim-treesitter/nvim-treesitter-textobjects',
         requires = 'nvim-treesitter/nvim-treesitter-refactor',
       },
+      {
+        'mizlan/iswap.nvim',
+        config = function()
+          require('iswap').setup({
+            keys = 'arstdmhneio',
+            autoswap = true,
+          })
+        end
+      },
 
       -------------------------------------------------------
       -- Single-purpose plugins
@@ -152,14 +161,6 @@ require('packer').startup({
         'ggandor/leap-spooky.nvim',
         config = function() require('plugins.leap_spooky') end
       },
-      {
-        'mizlan/iswap.nvim',
-        config = function()
-          require('iswap').setup({
-            keys = 'arstdmhneio',
-            autoswap = true,
-          })
-        end
       },
 
       -------------------------------------------------------
