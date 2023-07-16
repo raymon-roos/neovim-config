@@ -20,16 +20,16 @@ require('packer').startup({
         'RRethy/nvim-base16',
         config = function() vim.cmd.colorscheme('base16-tomorrow-night-eighties') end
       },
-      { -- status line
+      { -- Status line
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins.appearance.lualine') end
       },
-      { -- fancy window dressing
+      { -- Fancy window dressing
         'stevearc/dressing.nvim',
         config = function() require('plugins.appearance.dressing') end
       },
-      { -- colorizer/color picker
+      { -- Colorizer/color picker
         'uga-rosa/ccc.nvim',
         opt = true,
         ft = { 'css', 'scss', 'html' },
@@ -55,7 +55,7 @@ require('packer').startup({
         'numToStr/Comment.nvim',
         config = function() require('Comment').setup() end
       },
-      { -- easilly suround text with given character, tag or function call
+      { -- Easilly suround text with given character, tag or function call
         'kylechui/nvim-surround',
         config = function() require('nvim-surround').setup() end
       },
@@ -103,9 +103,9 @@ require('packer').startup({
         'quangnguyen30192/cmp-nvim-tags',
       },
       { -- Snippet providers
-        'saadparwaiz1/cmp_luasnip', -- luasnip integration for cmp
+        'saadparwaiz1/cmp_luasnip',     -- luasnip integration for cmp
         'rafamadriz/friendly-snippets', -- More snippets to use with luasnip
-        'L3MON4D3/LuaSnip', -- Snippet engine itself
+        'L3MON4D3/LuaSnip',             -- Snippet engine itself
       },
       { -- Auto-completion engine itself
         'hrsh7th/nvim-cmp',
