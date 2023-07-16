@@ -50,9 +50,9 @@ nmap( -- Change working directory to zettelkasten and open index
   .. '<CMD> pwd <CR>'
 ) --  mnemonic: zettel->index
 
-user_func('ZettelReferences', function ()
-  require('telescope.builtin').live_grep({default_text = vim.fn.expand('%:t')})
-end,
+user_func('ZettelReferences', function()
+    require('telescope.builtin').live_grep({ default_text = vim.fn.expand('%:t') })
+  end,
   { nargs = 0 }
 )
 nmap('<leader>zr', ':ZettelReferences <CR>')
@@ -64,6 +64,8 @@ nmap( -- Generate ctags
   '<leader>zt',
   '<CMD> !ctags -R --exclude=index-202202270044.md -f "$NOTES_DIR"/tags "$NOTES_DIR"/*.md <CR>'
 ) -- mnemonic: zettel->tags
+
+nmap('<leader>zp', '<CMD>MPToggle <CR>')
 
 -- nmap( -- update the list of tags at the end of index.md
 --   '<leader>zT',

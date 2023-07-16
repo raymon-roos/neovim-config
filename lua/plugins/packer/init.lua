@@ -162,6 +162,12 @@ require('packer').startup({
         config = function() require('plugins.leap_spooky') end
       },
       },
+      { -- Cli markdown previewer integtration
+        '0x00-ketsu/markdown-preview.nvim',
+        ft = {'md', 'markdown', 'mkd', 'mkdn', 'mdwn', 'mdown', 'mdtxt', 'mdtext', 'rmd', 'wiki'},
+        cmd = { 'MPToggle', 'MPOpen', 'MPClose', 'MPRefresh' },
+        config = function() require('markdown-preview').setup() end
+      },
 
       -------------------------------------------------------
       -- Telescopoe related
