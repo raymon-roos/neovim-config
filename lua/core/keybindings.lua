@@ -31,12 +31,11 @@ nmap('<leader>gA', function() iswap.iswap_node() end)
 nmap('<leader>o', function() vim.fn.append(vim.fn.line('.'), '') end)
 nmap('<leader>O', function() vim.fn.append(vim.fn.line('.') - 1, '') end)
 
--- Apend semicolon at the end of the line, from insert mode, without moving cursor
+-- Apend semicolon or comma at the end of the line without moving cursor
 imap('<A-;>', '<C-o>mo<C-o>A;<C-o>`o<C-o><CMD>delmarks o<CR>')
-
--- rapidly abort
-imap('tn', '<esc>')
-cmap('tn', '<C-c>')
+imap('<A-,>', '<C-o>mo<C-o>A,<C-o>`o<C-o><CMD>delmarks o<CR>')
+nmap('<A-;>', 'mo A;<ESC>`o <CMD>delmarks o<CR>')
+nmap('<C-,>', 'mo A,<ESC>`o <CMD>delmarks o<CR>')
 
 -- using alt as a modifier for window and buffer navigation
 
