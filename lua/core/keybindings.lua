@@ -60,15 +60,15 @@ nmap('<A-=>', '<CMD> resize +3 <CR>')
 nmap('<A-->', '<CMD> resize -3 <CR>')
 
 -- control buffers
-nmap("<leader>bl", "<CMD>ls<CR>")
-nmap("<leader>bd", "<CMD>bd<CR>")
-nmap("<leader>bD", "<CMD>bd!<CR>")
-nmap("<leader>bo", "<CMD>wall | %bd | e#<CR>")
-nmap("<leader>bad", "<CMD>%bd<CR>")
-nmap("<C-s>", "<CMD>update<CR>") -- Cheeky little crtl+s bind
-nmap("<leader>bw", "<CMD>update<CR>")
-nmap("<leader>bW", "<CMD>update!<CR>")
-nmap("<leader>bp", "<CMD>echo expand('%:p')<CR>")
+nmap('<leader>bl', '<CMD>ls<CR>')
+nmap('<leader>bd', '<CMD>bd<CR>')
+nmap('<leader>bD', '<CMD>bd!<CR>')
+nmap('<leader>bo', '<CMD>wall | %bd | e#<CR>')
+nmap('<leader>bad', '<CMD>%bd<CR>')
+nmap('<C-s>', '<CMD>update<CR>') -- Cheeky little crtl+s bind
+nmap('<leader>bw', '<CMD>update<CR>')
+nmap('<leader>bW', '<CMD>update!<CR>')
+nmap('<leader>bp', '<CMD>echo expand("%:p")<CR>')
 
 -- spawn a terminal
 map({ 'n', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
