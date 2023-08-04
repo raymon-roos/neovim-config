@@ -106,6 +106,10 @@ require('packer').startup({
         'saadparwaiz1/cmp_luasnip',     -- luasnip integration for cmp
         'rafamadriz/friendly-snippets', -- More snippets to use with luasnip
         'L3MON4D3/LuaSnip',             -- Snippet engine itself
+        {
+          'doxnit/cmp-luasnip-choice',  -- Incrementally offer completion choices
+          config = function() require('cmp_luasnip_choice').setup(); end,
+        },
       },
       { -- Auto-completion engine itself
         'hrsh7th/nvim-cmp',
