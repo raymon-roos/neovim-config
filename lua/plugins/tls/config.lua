@@ -6,12 +6,16 @@ telescope.setup {
     mappings = {
       n = {
         ['q']     = actions.close,
+        ['<C-q>'] = actions.smart_send_to_qflist,
+        ['<A-q>'] = actions.smart_add_to_qflist,
         ['<C-u>'] = actions.results_scrolling_up,
         ['<C-d>'] = actions.results_scrolling_down,
         ['<C-b>'] = actions.preview_scrolling_up,
         ['<C-f>'] = actions.preview_scrolling_down,
       },
       i = {
+        ['<C-q>'] = actions.smart_send_to_qflist,
+        ['<A-q>'] = actions.smart_add_to_qflist,
         ['<C-u>'] = actions.results_scrolling_up,
         ['<C-d>'] = actions.results_scrolling_down,
         ['<C-b>'] = actions.preview_scrolling_up,
@@ -37,6 +41,13 @@ telescope.setup {
       layout_config = {
         height = 24,
         preview_width = 0.55
+      }
+    },
+    quickfix = {
+      theme = 'ivy',
+      layout_config = {
+        height = 30,
+        preview_width = 0.50
       }
     },
     diagnostics = {

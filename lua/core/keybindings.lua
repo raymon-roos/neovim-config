@@ -104,6 +104,8 @@ nmap('<leader>fd', telescope.diagnostics)
 nmap('<leader>fw', telescope.lsp_document_symbols)
 nmap('<leader>fW', telescope.lsp_dynamic_workspace_symbols)
 nmap('<leader>fR', telescope.resume)
+nmap('<leader>fq', telescope.quickfix)
+nmap('<leader>fQ', telescope.quickfixhistory)
 nmap('<leader>fu', '<CMD> Telescope undo layout_strategy=flex<CR>')
 
 -- easily open windows of relevant plugins
@@ -125,3 +127,9 @@ nmap('<leader>qD', '<CMD> %s#\'#"#ge <CR>') --mnemonic: quotes -> double
 nmap('<leader>qS', '<CMD> %s#"#\'#ge <CR>') --mnemonic: quotes -> single
 vmap('<leader>qs', '<CMD> s#"#\'#ge <CR>')
 vmap('<leader>qd', '<CMD> s#\'#"#ge <CR>')
+
+-- Quickfix
+nmap('<leader>qq', '<CMD> copen <CR>')
+nmap('<leader>qn', '<CMD> cnext <CR>')
+nmap('<leader>qp', '<CMD> cprev <CR>')
+nmap('<leader>qr', '<CMD> crewind <CR>')
