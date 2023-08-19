@@ -84,7 +84,10 @@ mason_lspconfig.setup_handlers({
             motherTongue = 'nl',
           },
           hiddenFalsePositives = { 'Bit', 'Academy' },
-          log_level = { 'finest' },
+          ['ltex-ls'] = {
+            logLevel = 'severe',
+          },
+          completionEnabled = true,
         },
       },
     }
