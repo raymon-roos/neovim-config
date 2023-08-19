@@ -161,7 +161,6 @@ require('packer').startup({
         'ggandor/leap-spooky.nvim',
         config = function() require('plugins.leap_spooky') end
       },
-      },
       { -- Cli markdown previewer integtration
         '0x00-ketsu/markdown-preview.nvim',
         ft = {'md', 'markdown', 'mkd', 'mkdn', 'mdwn', 'mdown', 'mdtxt', 'mdtext', 'rmd', 'wiki'},
