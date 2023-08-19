@@ -62,3 +62,15 @@ autocmd('BufWritePre', {
   -- command = 'lua vim.lsp.buf.format({ async = true })'
   callback = function() vim.lsp.buf.format({ async = false }) end
 })
+
+augroup('IncSearchHighlight', { clear = true })
+autocmd('CmdlineEnter', {
+  group = 'IncSearchHighlight',
+  pattern = '/,\\?',
+  command = [[ :set hlsearch ]],
+})
+autocmd('CmdlineLeave', {
+  group = 'IncSearchHighlight',
+  pattern = '/,\\?',
+  command = [[ :set nohlsearch ]],
+})
