@@ -23,10 +23,7 @@ mason_lspconfig.setup_handlers({
   -- The first entry (without a key) will be the default handler and will be
   -- called for each installed server that doesn't have a dedicated handler.
   function(server_name)
-    lspconfig[server_name].setup {
-      -- capabilities = capabilities,
-      -- on_attach = on_attach,
-    }
+    lspconfig[server_name].setup({})
   end,
   -- Next, you can provide targeted overrides for specific servers.
   ['lua_ls'] = function()
@@ -78,8 +75,6 @@ mason_lspconfig.setup_handlers({
   end,
   ['ltex'] = function()
     lspconfig.ltex.setup {
-      -- capabilities = capabilities,
-      -- on_attach = on_attach,
       settings = {
         ltex = {
           language = 'en-GB',
