@@ -95,7 +95,7 @@ mason_lspconfig.setup_handlers({
   ['intelephense'] = function()
     lspconfig.intelephense.setup {
       init_options = {
-        globalStoragePath = vim.fn.expand("$XDG_STATE_HOME") .. "/intelephense",
+        globalStoragePath = vim.fn.expand('$XDG_DATA_HOME') .. '/intelephense',
       },
       settings = {
         intelephense = {
