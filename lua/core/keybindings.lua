@@ -133,3 +133,12 @@ nmap('<leader>qq', '<CMD> copen <CR>')
 nmap('<leader>qn', '<CMD> cnext <CR>')
 nmap('<leader>qp', '<CMD> cprev <CR>')
 nmap('<leader>qr', '<CMD> crewind <CR>')
+
+-- Test runner
+local neotest = require('neotest')
+nmap('<leader>tt', function() neotest.run.run() end)
+nmap('<leader>tf', function() neotest.run.run(vim.fn.expand('%')) end)
+nmap('<leader>ts', function() neotest.summary.toggle() end)
+nmap('<leader>to', function() neotest.output.open({ quiet = true, short = true, auto_close = true, }) end)
+nmap('<leader>tO', function() neotest.output_panel.toggle() end)
+nmap('<leader>tw', function() neotest.watch.toggle() end)
