@@ -139,7 +139,7 @@ require('packer').startup({
         'mizlan/iswap.nvim',
         config = function()
           require('iswap').setup({
-            keys = 'arstdmhneio',
+            keys = 'arstdyhneio',
             autoswap = true,
           })
         end
