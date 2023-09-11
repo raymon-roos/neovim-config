@@ -146,6 +146,21 @@ require('packer').startup({
       },
 
       -------------------------------------------------------
+      -- Test-runners related
+      -------------------------------------------------------
+      { -- Plugin framework for running unit tests
+        'nvim-neotest/neotest',
+        requires = {
+          -- Dependencies
+          'nvim-lua/plenary.nvim',
+          'nvim-treesitter/nvim-treesitter',
+          -- Runners
+          'olimorris/neotest-phpunit',
+        },
+        config = function() require('plugins.coding.neotest') end
+      },
+
+      -------------------------------------------------------
       -- Single-purpose plugins
       -------------------------------------------------------
       { -- latex integration for vim
