@@ -106,8 +106,18 @@ cmp.setup({
     { name = 'luasnip_choice' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      max_item_count = 4,
+    },
     { name = 'tags' },
+    {
+      name = 'spell',
+      max_item_count = 3,
+      option = {
+        keep_all_entries = false,
+      },
+    },
   })
 })
 
