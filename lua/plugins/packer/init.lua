@@ -202,16 +202,6 @@ require('packer').startup({
         requires = 'nvim-telescope/telescope.nvim',
         config = function() require('telescope').load_extension('fzf') end
       },
-      { -- Clipboard management through Telescope interface
-        'AckslD/nvim-neoclip.lua',
-        requires = 'nvim-telescope/telescope.nvim',
-        config = function() require('plugins.tls.neoclip') end,
-      },
-      { -- Undo tree management through Telescope interface
-        'debugloop/telescope-undo.nvim',
-        requires = 'nvim-telescope/telescope.nvim',
-        config = function() require('telescope').load_extension('undo') end,
-      }
     }
   end,
 
