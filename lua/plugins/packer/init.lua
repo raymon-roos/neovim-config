@@ -188,6 +188,9 @@ require('packer').startup({
         cmd = { 'MPToggle', 'MPOpen', 'MPClose', 'MPRefresh' },
         config = function() require('markdown-preview').setup() end
       },
+      {
+        'jwalton512/vim-blade'
+      },
 
       -------------------------------------------------------
       -- Telescopoe related
