@@ -19,7 +19,7 @@ require('packer').startup({
       },
       { -- Color scheme
         'RRethy/nvim-base16',
-        config = function() vim.cmd.colorscheme('base16-tomorrow-night-eighties') end
+        config = function() vim.cmd.colorscheme('base16-tokyo-city-dark') end
       },
       { -- Status line
         'nvim-lualine/lualine.nvim',
