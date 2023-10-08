@@ -55,13 +55,6 @@ autocmd('LspAttach', {
   end,
 })
 
-augroup('AutoFmt', { clear = true })
-autocmd('BufWritePre', {
-  group = 'AutoFmt',
-  pattern = '*',
-  -- command = 'lua vim.lsp.buf.format({ async = true })'
-  callback = function() vim.lsp.buf.format({ async = false }) end
-})
 
 augroup('IncSearchHighlight', { clear = true })
 autocmd('CmdlineEnter', {

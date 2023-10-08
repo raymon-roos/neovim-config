@@ -1,5 +1,14 @@
 vim.lsp.set_log_level('off')
 
+vim.diagnostic.config({
+  float = {
+    show_header = true,
+    source = 'always',
+    border = 'rounded',
+    focusable = false,
+  }
+})
+
 local lspconfig = require('lspconfig')
 
 local util = lspconfig.util

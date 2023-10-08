@@ -7,6 +7,7 @@ require('packer').startup({
         'wbthomason/packer.nvim',
         opt = true
       },
+      { 'nvim-lua/plenary.nvim' },
 
       -------------------------------------------------------
       -- Appearance
@@ -81,12 +82,13 @@ require('packer').startup({
         },
         config = function() require('plugins.lsp') end
       },
-      { -- Integrates non-lsp plugins into lsp framework
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = {
-          'nvim-lua/plenary.nvim',
-          'neovim/nvim-lspconfig',
-        },
+      { -- Integrate external linters
+        'mfussenegger/nvim-lint',
+        config = function() require('plugins.linters') end
+      },
+      { -- Integrate external formatters
+        'stevearc/conform.nvim',
+        config = function() require('plugins.formatters') end
       },
 
       -------------------------------------------------------

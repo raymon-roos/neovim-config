@@ -2,7 +2,7 @@ local M = {}
 
 M.on_attach = function(_, bufnr)
   local function map(lhs, rhs)
-    vim.keymap.set('n', lhs, rhs, { buffer = bufnr, remap = false, silent = true, })
+    vim.keymap.set('n', lhs, rhs, { buffer = bufnr, remap = false, silent = true })
   end
 
   map('gD', vim.lsp.buf.declaration)
@@ -20,8 +20,6 @@ M.on_attach = function(_, bufnr)
   map('gl', vim.diagnostic.open_float)
   map('[d', vim.diagnostic.goto_prev)
   map(']d', vim.diagnostic.goto_next)
-  map('<leader>fm', function() vim.lsp.buf.format { async = true } end)
-  map('<leader>F', function() vim.lsp.buf.format { async = true } end)
 
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end

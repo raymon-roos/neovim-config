@@ -13,26 +13,27 @@ local b = null_ls.builtins
 null_ls.setup({
   sources = {
     b.diagnostics.eslint_d.with({ extra_args = eslint_extra_args, }), -- js
-    b.diagnostics.phpcs.with({ -- php
+    b.diagnostics.phpcs.with({                                        -- php
       command = phpcs_path .. 'phpcs',
       extra_args = { phpcs_rules },
     }),
 
-    b.code_actions.eslint_d.with({ extra_args = eslint_extra_args }), -- js
-    b.code_actions.gitsigns, -- git integration
+    b.code_actions.eslint_d.with({ extra_args = eslint_extra_args }),      -- js
+    b.code_actions.gitsigns,                                               -- git integration
 
-    b.formatting.shellharden, -- sh
-    b.formatting.rustfmt, -- rust
+    b.formatting.shellharden,                                              -- sh
+    b.formatting.shfmt,                                                    -- sh
+    b.formatting.rustfmt,                                                  -- rust
     b.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }), -- sql
-    b.formatting.eslint_d.with({ extra_args = eslint_extra_args }), -- js
-    b.formatting.prettierd.with({ -- js(frameworks)/html/css/md
-      disabled_filetypes = { 'html' }, -- html-ls already takes care of this
+    b.formatting.eslint_d.with({ extra_args = eslint_extra_args }),        -- js
+    b.formatting.prettierd.with({                                          -- js(frameworks)/html/css/md
+      disabled_filetypes = { 'html', 'js' },                               -- html-ls already takes care of this
     }),
-    b.formatting.phpcbf.with({ -- php
+    b.formatting.phpcbf.with({                                             -- php
       command = phpcs_path .. 'phpcbf',
       extra_args = { phpcs_rules, '--config-set tab_width 4' },
     }),
-    b.formatting.stylua, -- lua
+    b.formatting.stylua,          -- lua
     b.formatting.blade_formatter, -- laravel blade templates
 
     b.completion.tags,

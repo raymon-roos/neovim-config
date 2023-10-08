@@ -15,6 +15,9 @@ map({ 'n', 'v' }, '<space>', '<nop>')
 nmap('j', 'gj')
 nmap('k', 'gk')
 
+nmap('<leader>F', function () require('conform').format({ lsp_fallback = true }) end)
+nmap('<leader>fm', function () require('conform').format({ lsp_fallback = true }) end)
+
 -- "drag" lines up and down
 nmap('<S-A-j>', '<CMD> move .+1 <CR>')
 nmap('<S-A-k>', '<CMD> move .-2 <CR>')
