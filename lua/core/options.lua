@@ -14,29 +14,29 @@ o.shiftwidth = 0
 o.autoindent = true
 o.smartindent = true
 o.signcolumn = 'yes:1'
-o.foldcolumn='auto'
+o.foldcolumn = 'auto'
 o.numberwidth = 2
 o.number = true
 o.relativenumber = true
 o.cursorline = true
 o.wrap = true
-o.linebreak  = true
-o.breakindent  = true
+o.linebreak = true
+o.breakindent = true
 o.scrolloff = 5
 o.splitbelow = false
 o.splitright = true
 o.mouse = 'nvi'
 o.cmdheight = 2
 o.clipboard:append('unnamedplus')
-o.ignorecase  = true
+o.ignorecase = true
 o.smartcase = true
 o.updatetime = 600
 o.timeoutlen = 600
-o.undofile  = true
+o.undofile = true
 o.spell = false
 
 if vim.fn.executable('rg') == 1 then
-  o.grepprg='rg --vimgrep'
+  o.grepprg = 'rg --vimgrep'
 end
 
 g.netrw_liststyle = 3
