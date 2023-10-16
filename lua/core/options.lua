@@ -25,7 +25,7 @@ o.breakindent  = true
 o.scrolloff = 5
 o.splitbelow = false
 o.splitright = true
-o.mouse = 'a'
+o.mouse = 'nvi'
 o.cmdheight = 2
 o.clipboard:append('unnamedplus')
 o.ignorecase  = true
