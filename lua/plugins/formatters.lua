@@ -20,10 +20,14 @@ require('conform').setup({
   formatters_by_ft = {
     lua = { 'stylua' },
     javascript = { { 'prettier', 'eslint_d' } },
+    html = { 'prettier' },
     blade = { 'blade-formatter' },
+    css = { 'prettier' },
     php = { 'phpcbf' },
     rust = { 'rustfmt' },
     bash = { 'shellcheck', 'shellharden', 'shfmt' },
+    markdown = { 'prettier' },
+    latex = { 'latexindent' },
   },
   format_on_save = function(bufnr)
     -- Disable autoformat on certain filetypes
