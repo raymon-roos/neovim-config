@@ -1,22 +1,26 @@
-local util = require('conform.util')
+local conform = require('conform')
 
-util.add_formatter_args(
-  require('conform.formatters.prettier'),
-  { '--config', vim.fn.expand('$XDG_CONFIG_HOME') .. '/prettier/.prettierrc.json' },
-  { append = true }
-)
+conform.formatters.prettier = {
+  prepend_args = {
+    '--config',
+    vim.fn.expand('$XDG_CONFIG_HOME') .. '/prettier/.prettierrc.json',
+  },
+}
 
-util.add_formatter_args(
-  require('conform.formatters.eslint_d'),
-  { '--config', vim.fn.expand('$XDG_CONFIG_HOME') .. '/eslint/.eslintrc.js' },
-  { append = true }
-)
+conform.formatters.eslint_d = {
+  prepend_args = {
+    '--config',
+    vim.fn.expand('$XDG_CONFIG_HOME') .. '/eslint/.eslintrc.js',
+  },
+}
 
-util.add_formatter_args(require('conform.formatters.phpcbf'), {
-  '--standard=' .. vim.fn.expand('$XDG_CONFIG_HOME') .. '/phpcs/phpcs.xml',
-}, { append = true })
+conform.formatters.phpcbf = {
+  prepend_args = {
+    '--standard=' .. vim.fn.expand('$XDG_CONFIG_HOME') .. '/phpcs/phpcs.xml',
+  },
+}
 
-require('conform').setup({
+conform.setup({
   formatters_by_ft = {
     lua = { 'stylua' },
     javascript = { { 'prettier', 'eslint_d' } },
