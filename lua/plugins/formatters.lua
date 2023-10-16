@@ -20,6 +20,7 @@ require('conform').setup({
   formatters_by_ft = {
     lua = { 'stylua' },
     javascript = { { 'prettier', 'eslint_d' } },
+    blade = { 'blade-formatter' },
     php = { 'phpcbf' },
     rust = { 'rustfmt' },
     bash = { 'shellcheck', 'shellharden', 'shfmt' },
