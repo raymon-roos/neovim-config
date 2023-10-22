@@ -159,7 +159,7 @@ require('packer').startup({
           -- Runners
           'olimorris/neotest-phpunit',
         },
-        config = function() require('plugins.coding.neotest') end
+        config = function() require('plugins.coding.neotest_config') end,
       },
 
       -------------------------------------------------------
