@@ -191,6 +191,10 @@ require('packer').startup({
       {
         'jwalton512/vim-blade'
       },
+      { -- Buffer style file manager
+        'stevearc/oil.nvim',
+        config = function() require('plugins.oil_config') end,
+      },
 
       -------------------------------------------------------
       -- Telescopoe related

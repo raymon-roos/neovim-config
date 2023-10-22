@@ -80,8 +80,9 @@ map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 -- use escape in terminal window like we're used to
 tmap('<Esc>', '<C-\\><C-n>')
 
--- using netrw as a filedrawer
-nmap('<leader>ee', '<CMD> Lexplore 15 <CR>')
+-- Open Oil file explorer
+nmap('<leader>e', function () require('oil').open() end)
+nmap('<leader>E', function () require('oil').toggle_float() end)
 
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
