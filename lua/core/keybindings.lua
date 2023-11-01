@@ -12,8 +12,8 @@ vim.g.mapleader = ' '
 map({ 'n', 'v' }, '<space>', '<nop>')
 
 -- navigate wrapped lines more easily
-nmap('j', 'gj')
-nmap('k', 'gk')
+nmap('<Down>', 'g<Down>')
+nmap('<Up>', 'g<Up>')
 
 nmap('<leader>F', function () require('conform').format({ lsp_fallback = true }) end)
 nmap('<leader>fm', function () require('conform').format({ lsp_fallback = true }) end)
