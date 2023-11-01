@@ -15,12 +15,13 @@ require('lint').linters.eslint.args = {
 }
 
 require('lint').linters_by_ft = {
-  markdown = { 'vale' },
+  markdown = { 'proselint' },
   javascript = { 'eslint_d' },
   php = { 'phpcs' },
   bash = { 'shellcheck' },
   lua = { 'luacheck' },
   latex = { 'chktex' },
+  css = { 'stylelint' },
 }
 
 vim.api.nvim_create_autocmd({ 'TextChanged' }, {
