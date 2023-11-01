@@ -158,6 +158,7 @@ require('packer').startup({
           'nvim-treesitter/nvim-treesitter',
           -- Runners
           'olimorris/neotest-phpunit',
+          'rouge8/neotest-rust',
         },
         config = function() require('plugins.coding.neotest_config') end,
       },
