@@ -6,26 +6,21 @@ vim.diagnostic.config({
     source = 'always',
     border = 'rounded',
     focusable = false,
-  }
+  },
 })
 
 local lspconfig = require('lspconfig')
 
 local util = lspconfig.util
 
-util.default_config = vim.tbl_deep_extend('force',
-  util.default_config,
-  {
-    flags = {
-      debounce_text_changes = 250,
-    },
-    -- insert propterties into _every_ attached server instance
-    capabilities = require('cmp_nvim_lsp').default_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    ),
-    on_attach = require('plugins.lsp.on_attach_callback'),
-  }
-)
+util.default_config = vim.tbl_deep_extend('force', util.default_config, {
+  flags = {
+    debounce_text_changes = 250,
+  },
+  -- insert propterties into _every_ attached server instance
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = require('plugins.lsp.on_attach_callback'),
+})
 
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup_handlers({
@@ -40,7 +35,7 @@ mason_lspconfig.setup_handlers({
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
 
-    lspconfig.lua_ls.setup {
+    lspconfig.lua_ls.setup({
       settings = {
         Lua = {
           runtime = {
@@ -61,29 +56,29 @@ mason_lspconfig.setup_handlers({
           },
         },
       },
-    }
+    })
   end,
   ['html'] = function()
-    lspconfig.html.setup {
+    lspconfig.html.setup({
       filetypes = { 'html', 'twig' },
       settings = {
         html = {
           mirrorCursorOnMatchingTag = { true },
         },
-      }
-    }
+      },
+    })
   end,
   ['tailwindcss'] = function()
-    lspconfig.tailwindcss.setup {
+    lspconfig.tailwindcss.setup({
       filetypes = { 'php', 'html', 'js', 'blade.php' },
       autostart = false,
       settings = {
-        tailwindcss = {}
-      }
-    }
+        tailwindcss = {},
+      },
+    })
   end,
   ['ltex'] = function()
-    lspconfig.ltex.setup {
+    lspconfig.ltex.setup({
       settings = {
         ltex = {
           language = 'en-GB',
@@ -99,10 +94,10 @@ mason_lspconfig.setup_handlers({
           completionEnabled = true,
         },
       },
-    }
+    })
   end,
   ['intelephense'] = function()
-    lspconfig.intelephense.setup {
+    lspconfig.intelephense.setup({
       init_options = {
         globalStoragePath = vim.fn.expand('$XDG_DATA_HOME') .. '/intelephense',
       },
@@ -115,7 +110,7 @@ mason_lspconfig.setup_handlers({
             enabled = false,
           },
         },
-      }
-    }
-  end
+      },
+    })
+  end,
 })
