@@ -11,6 +11,7 @@ o.foldlevel = 2
 o.tabstop = 4
 o.softtabstop = 4
 o.shiftwidth = 0
+o.shiftround = true
 o.autoindent = true
 o.smartindent = true
 o.signcolumn = 'yes:1'
