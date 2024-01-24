@@ -73,6 +73,13 @@ nmap('<leader>bw', '<CMD>update<CR>')
 nmap('<leader>bW', '<CMD>update!<CR>')
 nmap('<leader>bp', '<CMD>echo expand("%:p")<CR>')
 
+-- navigating tabs, browser style
+nmap('<Tab>','gt')
+nmap('<S-Tab>','gT')
+for i=1,9 do
+  nmap(string.format('<A-%s>', i), string.format('<cmd>%stabnext<cr>', i))
+end
+
 -- spawn a terminal
 map({ 'n', 't' }, '<leader>T', '<CMD> vsplit | terminal <CR>')
 map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
