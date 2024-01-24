@@ -28,6 +28,7 @@ o.splitbelow = false
 o.splitright = true
 o.mouse = 'nvi'
 o.cmdheight = 2
+o.showmode = false
 o.clipboard:append('unnamedplus')
 o.ignorecase = true
 o.smartcase = true
