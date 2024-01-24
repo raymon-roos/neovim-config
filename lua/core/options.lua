@@ -36,6 +36,7 @@ o.updatetime = 600
 o.timeoutlen = 600
 o.undofile = true
 o.spell = false
+o.virtualedit = "block"
 
 if vim.fn.executable('rg') == 1 then
   o.grepprg = 'rg --vimgrep'
