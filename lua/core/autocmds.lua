@@ -7,16 +7,16 @@ autocmd('TextYankPost', {
   group = 'YankHighlight',
   callback = function()
     vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '800' })
-  end
+  end,
 })
 
 -- Auto source after changing nvim settings
-augroup('nvimOpts', { clear = true })
-autocmd('BufWritePost', {
-  group = 'nvimOpts',
-  pattern = vim.fn.stdpath('config') .. '**/*.lua',
-  command = 'source <afile>'
-})
+-- augroup('nvimOpts', { clear = true })
+-- autocmd('BufWritePost', {
+--   group = 'nvimOpts',
+--   pattern = vim.fn.stdpath('config') .. '**/*.lua',
+--   command = 'source <afile>'
+-- })
 
 -- set highlights after colorscheme
 augroup('highlights', { clear = true })
@@ -31,30 +31,26 @@ autocmd('ColorScheme', {
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
     vim.api.nvim_set_hl(0, 'LeapMatch', {
-      fg = 'white', bold = true, nocombine = true,
+      fg = 'white',
+      bold = true,
+      nocombine = true,
     })
 
     vim.api.nvim_set_hl(0, 'LeapLabelPrimary', {
-      fg = 'yellow', bold = true, nocombine = true,
+      fg = 'yellow',
+      bold = true,
+      nocombine = true,
     })
 
     vim.api.nvim_set_hl(0, 'LeapLabelSecondary', {
-      fg = 'blue', bold = true, nocombine = true,
+      fg = 'blue',
+      bold = true,
+      nocombine = true,
     })
 
     require('leap').opts.highlight_unlabeled_phase_one_targets = true
-  end
-})
-
--- null-ls has an issue with gqq when an lsp is attached, but the below solves it. See:
--- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1259
--- Use internal formatting for bindings like gq.
-autocmd('LspAttach', {
-  callback = function(args)
-    vim.bo[args.buf].formatexpr = nil
   end,
 })
-
 
 augroup('IncSearchHighlight', { clear = true })
 autocmd('CmdlineEnter', {
