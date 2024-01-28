@@ -36,7 +36,7 @@ o.updatetime = 600
 o.timeoutlen = 600
 o.undofile = true
 o.spell = false
-o.virtualedit = "block"
+o.virtualedit = 'block'
 
 if vim.fn.executable('rg') == 1 then
   o.grepprg = 'rg --vimgrep'
@@ -51,12 +51,12 @@ o.background = 'dark'
 g.vimtex_complete_close_braces = 1
 g.vimtex_view_method = 'mupdf'
 g.vimtex_compiler_tectonic = {
-    build_dir = '',
-    hooks = {},
-    options = {
-      '--keep-logs',
-      '--synctex'
-    },
+  build_dir = '',
+  hooks = {},
+  options = {
+    '--keep-logs',
+    '--synctex',
+  },
 }
 g.vimtex_compiler_method = 'tectonic'
 g.vimtex_toc_config = { show_help = 0 }
