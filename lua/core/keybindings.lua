@@ -1,4 +1,4 @@
-local mappers = require('core.keymapper')
+local mappers = require('utils.keymapper')
 
 local map = mappers.map
 local nmap = mappers.nmap

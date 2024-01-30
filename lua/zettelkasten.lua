@@ -1,7 +1,7 @@
 --  Note that $NOTES_DIR is a shell environment variable pointing to
 --  the single flat directory holding all the notes or "zettels"
 
-local nmap = require('core.keymapper').nmap
+local nmap = require('utils.keymapper').nmap
 local user_func = vim.api.nvim_create_user_command
 local fn = vim.fn
 
