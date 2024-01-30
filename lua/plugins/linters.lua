@@ -1,4 +1,4 @@
- -- Integrate external linters
+-- Integrate external linters
 return {
   'mfussenegger/nvim-lint',
   event = 'VeryLazy',
@@ -20,7 +20,6 @@ return {
     }
 
     require('lint').linters_by_ft = {
-      markdown = { 'proselint' },
       javascript = { 'eslint_d' },
       php = { 'phpcs' },
       bash = { 'shellcheck' },
@@ -34,5 +33,5 @@ return {
         require('lint').try_lint()
       end,
     })
-  end
+  end,
 }
