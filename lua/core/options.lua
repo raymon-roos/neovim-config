@@ -37,6 +37,13 @@ o.timeoutlen = 600
 o.undofile = true
 o.spell = false
 o.virtualedit = 'block'
+o.fillchars = {
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+  eob = ' ',
+}
 
 if vim.fn.executable('rg') == 1 then
   o.grepprg = 'rg --vimgrep'
