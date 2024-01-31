@@ -59,6 +59,7 @@ return {
         ['<C-p>'] = 'actions.preview',
         ['<C-c>'] = 'actions.close',
         ['<leader>e'] = 'actions.close',
+        ['<leader>q'] = 'actions.add_to_qflist',
         ['<C-l>'] = 'actions.refresh',
         ['<BS>'] = 'actions.parent',
         ['-'] = 'actions.parent',
