@@ -96,6 +96,13 @@ return {
                   completion = {
                     callSnippet = 'Replace',
                   },
+                  format = {
+                    defaultConfig = {
+                      indent_style = 'space',
+                      indent_size = 2,
+                      quote_style = 'single',
+                    }
+                  }
                 },
               },
             })

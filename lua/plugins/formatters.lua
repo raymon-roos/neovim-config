@@ -26,7 +26,6 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        lua = { 'stylua' },
         javascript = { { 'prettier', 'eslint_d' } },
         html = { 'prettier' },
         blade = { 'blade-formatter' },
