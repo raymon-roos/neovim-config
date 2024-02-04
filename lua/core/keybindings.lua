@@ -78,9 +78,9 @@ nmap('<leader>bW', '<CMD>update!<CR>')
 nmap('<leader>bp', '<CMD>echo expand("%:p")<CR>')
 
 -- navigating tabs, browser style
-nmap('<A-Tab>','gt')
-nmap('<S-Tab>','gT')
-for i=1,9 do
+nmap('<A-Tab>', 'gt')
+nmap('<S-Tab>', 'gT')
+for i = 1, 9 do
   nmap(string.format('<A-%s>', i), string.format('<cmd>%stabnext<cr>', i))
 end
 
@@ -92,8 +92,8 @@ map({ 'n', 't' }, '<leader>Tg', '<CMD> vsplit | terminal gitui <CR>')
 tmap('<Esc>', '<C-\\><C-n>')
 
 -- Open Oil file explorer
-nmap('<leader>e', function () require('oil').open() end)
-nmap('<leader>E', function () require('oil').toggle_float() end)
+nmap('<leader>e', function() require('oil').open() end)
+nmap('<leader>E', function() require('oil').toggle_float() end)
 
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
@@ -114,7 +114,9 @@ end)
 nmap('<leader>fo', function() require('telescope.builtin').oldfiles() end)
 nmap('<leader>fg', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
 nmap('<leader>fG', function() require('telescope.builtin').live_grep() end)
-nmap('<leader>fb', function() require('telescope.builtin').buffers({ ignore_current_buffer = true, sort_mru = true, }) end)
+nmap('<leader>fb', function()
+  require('telescope.builtin').buffers({ ignore_current_buffer = true, sort_mru = true, })
+end)
 nmap('<leader>fh', function() require('telescope.builtin').help_tags() end)
 nmap('<leader>ft', function() require('telescope.builtin').tags() end)
 nmap('<leader>fc', function() require('telescope.builtin').command_history() end)
