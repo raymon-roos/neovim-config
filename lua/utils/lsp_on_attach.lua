@@ -1,6 +1,4 @@
-local M = {}
-
-M.on_attach = function(_, bufnr)
+return function(_, bufnr)
   local map = function(lhs, rhs)
     require('utils.keymapper').nmap(lhs, rhs, { buffer = bufnr })
   end
@@ -25,5 +23,3 @@ M.on_attach = function(_, bufnr)
 
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end
-
-return M
