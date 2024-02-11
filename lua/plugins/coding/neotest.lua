@@ -9,13 +9,12 @@ return {
     'nvim-treesitter/nvim-treesitter',
     -- Runners
     'olimorris/neotest-phpunit',
-    'rouge8/neotest-rust',
   },
   config = function()
     require('neotest').setup({
       adapters = {
         require('neotest-phpunit'),
-        require('neotest-rust'),
+        require('rustaceanvim.neotest'),
       },
     })
   end,
