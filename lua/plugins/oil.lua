@@ -48,7 +48,9 @@ return {
       -- it will use the mapping at require("oil.actions").<name>
       -- Set to `false` to remove a keymap
       -- See :help oil-actions for a list of all available actions
-      lsp_rename_autosave = 'unmodified',
+      lsp_file_methods = {
+        autosave_changes = 'unmodified',
+      },
       constrain_cursor = 'name',
       keymaps = {
         ['g?'] = 'actions.show_help',
