@@ -98,8 +98,17 @@ nmap('<leader>E', function() require('oil').toggle_float() end)
 -- switch working dir to directory of current file
 nmap('<leader>cd', '<CMD> cd %:h <CR> <CMD> pwd <CR>')
 
--- Temporarily hide diagnostics
-nmap('<leader>dd', vim.diagnostic.hide)
+-- Toggle diagnostic virtual text
+nmap('<leader>dd', function()
+    local current_value = vim.diagnostic.config().virtual_text
+    if current_value then
+      vim.diagnostic.config({ virtual_text = false })
+    else
+      vim.diagnostic.config({ virtual_text = true })
+    end
+  end,
+  {}
+)
 
 -- Telescope. 'f' for find
 nmap('<leader>ff', function() require('telescope.builtin').find_files() end)
