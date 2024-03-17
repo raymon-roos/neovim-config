@@ -1,7 +1,6 @@
 return {
   {
     'stevearc/oil.nvim',
-    cmd = 'Oil',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
