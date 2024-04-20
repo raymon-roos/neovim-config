@@ -4,8 +4,9 @@ return {
   cmd = 'Neotest',
   -- event = { 'VeryLazy' },
   dependencies = {
-    'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
+    'nvim-lua/plenary.nvim',
+    'nvim-neotest/nvim-nio',
     'nvim-treesitter/nvim-treesitter',
     -- Runners
     'olimorris/neotest-phpunit',
