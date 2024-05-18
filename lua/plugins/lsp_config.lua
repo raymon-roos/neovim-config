@@ -4,7 +4,7 @@ return {
     -- event = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' },
     dependencies = {
       'mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      'mason-lspconfig.nvim',
       { -- nvim and plugins API docs and completions
         'folke/neodev.nvim',
         config = true,
@@ -53,11 +53,22 @@ return {
       )
 
       require('lspconfig.ui.windows').default_options.border = border
+    end,
+  },
 
-      local lspconfig = require('lspconfig')
-      local util = lspconfig.util
-
-      -- insert propterties into _every_ attached server instance
+  {
+    'williamboman/mason-lspconfig.nvim',
+    cmd = { 'LspInstall', 'LspUninstall' },
+    dependencies = {
+      'mason.nvim',
+      {
+        'folke/neodev.nvim',
+        config = true,
+      }
+    },
+    opts = function()
+      -- insert propterties into every attached server instance
+      local util = require('lspconfig').util
       util.default_config = vim.tbl_deep_extend('force', util.default_config, {
         flags = {
           debounce_text_changes = 250,
@@ -68,19 +79,17 @@ return {
         on_attach = require('utils.lsp_on_attach'),
       })
 
-      require('mason-lspconfig').setup({
+      return {
         handlers = {
-          -- The first entry (without a key) will be the default handler and will be
-          -- called for each installed server that doesn't have a dedicated handler.
           function(server_name)
-            lspconfig[server_name].setup({})
+            require('lspconfig')[server_name].setup({})
           end,
           ['lua_ls'] = function()
             local runtime_path = vim.split(package.path, ';')
             table.insert(runtime_path, 'lua/?.lua')
             table.insert(runtime_path, 'lua/?/init.lua')
 
-            lspconfig.lua_ls.setup({
+            require('lspconfig').lua_ls.setup({
               settings = {
                 Lua = {
                   runtime = { version = 'LuaJIT', path = runtime_path },
@@ -111,7 +120,7 @@ return {
             })
           end,
           ['html'] = function()
-            lspconfig.html.setup({
+            require('lspconfig').html.setup({
               filetypes = { 'html', 'twig' },
               settings = {
                 html = {
@@ -121,7 +130,7 @@ return {
             })
           end,
           ['tailwindcss'] = function()
-            lspconfig.tailwindcss.setup({
+            require('lspconfig').tailwindcss.setup({
               filetypes = { 'php', 'html', 'js', 'blade.php' },
               autostart = false,
               settings = {
@@ -130,16 +139,15 @@ return {
             })
           end,
           ['ltex'] = function()
-            lspconfig.ltex.setup({
+            require('lspconfig').ltex.setup({
               settings = {
                 ltex = {
                   language = 'en-GB',
+                  -- dictionary = ':' .. vim.fn.expand('$XDG_CONFIG_HOME') .. '/ltex/ltex.dictionary.en-GB.txt',
                   diagnosticSeverity = 'information',
                   additionalRules = {
                     enablePickyRules = true,
-                    motherTongue = 'nl',
                   },
-                  hiddenFalsePositives = { 'Bit', 'Academy' },
                   ['ltex-ls'] = {
                     logLevel = 'severe',
                   },
@@ -149,7 +157,7 @@ return {
             })
           end,
           ['intelephense'] = function()
-            lspconfig.intelephense.setup({
+            require('lspconfig').intelephense.setup({
               init_options = {
                 globalStoragePath = vim.fn.expand('$XDG_DATA_HOME') .. '/intelephense',
               },
@@ -166,7 +174,7 @@ return {
             })
           end,
           ['arduino_language_server'] = function()
-            lspconfig.arduino_language_server.setup({
+            require('lspconfig').arduino_language_server.setup({
               cmd = {
                 'arduino-language-server',
                 '-cli-config',
@@ -177,7 +185,7 @@ return {
             })
           end,
         },
-      })
+      }
     end,
   },
 
