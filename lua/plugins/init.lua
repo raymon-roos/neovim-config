@@ -1,6 +1,7 @@
 return {
   { import = 'plugins.appearance' },
   { import = 'plugins.coding' },
+  { import = 'plugins.lsp' },
   { import = 'plugins.treesitter' },
 
   { -- Colorizer/color picker
