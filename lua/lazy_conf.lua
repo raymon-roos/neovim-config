@@ -22,6 +22,7 @@ require('lazy').setup('plugins', {
     log = { '-40' }, -- show the last n commits
   },
   ui = {
+    backdrop = 90,
     border = 'rounded',
   },
   checker = {
