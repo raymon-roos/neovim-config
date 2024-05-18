@@ -190,9 +190,9 @@ return {
         style = 'minimal',
         border = 'rounded',
         icons = {
-          package_installed = '✓ ',
-          package_pending = '➜ ',
-          package_uninstalled = '✗ ',
+          package_pending = " ",
+          package_installed = " ",
+          package_uninstalled = " ",
         },
       },
     },
