@@ -1,30 +1,27 @@
 return {
   'stevearc/conform.nvim',
   event = 'VeryLazy',
-  config = function()
-    local conform = require('conform')
+  opts = function()
+    -- user commands to toggle format-on-save
+    vim.api.nvim_create_user_command('FormatDisable', function(args)
+      if args.bang then
+        vim.g.disable_autoformat = true
+      else
+        vim.b.disable_autoformat = true
+      end
+    end, {
+      desc = 'Disable autoformat-on-save',
+      bang = true,
+    })
 
-    conform.formatters.prettier = {
-      prepend_args = {
-        '--config',
-        vim.fn.expand('$XDG_CONFIG_HOME') .. '/prettier/.prettierrc.json',
-      },
-    }
+    vim.api.nvim_create_user_command('FormatEnable', function()
+      vim.b.disable_autoformat = false
+      vim.g.disable_autoformat = false
+    end, {
+      desc = 'Re-enable autoformat-on-save',
+    })
 
-    conform.formatters.eslint_d = {
-      prepend_args = {
-        '--config',
-        vim.fn.expand('$XDG_CONFIG_HOME') .. '/eslint/.eslintrc.js',
-      },
-    }
-
-    conform.formatters.phpcbf = {
-      prepend_args = {
-        '--standard=' .. vim.fn.expand('$XDG_CONFIG_HOME') .. '/phpcs/phpcs.xml',
-      },
-    }
-
-    conform.setup({
+    return {
       formatters_by_ft = {
         javascript = { { 'prettier', 'eslint_d' } },
         html = { 'prettier' },
@@ -35,6 +32,26 @@ return {
         bash = { 'shellcheck', 'shellharden', 'shfmt' },
         markdown = { 'prettier' },
         latex = { 'latexindent' },
+      },
+      formatters = {
+        phpcbf = {
+          prepend_args = {
+            '--standard='
+            .. vim.fn.expand('$XDG_CONFIG_HOME') .. '/phpcs/phpcs.xml'
+          },
+        },
+        eslint_d = {
+          prepend_args = {
+            '--config',
+            vim.fn.expand('$XDG_CONFIG_HOME') .. '/eslint/.eslintrc.js'
+          },
+        },
+        prettier = {
+          prepend_args = {
+            '--config',
+            vim.fn.expand('$XDG_CONFIG_HOME') .. '/prettier/.prettierrc.json'
+          },
+        }
       },
       format_on_save = function(bufnr)
         -- Disable autoformat on certain filetypes
@@ -56,24 +73,6 @@ return {
 
         return { timeout_ms = 400, lsp_fallback = true }
       end,
-    })
-
-    vim.api.nvim_create_user_command('FormatDisable', function(args)
-      if args.bang then
-        vim.g.disable_autoformat = true -- FormatDisable! will disable formatting everywhere
-      else
-        vim.b.disable_autoformat = true
-      end
-    end, {
-      desc = 'Disable autoformat-on-save',
-      bang = true,
-    })
-
-    vim.api.nvim_create_user_command('FormatEnable', function()
-      vim.b.disable_autoformat = false
-      vim.g.disable_autoformat = false
-    end, {
-      desc = 'Re-enable autoformat-on-save',
-    })
+    }
   end,
 }
