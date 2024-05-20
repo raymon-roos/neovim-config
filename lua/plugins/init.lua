@@ -35,6 +35,12 @@ return {
     'jwalton512/vim-blade',
     ft = { 'blade', 'blade.php' },
   },
+
+  { -- ledger filetype support
+    'ledger/vim-ledger',
+    ft = { 'journal', 'ledger', 'ldg' }
+  },
+
   { -- neomuttrc filetype support
     'neomutt/neomutt.vim',
     ft = { 'muttrc', 'neomuttrc' }
