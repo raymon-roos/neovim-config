@@ -31,12 +31,6 @@ return {
     event = 'VeryLazy',
   },
 
-  { -- Cli markdown previewer integtration
-    '0x00-ketsu/markdown-preview.nvim',
-    ft = { 'md', 'markdown', 'mkd', 'mkdn', 'mdwn', 'mdown', 'mdtxt', 'mdtext', 'rmd', 'wiki' },
-    cmd = { 'MPToggle', 'MPOpen', 'MPClose', 'MPRefresh' },
-  },
-
   { -- Laravel's html template file type support
     'jwalton512/vim-blade',
     ft = { 'blade', 'blade.php' },
