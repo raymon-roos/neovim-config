@@ -2,10 +2,9 @@ return {
   'lukas-reineke/indent-blankline.nvim',
   event = 'VeryLazy',
   main = 'ibl',
-  -- event = 'VeryLazy',
   opts = {
     indent = {
-      char =  '·',
+      char = '·',
       -- tab_char = '▏',
       tab_char = '┊',
       -- highlight = 'comment',
