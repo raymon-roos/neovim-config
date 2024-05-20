@@ -1,34 +1,23 @@
 return {
   'windwp/nvim-ts-autotag',
-  event = 'InsertEnter',
-  dependencies = 'nvim-treesitter',
-  opts = {
-    autotag = {
-      enable = true,
-      filetypes = {
-        'html',
-        'javascript',
-        'typescript',
-        'javascriptreact',
-        'typescriptreact',
-        'svelte',
-        'vue',
-        'tsx',
-        'jsx',
-        'rescript',
-        'xml',
-        'php',
-        'blade',
-        'blade.php',
-        'markdown',
-        'astro',
-        'glimmer',
-        'handlebars',
-        'hbs',
-      },
-    },
+  ft = {
+    'astro',
+    'glimmer',
+    'handlebars',
+    'html',
+    'javascript',
+    'jsx',
+    'markdown',
+    'php',
+    'rescript',
+    'svelte',
+    'tsx',
+    'twig',
+    'typescript',
+    'vue',
+    'xml',
   },
-  config = function(_, opts)
-    require('nvim-treesitter.configs').setup(opts)
-  end,
+  opts = {
+    enable_close_on_slash = true
+  },
 }
