@@ -35,4 +35,9 @@ return {
     'jwalton512/vim-blade',
     ft = { 'blade', 'blade.php' },
   },
+  { -- neomuttrc filetype support
+    'neomutt/neomutt.vim',
+    ft = { 'muttrc', 'neomuttrc' }
+  },
+
 }
