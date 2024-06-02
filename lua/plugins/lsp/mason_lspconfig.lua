@@ -10,7 +10,7 @@ return {
   },
   opts = function()
     -- insert propterties into every attached server instance
-    local util = require('lspconfig').util
+    local util = require('lspconfig.util')
     util.default_config = vim.tbl_deep_extend('force', util.default_config, {
       flags = {
         debounce_text_changes = 250,
