@@ -86,6 +86,10 @@ return {
               require('utils.lsp_on_attach')(_, bufnr)
               require('ltex-utils').on_attach(bufnr)
             end,
+            filetypes = {
+              'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc', 'quarto', 'rmd',
+              'context'
+            },
             settings = {
               ltex = {
                 language = 'en-GB',
