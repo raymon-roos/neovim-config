@@ -18,6 +18,8 @@ return {
     'xml',
   },
   opts = {
-    enable_close_on_slash = true
+    opts = {
+      enable_close_on_slash = true,
+    },
   },
 }
