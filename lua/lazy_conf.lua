@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
   install = {
-    colorscheme = { 'base16-tokyo-city-dark' },
+    colorscheme = { 'base16-snazzy' },
   },
   git = {
     -- defaults for the `Lazy log` command
