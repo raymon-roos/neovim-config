@@ -29,7 +29,7 @@ return {
         css = { 'prettier' },
         php = { 'phpcbf' },
         rust = { 'rustfmt' },
-        bash = { 'shellcheck', 'shellharden', 'shfmt' },
+        sh = { 'shellcheck', 'shellharden', 'shfmt' },
         markdown = { 'prettier' },
         latex = { 'latexindent' },
       },

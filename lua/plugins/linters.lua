@@ -22,7 +22,7 @@ return {
     require('lint').linters_by_ft = {
       javascript = { 'eslint_d' },
       php = { 'phpcs' },
-      bash = { 'shellcheck' },
+      sh = { 'shellcheck' },
       lua = { 'luacheck' },
       latex = { 'chktex' },
       css = { 'stylelint' },
