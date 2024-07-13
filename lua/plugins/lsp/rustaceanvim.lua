@@ -8,6 +8,9 @@ return {
         code_actions = {
           ui_select_fallback = true,
         },
+        float_win_config = {
+          border = 'rounded',
+        }
       },
       server = {
         on_attach = function()
