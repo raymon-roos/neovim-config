@@ -62,6 +62,8 @@ map({ 'n', 't' }, '<A-S-o>', '<C-\\><C-N><C-w>L')
 
 nmap('<C-Down>', '2<C-e>')
 nmap('<C-Up>', '2<C-y>')
+nmap('<C-Left>', '6zh')
+nmap('<C-Right>', '6zl')
 
 -- resizing windows (plus/minus and lesser/greater than, but without shift modifier)
 nmap('<A-.>', '<CMD> vertical resize +7 <CR>')
