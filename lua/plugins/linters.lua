@@ -23,7 +23,7 @@ return {
       javascript = { 'eslint_d' },
       php = { 'phpcs' },
       sh = { 'shellcheck' },
-      lua = { 'luacheck' },
+      lua = { 'selene' },
       latex = { 'chktex' },
       css = { 'stylelint' },
     }
