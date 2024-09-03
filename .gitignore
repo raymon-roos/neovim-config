@@ -1,5 +1,4 @@
 spell/
-lua/plugins/packer/packer_compiled.lua
 
 # Lockfiles are intended to be checked into source control, but I don't like my
 # config's working directory going dirty everytime I run an update, and I'm not
