@@ -5,9 +5,7 @@ return {
   opts = {
     indent = {
       char = '·',
-      -- tab_char = '▏',
-      tab_char = '┊',
-      -- highlight = 'comment',
+      tab_char = '▏',
     },
     scope = {
       show_start = false,
