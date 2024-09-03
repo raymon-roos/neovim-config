@@ -3,6 +3,7 @@ return {
   cmd = 'Mason',
   build = ':MasonUpdate',
   opts = {
+    log_level = vim.log.levels.WARN,
     ui = {
       style = 'minimal',
       border = 'rounded',
