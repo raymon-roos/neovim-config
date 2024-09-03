@@ -14,16 +14,12 @@ return {
               ['q'] = actions.close,
               ['<C-q>'] = actions.smart_send_to_qflist,
               ['<A-q>'] = actions.smart_add_to_qflist,
-              ['<C-u>'] = actions.results_scrolling_up,
-              ['<C-d>'] = actions.results_scrolling_down,
               ['<C-b>'] = actions.preview_scrolling_up,
               ['<C-f>'] = actions.preview_scrolling_down,
             },
             i = {
               ['<C-q>'] = actions.smart_send_to_qflist,
               ['<A-q>'] = actions.smart_add_to_qflist,
-              ['<C-u>'] = actions.results_scrolling_up,
-              ['<C-d>'] = actions.results_scrolling_down,
               ['<C-b>'] = actions.preview_scrolling_up,
               ['<C-f>'] = actions.preview_scrolling_down,
             },
@@ -47,6 +43,14 @@ return {
             layout_config = {
               height = 24,
               preview_width = 0.55,
+            },
+            mappings = {
+              n = {
+                ['<c-d>'] = actions.delete_buffer + actions.move_to_top,
+              },
+              i = {
+                ['<c-d>'] = actions.delete_buffer + actions.move_to_top,
+              },
             },
           },
           quickfix = {
