@@ -142,6 +142,7 @@ nmap('<leader>fW', function() require('telescope.builtin').lsp_dynamic_workspace
 nmap('<leader>fR', function() require('telescope.builtin').resume() end)
 nmap('<leader>fq', function() require('telescope.builtin').quickfix() end)
 nmap('<leader>fQ', function() require('telescope.builtin').quickfixhistory() end)
+nmap('<leader>fS', function() require('telescope.builtin').search_history() end)
 
 -- easily open windows of relevant plugins
 nmap('<leader>mm', '<CMD> Mason <CR>')
