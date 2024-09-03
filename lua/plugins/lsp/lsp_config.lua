@@ -39,7 +39,7 @@ return {
         focusable = false,
         style = 'minimal',
         border = border,
-        source = 'always',
+        source = true,
         show_header = true,
         prefix = '',
       },
