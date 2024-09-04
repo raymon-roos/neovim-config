@@ -46,4 +46,9 @@ return {
     ft = { 'muttrc', 'neomuttrc' }
   },
 
+
+  { -- Helm chart file type support
+    'towolf/vim-helm',
+    ft = { 'yaml', 'helm' },
+  },
 }
