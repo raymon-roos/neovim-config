@@ -51,4 +51,10 @@ return {
     'towolf/vim-helm',
     ft = { 'yaml', 'helm' },
   },
+
+  { -- Git conflict markers
+    'akinsho/git-conflict.nvim',
+    version = '*',
+    config = true
+  },
 }
