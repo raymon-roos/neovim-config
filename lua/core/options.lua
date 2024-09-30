@@ -37,6 +37,7 @@ o.updatetime = 600
 o.timeoutlen = 600
 o.undofile = true
 o.spell = false
+o.spelloptions:append('camel')
 o.virtualedit = 'block'
 o.fillchars = {
   foldopen = '',
