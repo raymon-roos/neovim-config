@@ -32,6 +32,7 @@ return {
         sh = { 'shellcheck', 'shellharden', 'shfmt' },
         markdown = { 'prettier' },
         latex = { 'latexindent' },
+        nix = { 'alejandra' },
       },
       formatters = {
         phpcbf = {
