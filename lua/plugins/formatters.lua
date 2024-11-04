@@ -23,7 +23,7 @@ return {
 
     return {
       formatters_by_ft = {
-        javascript = { { 'prettier', 'eslint_d' } },
+        javascript = { 'prettier', 'eslint_d', stop_after_first = true, },
         html = { 'prettier' },
         blade = { 'blade-formatter' },
         css = { 'prettier' },
