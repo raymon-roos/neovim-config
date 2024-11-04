@@ -1,4 +1,4 @@
---  Note that $NOTES_DIR is a shell environment variable pointing to
+--  Note that $NOTES_HOME is a shell environment variable pointing to
 --  the single flat directory holding all the notes or "zettels"
 
 local nmap = require('utils.keymapper').nmap
@@ -7,7 +7,7 @@ local fn = vim.fn
 
 local function create_zettel(file_name, split)
   local zettel_name = fn.fnameescape(
-    fn.expand('$NOTES_DIR/') .. file_name
+    fn.expand('$NOTES_HOME/') .. file_name
     .. fn.strftime("-%Y%m%d%H%M") .. '.md'
   )
 
@@ -45,8 +45,8 @@ nmap('<leader>zv', ':VertZettel ', { silent = false })
 
 nmap( -- Change working directory to zettelkasten and open index
   '<leader>zi',
-  '<CMD> e $NOTES_DIR/index-202202270044.md <CR>'
-  .. '<CMD> cd $NOTES_DIR <CR>'
+  '<CMD> e $NOTES_HOME/index-202202270044.md <CR>'
+  .. '<CMD> cd $NOTES_HOME <CR>'
   .. '<CMD> pwd <CR>'
 ) --  mnemonic: zettel->index
 
@@ -62,7 +62,7 @@ nmap('<leader>zr', ':ZettelReferences <CR>')
 -- Also, don't parse the index file.
 nmap( -- Generate ctags
   '<leader>zt',
-  '<CMD> !ctags -R --exclude=index-202202270044.md -f "$NOTES_DIR"/tags "$NOTES_DIR"/*.md <CR>'
+  '<CMD> !ctags -R --exclude=index-202202270044.md -f "$NOTES_HOME"/tags "$NOTES_HOME"/*.md <CR>'
 ) -- mnemonic: zettel->tags
 
 nmap('<leader>zp', '<CMD>MPToggle <CR>')
