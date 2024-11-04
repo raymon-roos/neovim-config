@@ -12,23 +12,25 @@ return {
   config = function()
     vim.lsp.set_log_level('off')
 
-    vim.cmd([[autocmd! ColorScheme * highlight link LspInfoBorder FloatBorder]])
+    -- vim.cmd([[autocmd! ColorScheme * highlight link LspInfoBorder FloatBorder]])
 
     local signs = {
-      { name = 'DiagnosticSignError', text = ' ' },
-      { name = 'DiagnosticSignWarn', text = ' ' },
-      { name = 'DiagnosticSignHint', text = ' ' },
-      { name = 'DiagnosticSignInfo', text = ' ' },
+      'DiagnosticSignError',
+      'DiagnosticSignWarn',
+      'DiagnosticSignHint',
+      'DiagnosticSignInfo',
     }
 
     for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
+      vim.fn.sign_define(sign, { texthl = sign, text = "●", numhl = '' })
     end
 
     local border = 'rounded'
 
     vim.diagnostic.config({
-      virtual_text = true,
+      virtual_text = {
+        prefix = "●"
+      },
       signs = {
         active = signs,
       },
