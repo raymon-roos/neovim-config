@@ -21,123 +21,47 @@ return {
       on_attach = require('utils.lsp_on_attach'),
     })
 
-    return {
-      handlers = {
-        function(server_name)
-          require('lspconfig')[server_name].setup({})
-        end,
-        ['lua_ls'] = function()
-          local runtime_path = vim.split(package.path, ';')
-          table.insert(runtime_path, 'lua/?.lua')
-          table.insert(runtime_path, 'lua/?/init.lua')
+    local manual_servers = {
+      -- Servers that either have custom configuration (under `lua/plugins/lsp/servers`),
+      -- or were not installed through mason so have to be registered manually.
+      -- Servers installed through mason with default configuration are set up automatically,
+      -- So are not listed here.
+      { name = 'arduino_language_server', mason = true },
+      { name = 'html',                    mason = true },
+      { name = 'intelephense',            mason = true },
+      { name = 'lua_ls',                  mason = true },
+      { name = 'harper_ls',               mason = true },
+      { name = 'tailwindcss',             mason = true },
+      { name = 'ltex',                    mason = false },
+      { name = 'nil_ls',                  mason = false },
+      -- { name = 'nixd',                    mason = false },
+      { name = 'basedpyright',            mason = false },
+      { name = 'hls',                     mason = false },
+      { name = 'gopls',                   mason = false },
+    }
 
-          require('lspconfig').lua_ls.setup({
-            settings = {
-              Lua = {
-                runtime = { version = 'LuaJIT', path = runtime_path },
-                diagnostics = {
-                  globals = { 'vim' },
-                },
-                workspace = {
-                  library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.stdpath('config') .. '/lua'] = true,
-                  },
-                },
-                telemetry = {
-                  enable = false,
-                },
-                completion = {
-                  callSnippet = 'Replace',
-                },
-                format = {
-                  defaultConfig = {
-                    indent_style = 'space',
-                    indent_size = 2,
-                    quote_style = 'single',
-                  }
-                }
-              },
-            },
-          })
-        end,
-        ['html'] = function()
-          require('lspconfig').html.setup({
-            filetypes = { 'html', 'twig' },
-            settings = {
-              html = {
-                mirrorCursorOnMatchingTag = { true },
-              },
-            },
-          })
-        end,
-        ['tailwindcss'] = function()
-          require('lspconfig').tailwindcss.setup({
-            filetypes = { 'php', 'html', 'js', 'blade.php' },
-            autostart = false,
-            settings = {
-              tailwindcss = {},
-            },
-          })
-        end,
-        ['ltex'] = function()
-          require('lspconfig').ltex.setup({
-            on_attach = function(_, bufnr)
-              require('utils.lsp_on_attach')(_, bufnr)
-              require('ltex-utils').on_attach(bufnr)
-            end,
-            filetypes = {
-              'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc', 'quarto', 'rmd',
-              'context'
-            },
-            settings = {
-              ltex = {
-                language = 'en-GB',
-                diagnosticSeverity = 'information',
-                additionalRules = {
-                  enablePickyRules = true,
-                },
-                disabledRules = {
-                  ['en-GB'] = { 'DASH_RULE', 'EN_QUOTES' },
-                  ['en-US'] = { 'DASH_RULE', 'EN_QUOTES' },
-                },
-                ['ltex-ls'] = {
-                  logLevel = 'severe',
-                },
-                completionEnable = true,
-              },
-            },
-          })
-        end,
-        ['intelephense'] = function()
-          require('lspconfig').intelephense.setup({
-            init_options = {
-              globalStoragePath = vim.fn.expand('$XDG_DATA_HOME') .. '/intelephense',
-            },
-            settings = {
-              intelephense = {
-                files = {
-                  maxSize = 2000000, -- In bytes
-                },
-                telemetry = {
-                  enabled = false,
-                },
-              },
-            },
-          })
-        end,
-        ['arduino_language_server'] = function()
-          require('lspconfig').arduino_language_server.setup({
-            cmd = {
-              'arduino-language-server',
-              '-cli-config',
-              '/home/ray/.xdg/config/arduino15/arduino-cli.yaml',
-              '-clangd',
-              vim.fn.expand('$XDG_DATA_HOME') .. '/nvim/mason/bin/clangd',
-            },
-          })
-        end,
-      },
+    local handlers = {
+      -- Default setup function used by mason-lspconfig for servers without custom configuration
+      function(server_name)
+        require('lspconfig')[server_name].setup({})
+      end,
+    }
+
+    for _, server in pairs(manual_servers) do
+      local server_config_exist, server_opts = pcall(require, 'plugins.lsp.servers.' .. server.name)
+
+      if server.mason then
+        handlers[server.name] = function()
+          require('lspconfig')[server.name].setup(server_opts)
+        end
+      else
+        -- In case server hasn't been installed through mason, call `lspconfig[...].setup()` directly
+        require('lspconfig')[server.name].setup(server_config_exist and server_opts or {})
+      end
+    end
+
+    return {
+      handlers = handlers
     }
   end,
 }
