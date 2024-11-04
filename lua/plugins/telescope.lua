@@ -2,7 +2,6 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    cmd = 'Telescope',
     dependencies = 'telescope-fzf-native.nvim',
     opts = function()
       local actions = require('telescope.actions')
@@ -38,6 +37,17 @@ return {
           },
         },
         pickers = {
+          find_files = {
+            find_command = {
+              "fd",
+              "--type",
+              "file",
+              "--hidden",
+              "--strip-cwd-prefix",
+              "--exclude",
+              ".git",
+            }
+          },
           buffers = {
             theme = 'ivy',
             layout_config = {
