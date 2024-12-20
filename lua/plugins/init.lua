@@ -9,6 +9,7 @@ return {
     ft = { 'css', 'scss', 'html' },
     cmd = { 'CccPick', 'CccConvert', 'CccHighlighterToggle', 'CccHighlighterEnable', 'CccHighlighterEnable' },
   },
+
   { -- Tint inactive windows
     'levouh/tint.nvim',
     event = 'VeryLazy',
@@ -21,7 +22,7 @@ return {
     config = true,
   },
 
-  { -- latex integration for vim
+  { -- Latex integration for vim
     'lervag/vimtex',
     ft = { 'tex', 'bib' },
   },
@@ -36,16 +37,15 @@ return {
     ft = { 'blade', 'blade.php' },
   },
 
-  { -- ledger filetype support
+  { -- Ledger filetype support
     'ledger/vim-ledger',
     ft = { 'journal', 'ledger', 'ldg' }
   },
 
-  { -- neomuttrc filetype support
+  { -- Neomuttrc filetype support
     'neomutt/neomutt.vim',
     ft = { 'muttrc', 'neomuttrc' }
   },
-
 
   { -- Helm chart file type support
     'towolf/vim-helm',
