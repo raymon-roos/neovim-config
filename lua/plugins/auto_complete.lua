@@ -75,6 +75,7 @@ return {
           { name = 'luasnip_choice' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lsp_document_symbol' },
+          { name = 'orgmode' },
           { name = 'path' },
         }, {
           {
