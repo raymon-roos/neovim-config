@@ -33,6 +33,7 @@ return {
         markdown = { 'prettier' },
         latex = { 'latexindent' },
         nix = { 'alejandra' },
+        go = { 'gofumpt' },
       },
       formatters = {
         phpcbf = {
