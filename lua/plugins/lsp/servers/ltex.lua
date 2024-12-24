@@ -4,7 +4,7 @@ return {
     require('ltex-utils').on_attach(bufnr)
   end,
   filetypes = {
-    'bib', 'gitcommit', 'markdown', 'md', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc', 'quarto', 'rmd',
+    'bib', 'gitcommit', 'markdown', 'md', --[[ 'org', ]] 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc', 'quarto', 'rmd',
     'context'
   },
   settings = {
