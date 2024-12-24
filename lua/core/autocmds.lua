@@ -24,31 +24,29 @@ autocmd('ColorScheme', {
   group = 'highlights',
   pattern = '*',
   callback = function()
-    -- The below settings make Leap's highlighting closer to what you've been
-    -- used to in Lightspeed. Has the adventage of giving imediate visual
-    -- feedback when the leap key is triggered.
+    -- The below settings tweak Leap's default target highlighting.
+    -- Has the adventage of giving imediate visual feedback when the
+    -- leap key is triggered, and making targets more clearly visible.
 
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
     vim.api.nvim_set_hl(0, 'LeapMatch', {
-      fg = 'white',
-      bold = true,
+      fg = 'red',
+      bg = 'black',
       nocombine = true,
     })
 
     vim.api.nvim_set_hl(0, 'LeapLabelPrimary', {
       fg = 'yellow',
-      bold = true,
+      bg = 'black',
       nocombine = true,
     })
 
     vim.api.nvim_set_hl(0, 'LeapLabelSecondary', {
       fg = 'blue',
-      bold = true,
+      bg = 'black',
       nocombine = true,
     })
-
-    require('leap').opts.highlight_unlabeled_phase_one_targets = true
   end,
 })
 
