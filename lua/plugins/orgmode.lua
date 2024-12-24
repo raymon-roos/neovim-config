@@ -10,5 +10,6 @@ return {
   opts = {
     org_agenda_files = '~/files/org/**/*',
     org_default_notes_file = '~/files/org/refile.org',
+    org_time_stamp_rounding_minutes = 1,
   },
 }
