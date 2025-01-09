@@ -19,7 +19,10 @@ return {
           border = 'rounded',
         },
         list = {
-          selection = 'manual',
+          selection = {
+            preselect = false,
+            auto_insert = false
+          },
         },
         documentation = {
           auto_show = true,
