@@ -12,8 +12,6 @@ return {
   config = function()
     vim.lsp.set_log_level('off')
 
-    -- vim.cmd([[autocmd! ColorScheme * highlight link LspInfoBorder FloatBorder]])
-
     local signs = {
       'DiagnosticSignError',
       'DiagnosticSignWarn',
