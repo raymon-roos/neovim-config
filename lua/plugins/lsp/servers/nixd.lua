@@ -7,11 +7,11 @@ return {
       options = {
         nixos = {
           expr =
-          '(builtins.getFlake ("git+file://" + toString "$XDG_CONFIG_HOME/nix")).nixosConfigurations.raydesk.options',
+          '(builtins.getFlake "/home/ray/.xdg/config/nix").nixosConfigurations.currentSystem.options',
         },
-        home_manager = {
+        darwin = {
           expr =
-          '(builtins.getFlake ("git+file://" + toString "$XDG_CONFIG_HOME/nix")).homeConfigurations."ray@raydesk".options',
+          '(builtins.getFlake "/home/ray/.xdg/config/nix").darwinConfigurations.raymac.options',
         },
       },
     },
