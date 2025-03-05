@@ -5,7 +5,8 @@ return {
     'mason.nvim',
     'mason-lspconfig.nvim',
     { -- nvim and plugins API docs and completions
-      'folke/neodev.nvim',
+      'folke/lazydev.nvim',
+      ft = 'lua',
       config = true,
     },
   },

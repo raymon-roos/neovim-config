@@ -36,9 +36,15 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'orgmode' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'orgmode' },
         -- cmdline = {},
         providers = {
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            -- score_offset = 100,
+          },
           orgmode = {
             name = 'Orgmode',
             module = 'orgmode.org.autocompletion.blink',
@@ -51,6 +57,6 @@ return {
         window = { border = 'rounded' }
       },
     },
-    opts_extend = { "sources.default" }
+    opts_extend = { 'sources.default' }
   },
 }
