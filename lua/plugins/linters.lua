@@ -26,6 +26,7 @@ return {
       lua = { 'selene' },
       latex = { 'chktex' },
       css = { 'stylelint' },
+      nix = { 'statix' },
     }
 
     vim.api.nvim_create_autocmd({ 'TextChanged' }, {
