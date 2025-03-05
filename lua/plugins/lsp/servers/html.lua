@@ -1,5 +1,5 @@
 return {
-  filetypes = { 'html', 'twig' },
+  filetypes = { 'html' },
   settings = {
     html = {
       mirrorCursorOnMatchingTag = { true },

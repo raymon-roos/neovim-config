@@ -2,8 +2,6 @@ return {
   'neovim/nvim-lspconfig',
   -- event = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' },
   dependencies = {
-    'mason.nvim',
-    'mason-lspconfig.nvim',
     { -- nvim and plugins API docs and completions
       'folke/lazydev.nvim',
       ft = 'lua',
@@ -53,5 +51,42 @@ return {
     )
 
     require('lspconfig.ui.windows').default_options.border = border
+
+    local util = require('lspconfig.util')
+    util.default_config = vim.tbl_deep_extend('force', util.default_config, {
+      capabilities = require('blink.cmp').get_lsp_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      ),
+      on_attach = require('utils.lsp_on_attach'),
+    })
+
+    local servers = {
+      -- 'arduino-language-server',
+      -- 'basedpyright',
+      'docker_compose_language_service',
+      'dockerls',
+      'emmet_language_server', -- HTML real time snippet "language"
+      -- 'gopls',
+      'harper_ls',             -- New, faster ltex-ls alternative
+      -- 'hls',                -- Haskell
+      'intelephense',          -- PHP
+      -- 'phpactor',           -- PHP
+      'ltex_plus',             -- Maintained fork of ltex-ls
+      'lua_ls',
+      'nil_ls',
+      'nixd',
+      'tailwindcss',
+      'cssls',  -- from vscode-langservers-extracted
+      'jsonls', -- from vscode-langservers-extracted
+      'html',   -- from vscode-langservers-extracted
+      -- 'superhtml', -- Stricter HTML LSP
+      'eslint', -- from vscode-langservers-extracted
+    }
+
+    for _, server in pairs(servers) do
+      local config_exist, server_opts = pcall(require, 'plugins.lsp.servers.' .. server)
+
+      require('lspconfig')[server].setup(config_exist and server_opts or {})
+    end
   end,
 }
