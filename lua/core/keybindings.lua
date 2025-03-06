@@ -145,9 +145,7 @@ nmap('<leader>fQ', function() require('telescope.builtin').quickfixhistory() end
 nmap('<leader>fS', function() require('telescope.builtin').search_history() end)
 
 -- easily open windows of relevant plugins
-nmap('<leader>mm', '<CMD> Mason <CR>')
 nmap('<leader>pp', '<CMD> LspInfo <CR>')
-nmap('<leader>ns', '<CMD> NullLsInfo <CR>')
 nmap('<leader>ll', '<CMD> Lazy home <CR>')
 nmap('<leader>ls', '<CMD> Lazy sync <CR>')
 
