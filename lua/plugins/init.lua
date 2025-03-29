@@ -10,12 +10,6 @@ return {
     cmd = { 'CccPick', 'CccConvert', 'CccHighlighterToggle', 'CccHighlighterEnable', 'CccHighlighterEnable' },
   },
 
-  { -- Tint inactive windows
-    'levouh/tint.nvim',
-    event = 'VeryLazy',
-    config = true,
-  },
-
   { -- Easilly suround text with given character, tag or function call
     'kylechui/nvim-surround',
     event = 'VeryLazy',
