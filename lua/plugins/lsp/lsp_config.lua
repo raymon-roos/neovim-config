@@ -19,15 +19,14 @@ return {
     }
 
     for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign, { texthl = sign, text = "●", numhl = '' })
+      vim.fn.sign_define(sign, { texthl = sign, text = '●', numhl = '' })
     end
 
     local border = 'rounded'
 
     vim.diagnostic.config({
-      virtual_text = {
-        prefix = "●"
-      },
+      -- virtual_text = { prefix = '●' },
+      virtual_text = false,
       signs = {
         active = signs,
       },
