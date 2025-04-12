@@ -17,6 +17,7 @@ o.autoindent = true
 o.smartindent = true
 o.signcolumn = 'yes:1'
 o.foldcolumn = 'auto'
+o.inccommand = 'split';
 o.numberwidth = 2
 o.number = true
 o.relativenumber = true
