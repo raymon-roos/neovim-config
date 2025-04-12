@@ -18,8 +18,6 @@ return function(_, bufnr)
   map('<leader>rn', vim.lsp.buf.rename)
   map('<leader>ca', vim.lsp.buf.code_action)
   map('gl', vim.diagnostic.open_float)
-  map('[d', vim.diagnostic.goto_prev)
-  map(']d', vim.diagnostic.goto_next)
 
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end
