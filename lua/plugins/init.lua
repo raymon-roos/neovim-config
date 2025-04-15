@@ -49,6 +49,7 @@ return {
   { -- Git conflict markers
     'akinsho/git-conflict.nvim',
     version = '*',
+    event = 'VeryLazy',
     config = true
   },
 }
