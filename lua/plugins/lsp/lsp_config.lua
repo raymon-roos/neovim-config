@@ -1,6 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
-  -- event = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' },
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' },
   dependencies = {
     { -- nvim and plugins API docs and completions
       'folke/lazydev.nvim',
@@ -52,25 +52,22 @@ return {
       })
     end
 
-    require('lspconfig.ui.windows').default_options.border = border
-
-    local util = require('lspconfig.util')
-    util.default_config = vim.tbl_deep_extend('force', util.default_config, {
+    vim.lsp.config('*', {
       capabilities = require('blink.cmp').get_lsp_capabilities(
         vim.lsp.protocol.make_client_capabilities()
       ),
       on_attach = require('utils.lsp_on_attach'),
     })
 
-    local servers = {
-      -- 'arduino-language-server',
-      -- 'basedpyright',
+    vim.lsp.enable({
+      'arduino-language-server',
+      'basedpyright',
       'docker_compose_language_service',
       'dockerls',
       'emmet_language_server', -- HTML real time snippet "language"
-      -- 'gopls',
+      'gopls',
       'harper_ls',             -- New, faster ltex-ls alternative
-      -- 'hls',                -- Haskell
+      'hls',                   -- Haskell
       'intelephense',          -- PHP
       -- 'phpactor',           -- PHP
       'ltex_plus',             -- Maintained fork of ltex-ls
@@ -83,12 +80,6 @@ return {
       'html',   -- from vscode-langservers-extracted
       -- 'superhtml', -- Stricter HTML LSP
       'eslint', -- from vscode-langservers-extracted
-    }
-
-    for _, server in pairs(servers) do
-      local config_exist, server_opts = pcall(require, 'plugins.lsp.servers.' .. server)
-
-      require('lspconfig')[server].setup(config_exist and server_opts or {})
-    end
+    })
   end,
 }
