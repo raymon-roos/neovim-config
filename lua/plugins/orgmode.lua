@@ -6,7 +6,7 @@ return {
     opts = { list = "•", headlines = { "◉", "○", "✸", "✿" } },
   },
   ft = { 'org' },
-  event = 'VeryLazy',
+  lazy = true,
   opts = {
     org_agenda_files = '~/files/org/**/*',
     org_default_notes_file = '~/files/org/refile.org',
