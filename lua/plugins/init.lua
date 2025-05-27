@@ -36,11 +36,6 @@ return {
     ft = { 'journal', 'ledger', 'ldg' }
   },
 
-  { -- Neomuttrc filetype support
-    'neomutt/neomutt.vim',
-    ft = { 'muttrc', 'neomuttrc' }
-  },
-
   { -- Helm chart file type support
     'towolf/vim-helm',
     ft = { 'yaml', 'helm' },
