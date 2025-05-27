@@ -80,6 +80,7 @@ return {
       'html',   -- from vscode-langservers-extracted
       -- 'superhtml', -- Stricter HTML LSP
       'eslint', -- from vscode-langservers-extracted
+      'nushell',
     })
   end,
 }
