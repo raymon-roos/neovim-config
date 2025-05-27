@@ -35,7 +35,7 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = {
-        'filename',
+        { 'filename', path = 1 },
         {
           require('noice').api.status.mode.get,
           cond = require('noice').api.status.mode.has,
