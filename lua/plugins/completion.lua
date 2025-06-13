@@ -35,7 +35,7 @@ return {
       },
 
       sources = {
-        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'orgmode' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'omni', 'buffer', 'orgmode' },
         -- cmdline = {},
         providers = {
           lazydev = {
