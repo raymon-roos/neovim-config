@@ -6,10 +6,6 @@ return {
       'ggandor/leap-spooky.nvim',
       config = true,
     },
-    { -- smarter f/t
-      'ggandor/flit.nvim',
-      opts = { labeled_modes = 'nx' },
-    },
   },
   config = function(_, _)
     local leap = require('leap')
