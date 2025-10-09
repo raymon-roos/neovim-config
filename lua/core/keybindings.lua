@@ -152,7 +152,7 @@ nmap('<leader>ls', '<CMD> Lazy sync <CR>')
 -- control builtin spell Checking
 nmap('<leader>ss', '<CMD> setlocal spell! <CR>')                   -- toggle spell checking
 nmap('<leader>sb', '<CMD> setlocal spell spelllang=en_gb,nl <CR>') -- turn on English + Dutch
-nmap('<leader>se', '<CMD> setlocal spell spelllang=en_gb <CR>')    -- turn on just Brittish English
+nmap('<leader>se', '<CMD> setlocal spell spelllang=en_gb <CR>')    -- turn on just British English
 nmap('<leader>sn', '<CMD> setlocal spell spelllang=nl <CR>')       -- turn on just Dutch
 nmap('<leader>fs', function() require('telescope.builtin').spell_suggest() end)
 
