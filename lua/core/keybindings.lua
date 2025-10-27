@@ -38,6 +38,10 @@ imap('.', '<C-g>u.')
 imap(',', '<C-g>u,')
 imap(';', '<C-g>u;')
 
+map({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
+map({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
+map('n', 'gs', '<Plug>(leap-from-window)')
+
 -- Apend semicolon or comma at the end of the line without moving cursor
 imap('<A-;>', '<C-o>mo<C-o>A;<C-o>`o<C-o><CMD>delmarks o<CR>')
 imap('<A-,>', '<C-o>mo<C-o>A,<C-o>`o<C-o><CMD>delmarks o<CR>')
