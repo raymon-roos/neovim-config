@@ -153,6 +153,7 @@ nmap('<leader>fS', function() require('telescope.builtin').search_history() end)
 nmap('<leader>pp', '<CMD> LspInfo <CR>')
 nmap('<leader>ll', '<CMD> Lazy home <CR>')
 nmap('<leader>ls', '<CMD> Lazy sync <CR>')
+nmap('<leader>nn', '<CMD> Noice all <CR>') -- show notifications routed by the Noice UI
 
 -- control builtin spell Checking
 nmap('<leader>ss', '<CMD> setlocal spell! <CR>')                   -- toggle spell checking
