@@ -15,6 +15,7 @@ map({ 'n', 'v' }, '<space>', '<nop>')
 map({ 'n', 'v' }, '<Down>', function() return vim.v.count == 0 and 'g<Down>' or '<Down>' end, { expr = true })
 map({ 'n', 'v' }, '<Up>', function() return vim.v.count == 0 and 'g<Up>' or '<Up>' end, { expr = true })
 
+vmap('<leader>F', function() require('conform').format({ lsp_fallback = true }) end)
 nmap('<leader>F', function() require('conform').format({ lsp_fallback = true }) end)
 nmap('<leader>fm', function() require('conform').format({ lsp_fallback = true }) end)
 
