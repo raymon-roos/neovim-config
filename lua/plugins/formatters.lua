@@ -23,17 +23,21 @@ return {
 
     return {
       formatters_by_ft = {
-        javascript = { 'prettier', 'eslint_d', stop_after_first = true, },
-        html = { 'prettier' },
         blade = { 'blade-formatter' },
         css = { 'prettier' },
+        go = { 'golangci-lint', 'gofumpt', stop_after_first = true, },
+        html = { 'prettier' },
+        hurl = { 'hurlfmt' },
+        javascript = { 'biome', 'eslint_d', 'prettier', stop_after_first = true, },
+        json = { 'prettier' },
+        latex = { 'latexindent' },
+        markdown = { 'prettier' },
+        nix = { 'alejandra' },
         php = { 'phpcbf' },
+        python = { 'ruff' },
         rust = { 'rustfmt' },
         sh = { 'shellcheck', 'shellharden', 'shfmt' },
-        markdown = { 'prettier' },
-        latex = { 'latexindent' },
-        nix = { 'alejandra' },
-        go = { 'gofumpt' },
+        typst = { 'typstyle' },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

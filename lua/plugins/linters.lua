@@ -20,13 +20,15 @@ return {
     }
 
     require('lint').linters_by_ft = {
-      javascript = { 'eslint_d' },
+      css = { 'stylelint' },
+      dockerfile = { 'hadolint' },
+      go = { 'golangcilint' },
+      javascript = { 'biomejs' },
+      latex = { 'chktex' },
+      lua = { 'selene' },
+      -- nix = { 'statix' },
       php = { 'phpcs' },
       sh = { 'shellcheck' },
-      lua = { 'selene' },
-      latex = { 'chktex' },
-      css = { 'stylelint' },
-      nix = { 'statix' },
     }
 
     vim.api.nvim_create_autocmd({ 'TextChanged' }, {
