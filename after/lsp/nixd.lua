@@ -7,12 +7,13 @@ return {
       options = {
         nixos = {
           expr =
-          '(builtins.getFlake "/home/ray/.xdg/config/nix").nixosConfigurations.currentSystem.options',
+          '(builtins.getFlake "/home/ray/.xdg/config/nix").nixosConfigurations.raydesk.options',
         },
-        darwin = {
+        home_manager = {
           expr =
-          '(builtins.getFlake "/home/ray/.xdg/config/nix").darwinConfigurations.raymac.options',
-        },
+          -- '(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.raydesk.options.home-manager.users.type.getSubOptions []'
+          '(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.raydesk.config.home-manager.users.ray'
+        }
       },
     },
   },
